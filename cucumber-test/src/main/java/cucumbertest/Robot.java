@@ -32,14 +32,27 @@ class Position {
 public class Robot  extends Position {
 	private  int nx; 
 	private  int ny;
-	List<String> orientation = Arrays.asList("N","W","S","E");
+	List<String> orientations = Arrays.asList("N","W","S","E");
+	
+	private char orientation;
 	Position p;
 	public Robot(int x, int y) {
 	    super(x,y);
+	    this.orientation = "E".charAt(0);  //automatically assigned to east
 	}
 	
 	private int life = 3;
 	private boolean isYourTurn;
+	
+	private int movAmount;    // new variable
+	
+	public int getmovAmount() {   // read from a card how many steps 
+		return this.movAmount;
+	}
+	
+	public void setmovAmount(int movAmount) {    // move 1,2, or 3
+		this.movAmount = movAmount;
+	}
 	
 	public boolean isLifeNull() {
 		if(this.getLife() != 0) {
@@ -65,8 +78,12 @@ public class Robot  extends Position {
 		this.life = life;
 	}
 	
-	public String getOrientation() {
-		return orientation.get(1);
+	public char getOrientation() {   // get orientation from a card (or initial one(east))
+		return this.orientation;
+	}
+	
+	public void setOrientation(char o) {  // rotate robot to wanted orientation
+		this.orientation = o;
 	}
 	
 	public void setPosition(int x, int y) {
@@ -116,20 +133,20 @@ public class Robot  extends Position {
 	    }*/
 	}
 	public void UpdatePosition() {    
-		if( getOrientation() =="N") {
+		if( getOrientation() =="N".charAt(0)) {
 	    	Robot.x = Robot.x;
-	    	Robot.y = Robot.y  + 1;
+	    	Robot.y = Robot.y  + this.movAmount;
 	    }
-	    if(getOrientation() =="W") {
-	    	Robot.x = Robot.x - 1;
+	    if(getOrientation() =="W".charAt(0)) {
+	    	Robot.x = Robot.x - this.movAmount;   //+-1 replaced with movAmount (so that it can be 1,2,3)
 	    	Robot.y = Robot.y;
 	    }
-	    if( getOrientation() =="S") {
+	    if( getOrientation() =="S".charAt(0)) {
 	    	Robot.x = Robot.x;
-	    	Robot.y = Robot.y - 1;
+	    	Robot.y = Robot.y - this.movAmount;
 	    }
-	    if( getOrientation() =="E") {
-	    	Robot.x = Robot.x + 1;
+	    if( getOrientation() =="E".charAt(0)) {
+	    	Robot.x = Robot.x + this.movAmount;
 	    	Robot.y = Robot.y;
 	    }
 	}
