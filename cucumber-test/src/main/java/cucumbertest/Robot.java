@@ -30,6 +30,7 @@ class Position {
 
 
 public class Robot  extends Position {
+
 	private  int nx; 
 	private  int ny;
 	List<String> orientations = Arrays.asList("N","W","S","E");
