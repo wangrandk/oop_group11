@@ -1,38 +1,13 @@
-package cucumbertest;
+package roborally;
 import java.util.Arrays;
 import java.util.List;
-
-import cucumbertest.Board;
-
-class Position {
-	protected static int x;
-	protected static int y;
-	//protected static boolean isEmpty = true;
-
-    public Position(int x, int y) {
-        Position.x = x;
-        Position.y = y;
-    }
- 
-    public static int getX() {
-        return Position.x;
-    }
-
-    public static int getY() {
-        return Position.y;
-    }
-    //need to define what is empty
-    public static boolean isEmpty(int x,int y) {
-    	return true;
-    }
-}
-
 
 
 public class Robot  extends Position {
 	private  int nx; 
 	private  int ny;
 	List<String> orientation = Arrays.asList("N","W","S","E");
+	private String CurrentOrient = this.orientation.get(0);
 	Position p;
 	public Robot(int x, int y) {
 	    super(x,y);
@@ -56,8 +31,6 @@ public class Robot  extends Position {
 		return this.isYourTurn;
 	}
 	
-	
-	
 	public int getLife() {
 		return this.life;
 	}
@@ -66,17 +39,21 @@ public class Robot  extends Position {
 	}
 	
 	public String getOrientation() {
-		return orientation.get(1);
+		return this.CurrentOrient;
 	}
 	
-	public void setPosition(int x, int y) {
+	public void setOrientation(String orient) {
+		this.CurrentOrient = orient ;
+	}
+	
+	public  void setPosition(int x, int y) {
 		this.x = x;
 	    this.y = y;	   
 	}
 	
 	public void getPosition() {
-		this.x = Position.getX();
-		this.y = Position.getY();
+		this.x = this.getX();
+		this.y = this.getY();
 		
 		//return this.x + this.y; 
 		System.out.println("  X is: "  + this.x + " Y is: " + this.y);
@@ -117,21 +94,51 @@ public class Robot  extends Position {
 	}
 	public void UpdatePosition() {    
 		if( getOrientation() =="N") {
-	    	Robot.x = Robot.x;
-	    	Robot.y = Robot.y  + 1;
+	    	this.x = this.x;
+	    	this.y = this.y  + 1;
 	    }
 	    if(getOrientation() =="W") {
-	    	Robot.x = Robot.x - 1;
-	    	Robot.y = Robot.y;
+	    	this.x = this.x - 1;
+	    	this.y = this.y;
 	    }
 	    if( getOrientation() =="S") {
-	    	Robot.x = Robot.x;
-	    	Robot.y = Robot.y - 1;
+	    	this.x = this.x;
+	    	this.y = this.y - 1;
 	    }
 	    if( getOrientation() =="E") {
-	    	Robot.x = Robot.x + 1;
-	    	Robot.y = Robot.y;
+	    	this.x = this.x + 1;
+	    	this.y = this.y;
 	    }
+	}
+	
+	public void RotateLeft() {
+		if( getOrientation() =="N") {
+	    	this.CurrentOrient = "W";
+	    } 
+		else if(getOrientation() =="W") {
+			this.CurrentOrient = "S";
+		}
+		else if(getOrientation() =="S") {
+			this.CurrentOrient = "E";
+		}
+		else if(getOrientation() =="E") {
+			this.CurrentOrient = "N";
+		}
+	}
+	
+	public void RotateRight() {
+		if( getOrientation() =="N") {
+	    	this.CurrentOrient = "E";
+	    } 
+		else if(getOrientation() =="W") {
+			this.CurrentOrient = "N";
+		}
+		else if(getOrientation() =="S") {
+			this.CurrentOrient = "W";
+		}
+		else if(getOrientation() =="E") {
+			this.CurrentOrient = "S";
+		}
 	}
 		
 	
