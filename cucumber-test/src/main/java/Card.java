@@ -1,8 +1,9 @@
 //main card class, which will be extended by other variants(movement, orientation)
 
-public class Card {
+public abstract class Card {
 	private String card;
 	private final int points;
+	String cardmessage;
 	
 	public String getCard() {
 		return this.card;
@@ -22,4 +23,11 @@ public class Card {
 		this.card= name;    //assign a name to a card(mov1, move2,...)
 		this.points=points;  //assign points to a card
 	}
+	
+	
+	public String getMessage() {     //returns cardmessage, and tells console what to print
+		return cardmessage;
+	}
+	
+	
 }
