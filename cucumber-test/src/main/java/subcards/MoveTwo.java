@@ -1,13 +1,22 @@
 package subcards;
 
+import cucumbertest.Robot;
+
 public class MoveTwo extends Card {
 
 	MoveTwo(int points) {
-		super(points,"Move2");
+		super("Move2",points);
 	}
 	
 	
 	
 	
-	cardmessage = "Moved 2 tiles";
+	String cardmessage = "Moved 2 tiles";
+	
+	@Override
+	public void setAction(Robot robot) {
+		robot.setmovAmount(2);
+		robot.UpdatePosition();
+		//setdirection ako je rotate
+	}
 }

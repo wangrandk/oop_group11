@@ -1,9 +1,11 @@
 package subcards;
 
+import cucumbertest.Robot;
+
 public class MoveOne extends Card {
 	
 	MoveOne(int points) {
-		super(points,"Move1");
+		super("Move1",points);
 		
 		//setAction method x1 (as we move only 1 tile here)
 		//later: display png file according to a card
@@ -12,5 +14,12 @@ public class MoveOne extends Card {
 	
 	
 	
-	cardmessage = "Moved 3 tiles";
+	String cardmessage = "Moved 1 tile";
+	
+	@Override
+	public void setAction(Robot robot) {
+		robot.setmovAmount(1);
+		robot.UpdatePosition();
+		//setdirection ako je rotate
+	}
 }

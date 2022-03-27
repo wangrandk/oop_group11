@@ -1,8 +1,10 @@
 package cucumbertest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import cucumbertest.Board;
+import subcards.Card;
 
 class Position {
 	protected static int x;
@@ -28,12 +30,13 @@ class Position {
 }
 
 
-
+//when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
 public class Robot  extends Position {
 
 	private  int nx; 
 	private  int ny;
 	List<String> orientations = Arrays.asList("N","W","S","E");
+	ArrayList<Card> hand = new ArrayList<Card>();   
 	
 	private char orientation;
 	Position p;
@@ -68,6 +71,20 @@ public class Robot  extends Position {
 	
 	public boolean getTurnStatus() {
 		return this.isYourTurn;
+	}
+	
+	public void giveCard(Card card) {    //restrict that no more than 5 cards can be in you hand
+		if (this.hand.size() < 5) {
+			this.hand.add(card);
+			//remove card from a deck *future
+		}
+		else {System.out.println("You've already played all your cards!");}
+	}
+	
+	public void replayCard(Card card) {
+		this.hand.remove(card);   //moves selected card back to a 9-card deck
+		//add to a deck
+		
 	}
 	
 	

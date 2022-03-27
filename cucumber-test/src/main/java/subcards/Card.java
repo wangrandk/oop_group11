@@ -1,3 +1,7 @@
+package subcards;
+
+import cucumbertest.Robot;
+
 //main card class, which will be extended by other variants(movement, orientation)
 
 public abstract class Card {
@@ -14,6 +18,9 @@ public abstract class Card {
 		this.card = c;
 	}
 	
+	public void setAction(Robot robot) {
+		
+	}
 	
 	public int getpoints() {
 		return points;
