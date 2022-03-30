@@ -1,5 +1,4 @@
-package cucumbertest;
-import cucumbertest.Robot;
+package roborally;
 
 public class Board {
    

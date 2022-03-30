@@ -42,8 +42,11 @@ public class Robot  extends Position {
 		return this.CurrentOrient;
 	}
 	
-	public void setOrientation(String orient) {
+	public ResponseMessage setOrientation(String orient) {
 		this.CurrentOrient = orient ;
+		ResponseMessage response = new ResponseMessage();
+	    response.setMessage("Orientation is: "+ this.CurrentOrient);
+	    return response;
 	}
 	
 	public  void setPosition(int x, int y) {
@@ -92,53 +95,71 @@ public class Robot  extends Position {
 	    	Robot.y = position.getY();
 	    }*/
 	}
-	public void UpdatePosition() {    
+	public ResponseMessage UpdatePosition() { 
+		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
 	    	this.x = this.x;
 	    	this.y = this.y  + 1;
+	    	response.setMessage("x: "+ this.x + ", y: " + this.y);
 	    }
-	    if(getOrientation() =="W") {
+	    if(getOrientation().equals("W")) {
 	    	this.x = this.x - 1;
 	    	this.y = this.y;
+	    	response.setMessage("x: "+ this.x + ", y: " + this.y);
 	    }
 	    if( getOrientation() =="S") {
 	    	this.x = this.x;
 	    	this.y = this.y - 1;
+	    	response.setMessage("x: "+ this.x + ", y: " + this.y);
 	    }
 	    if( getOrientation() =="E") {
 	    	this.x = this.x + 1;
 	    	this.y = this.y;
+	    	response.setMessage("x: "+ this.x + ", y: " + this.y);
 	    }
+		return response;
 	}
 	
-	public void RotateLeft() {
+	public ResponseMessage RotateLeft() {
+		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
 	    	this.CurrentOrient = "W";
+	    	response.setMessage("Orientation is: "+ this.CurrentOrient);
 	    } 
 		else if(getOrientation() =="W") {
 			this.CurrentOrient = "S";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
 		else if(getOrientation() =="S") {
 			this.CurrentOrient = "E";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
 		else if(getOrientation() =="E") {
 			this.CurrentOrient = "N";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
+		return response;
 	}
 	
-	public void RotateRight() {
+	public ResponseMessage RotateRight() {
+		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
 	    	this.CurrentOrient = "E";
+	    	response.setMessage("Orientation is: "+ this.CurrentOrient);
 	    } 
 		else if(getOrientation() =="W") {
 			this.CurrentOrient = "N";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
 		else if(getOrientation() =="S") {
 			this.CurrentOrient = "W";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
 		else if(getOrientation() =="E") {
 			this.CurrentOrient = "S";
+			response.setMessage("Orientation is: "+ this.CurrentOrient);
 		}
+		return response;
 	}
 		
 	
@@ -147,5 +168,6 @@ public class Robot  extends Position {
 			System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
 			r.UpdatePosition();
 			System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
+			/**/
 		}
 }

@@ -8,8 +8,8 @@
     And IsYourTurn status is true
     And position x is 3 y is 2
     When orientation is <Orien>
-    And the new position is valid 
-    Then  move to a new position x is <X> y is <Y> 
+    #And the new position is valid 
+    Then  move to a new <Orien> position x is <X> y is <Y> 
 
 
   Examples:
@@ -25,9 +25,9 @@
     Givenyour robot life is not 0
     And IsYourTurn status is true
     
-    When orientation is <OrientStart>
+    When start orientation is <OrientStart>
     And rotate to the <Rotate>
-    Then orientation is <OrientEnd> 
+    Then end orientation is <OrientEnd> 
 
 
  Examples:
