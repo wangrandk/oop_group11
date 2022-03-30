@@ -2,10 +2,10 @@ package cucumbertest;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import testClasses.ResponseMessage;
+import testClasses.Robot;
 import io.cucumber.java.en.Then;
-import roborally.Robot;
-import roborally.Position;
-import roborally.ResponseMessage;
+
 
 import static org.junit.Assert.assertEquals;
 
