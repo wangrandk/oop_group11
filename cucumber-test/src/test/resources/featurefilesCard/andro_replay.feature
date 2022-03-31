@@ -23,7 +23,7 @@ Feature: Deselect a card
   Scenario: Return card back to a subdeck
     Given a subdeck
     And a hand of cards
-    When I deselect a card
+    When card is deselected
     Then hand of cards is decreased
     And subdeck is increased
     

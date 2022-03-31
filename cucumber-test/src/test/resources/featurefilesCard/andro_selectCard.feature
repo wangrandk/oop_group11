@@ -23,6 +23,6 @@ Feature: Card selection
   @tag1
   Scenario: User selects cards from a subdeck
   	Given a full subdeck  
-  	When user selects a hand of cards from a subdeck
+  	When hand of cards is selected from a subdeck
   	Then hand is full
   	And subdeck is reduced

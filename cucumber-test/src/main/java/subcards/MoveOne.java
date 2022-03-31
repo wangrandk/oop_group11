@@ -4,7 +4,7 @@ import cucumbertest.Robot;
 
 public class MoveOne extends Card {
 	
-	MoveOne(int points) {
+	public MoveOne(int points) {
 		super("Move1",points);
 		
 		//setAction method x1 (as we move only 1 tile here)

@@ -4,7 +4,7 @@ import cucumbertest.Robot;
 
 public class MoveThree extends Card {
 	
-	MoveThree(int points) {
+	public MoveThree(int points) {
 		super("Move3",points);
 	}
 	

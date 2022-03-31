@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import cucumbertest.Board;
+import decks.SubDeck;
 import subcards.Card;
 
 class Position {
@@ -76,14 +77,16 @@ public class Robot  extends Position {
 	public void giveCard(Card card) {    //restrict that no more than 5 cards can be in you hand
 		if (this.hand.size() < 5) {
 			this.hand.add(card);
-			//remove card from a deck *future
+			SubDeck.subdeck.remove(card);
+			//remove card from a deck 
 		}
 		else {System.out.println("You've already played all your cards!");}
 	}
 	
 	public void replayCard(Card card) {
-		this.hand.remove(card);   //moves selected card back to a 9-card deck
-		//add to a deck
+		this.hand.remove(card);   //moves selected card back to a subdeck
+		SubDeck.subdeck.add(card);
+		//add to a subdeck
 		
 	}
 	
