@@ -2,8 +2,8 @@ package cucumbertest;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import testClasses.ResponseMessage;
-import testClasses.Robot;
+import roborally.ResponseMessage;
+import roborally.Robot;
 import io.cucumber.java.en.Then;
 
 
@@ -39,40 +39,7 @@ public class ran_StepsMove {
 		response = robot.UpdatePosition();
 		assertEquals(response.GetMessage(), "x: " + int1 +  ", y: "+ int2);			
 	}
-	
-/*
-	@When("start orientation is N")
-	public void start_orientation_is_n() {
-		response =robot.setOrientation("N"); 
-		assertEquals(response.GetMessage(), "Orientation is: N");	
-	}
-	@When("rotate to the left")
-	public void rotate_to_the_left() {
-		response  = robot.RotateLeft();	
-	}
-	@Then("end orientation is west")
-	public void end_orientation_is_west() {
-		assertEquals(response.GetMessage(),"Orientation is: "+"W");
-	}
-
-	@When("rotate to the right")
-	public void rotate_to_the_right() {
-		response  = robot.RotateRight();	
-	}
-	@Then("end orientation is east")
-	public void end_orientation_is_east() {
-		assertEquals(response.GetMessage(),"Orientation is: "+"E");
-	}
-
-	
-	*/
-	
-	
-	
-	
-	
-	
-	
+		
 	@When("orientation is W")
 	public void orientation_is_w() {
 		ResponseMessage response1 =robot.setOrientation("W"); 
@@ -90,31 +57,25 @@ public class ran_StepsMove {
 		ResponseMessage response1 =robot.setOrientation("S"); 
 		assertEquals(response1.GetMessage(), "Orientation is: S");	
 	}
-/*
-	@Then("move to a new position x is {int} y is {int}")
-	public void move_to_a_new_position_x_is_y_is1(Integer int1, Integer int2) {
+
+	@Then("move to a new S position x is {int} y is {int}")
+	public void move_to_a_new_position_x_is_y_is_S(Integer int1, Integer int2) {
 		ResponseMessage response2 = robot.UpdatePosition();
 		assertEquals(response2.GetMessage(), "x: " + int1 +  ", y: "+ int2);			
 	}
-*/
+
 	@When("orientation is E")
 	public void orientation_is_e() {
 		ResponseMessage response1 =robot.setOrientation("E"); 
 		assertEquals(response1.GetMessage(), "Orientation is: E");	
 	}
-/*
-	@Then("move to a new position x is {int} y is {int}")
-	public void move_to_a_new_position_x_is_y_is2(Integer int1, Integer int2) {
+
+	@Then("move to a new E position x is {int} y is {int}")
+	public void move_to_a_new_position_x_is_y_is_E(Integer int1, Integer int2) {
 		ResponseMessage response2 = robot.UpdatePosition();
 		assertEquals(response2.GetMessage(), "x: " + int1 +  ", y: "+ int2);			
 	}
-*/
-	
-	
-	
 
-	
-	
-	
+
 
 }
