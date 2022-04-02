@@ -37,10 +37,4 @@ public class TestHand {
 
 	
 	
-	
-	int deckSize = deck.deck.size();
-	assertEquals(SubDeck.subdeck.size(), 0);
-	deck.nineTosubdeck();
-	assertEquals(SubDeck.subdeck.size(), 9);
-	assertEquals(deck.deck.size(),deckSize-9);
 }
