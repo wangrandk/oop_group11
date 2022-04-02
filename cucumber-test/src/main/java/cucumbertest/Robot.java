@@ -78,7 +78,7 @@ public class Robot  extends Position {
 		if (this.hand.size() < 5) {
 			this.hand.add(card);
 			SubDeck.subdeck.remove(card);
-			//remove card from a deck 
+			//remove card from a subdeck 
 		}
 		else {System.out.println("You've already played all your cards!");}
 	}
