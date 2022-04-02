@@ -26,8 +26,8 @@
     And IsYourTurn status is true
     
     When start orientation is <OrientStart>
-    And rotate to the <Rotate>
-    Then end orientation is <OrientEnd> 
+    And rotate to the <Rotate> from <OrientStart>
+    Then end orientation is <OrientEnd> from <OrientStart>
 
 
  Examples:
