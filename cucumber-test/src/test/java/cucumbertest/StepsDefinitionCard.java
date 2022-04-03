@@ -54,8 +54,8 @@ public class StepsDefinitionCard {
 	    	Card card = SubDeck.subdeck.get(0);
 	    	robot.giveCard(card);
 	    }
-		handSize=robot.hand.size();
-		subdeckSize=SubDeck.subdeck.size();
+		handSize=robot.hand.size();   // [James] Why need to put size here?
+		subdeckSize=SubDeck.subdeck.size();  // [James] Why need to put size here?
 	}
 
 	@When("card is deselected")

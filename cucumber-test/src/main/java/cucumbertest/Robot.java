@@ -34,22 +34,26 @@ class Position {
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
 public class Robot  extends Position {
 
-	private  int nx; 
-	private  int ny;
+	private int nx; 
+	private int ny;
 	List<String> orientations = Arrays.asList("N","W","S","E");
-	ArrayList<Card> hand = new ArrayList<Card>();   
+	public ArrayList<Card> hand = new ArrayList<Card>();   // [James] Change hand to "public"
 	
 	private char orientation;
 	Position p;
+	
+	
 	public Robot(int x, int y) {
 	    super(x,y);
 	    this.orientation = "E".charAt(0);  //automatically assigned to east
 	}
 	
+	
 	private int life = 3;
 	private boolean isYourTurn;
 	
 	private int movAmount;    // new variable
+	
 	
 	public int getmovAmount() {   // read from a card how many steps 
 		return this.movAmount;
@@ -87,7 +91,6 @@ public class Robot  extends Position {
 		this.hand.remove(card);   //moves selected card back to a subdeck
 		SubDeck.subdeck.add(card);
 		//add to a subdeck
-		
 	}
 	
 	
