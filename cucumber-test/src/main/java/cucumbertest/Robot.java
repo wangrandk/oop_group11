@@ -9,7 +9,7 @@ import subcards.Card;
 
 class Position {
 	protected static int x;
-	protected static int y;
+	protected static int y;  		// [James] If you set static, then it would just one position, but we have multiple players.
 	//protected static boolean isEmpty = true;
 
     public Position(int x, int y) {
@@ -110,14 +110,14 @@ public class Robot  extends Position {
 		this.orientation = o;
 	}
 	
-	public void setPosition(int x, int y) {
-		this.x = x;
-	    this.y = y;	   
+	public void setPosition(int sx, int sy) {
+		x = sx;
+		y = sy;	   
 	}
 	
 	public void getPosition() {
-		this.x = Position.getX();
-		this.y = Position.getY();
+		x = Position.getX();
+		y = Position.getY();
 		
 		//return this.x + this.y; 
 		System.out.println("  X is: "  + this.x + " Y is: " + this.y);
