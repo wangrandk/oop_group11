@@ -4,5 +4,7 @@ import java.util.ArrayList;
 import subcards.Card;
 
 public class SubDeck {
-	public static ArrayList<Card> subdeck = new ArrayList<Card>();
+	public ArrayList<Card> subdeck = new ArrayList<Card>();
+	
+	public SubDeck() {}
 }

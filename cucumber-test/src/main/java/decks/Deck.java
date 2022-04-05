@@ -9,7 +9,7 @@ import subcards.MoveTwo;
 
 public class Deck {
 
-	public ArrayList<Card> deck = new ArrayList<Card>();
+	public static ArrayList<Card> deck = new ArrayList<Card>();
 	
 	public Deck() {
 		// MOVE_ONE Cards
@@ -57,11 +57,11 @@ public class Deck {
 		
 	}
 	
-	public void nineTosubdeck() {
+	public static void nineTosubdeck(ArrayList<Card> subdeck) {
 		for (int i = 1; i <= 9; i++) {
 			Random rand = new Random();  //take random 9 cards from the deck
-	        Card card = deck.get(rand.nextInt(deck.size()));
-	        SubDeck.subdeck.add(card);    //subdeck is increased
+	        Card card = deck.get(rand.nextInt(Deck.deck.size()));
+	        subdeck.add(card);    //subdeck is increased
 	        deck.remove(card);           //deck is decreased
 		}
 	}
