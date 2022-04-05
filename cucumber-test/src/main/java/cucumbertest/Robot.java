@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cucumbertest.Board;
+import decks.Deck;
 import decks.SubDeck;
 import subcards.Card;
 
 class Position {
 	protected static int x;
-	protected static int y;  		// [James] If you set static, then it would just one position, but we have multiple players.
+	protected static int y;
 	//protected static boolean isEmpty = true;
 
     public Position(int x, int y) {
@@ -36,23 +36,25 @@ public class Robot  extends Position {
 
 	private int nx; 
 	private int ny;
-	List<String> orientations = Arrays.asList("N","W","S","E");
-	public ArrayList<Card> hand = new ArrayList<Card>();   // [James] Change hand to "public"
 	
-	private char orientation;
-	Position p;
+	List<String> orientations = Arrays.asList("N","W","S","E");
+	private int life = 3;
+	public boolean isYourTurn;
+	private int movAmount;    // new variable
+	
+	public ArrayList<Card> hand = new ArrayList<Card>();   
+	public ArrayList<Card> subdeck = new ArrayList<Card>();
+	
+	
+	private String orientation;
+	public Position p;
 	
 	
 	public Robot(int x, int y) {
 	    super(x,y);
-	    this.orientation = "E".charAt(0);  //automatically assigned to east
+	    this.orientation = "E";  //automatically assigned to east
+	    Deck.nineTosubdeck(subdeck);	// fill robot's subdeck from main deck
 	}
-	
-	
-	private int life = 3;
-	private boolean isYourTurn;
-	
-	private int movAmount;    // new variable
 	
 	
 	public int getmovAmount() {   // read from a card how many steps 
@@ -61,6 +63,29 @@ public class Robot  extends Position {
 	
 	public void setmovAmount(int movAmount) {    // move 1,2, or 3
 		this.movAmount = movAmount;
+	}
+	
+	public void setBehaviour(Card card) {
+		switch(card.getCard()) {
+			case "Move1":
+				this.movAmount = 1;
+				return;
+			case "Move2":
+				this.movAmount = 2;
+				return;
+			case "Move3":
+				this.movAmount = 3;
+				return;
+			case "RotateLeft":
+				return;
+				// TODO update orientation
+			case "RotateRight":
+				return;
+				// TODO update orientation
+			case "UTurn":
+				return;
+				// TODO update orientation
+		}
 	}
 	
 	public boolean isLifeNull() {
@@ -81,7 +106,7 @@ public class Robot  extends Position {
 	public void giveCard(Card card) {    //restrict that no more than 5 cards can be in you hand
 		if (this.hand.size() < 5) {
 			this.hand.add(card);
-			SubDeck.subdeck.remove(card);
+			this.subdeck.remove(card);
 			//remove card from a subdeck 
 		}
 		else {System.out.println("You've already played all your cards!");}
@@ -89,8 +114,9 @@ public class Robot  extends Position {
 	
 	public void replayCard(Card card) {
 		this.hand.remove(card);   //moves selected card back to a subdeck
-		SubDeck.subdeck.add(card);
+		this.subdeck.add(card);
 		//add to a subdeck
+		
 	}
 	
 	
@@ -102,12 +128,12 @@ public class Robot  extends Position {
 		this.life = life;
 	}
 	
-	public char getOrientation() {   // get orientation from a card (or initial one(east))
+	public String getOrientation() {   // get orientation from a card (or initial one(east))
 		return this.orientation;
 	}
 	
-	public void setOrientation(char o) {  // rotate robot to wanted orientation
-		this.orientation = o;
+	public void setOrientation(String string) {  // rotate robot to wanted orientation
+		this.orientation = string;
 	}
 	
 	public void setPosition(int sx, int sy) {
@@ -157,21 +183,17 @@ public class Robot  extends Position {
 	    }*/
 	}
 	public void UpdatePosition() {    
-		if( getOrientation() =="N".charAt(0)) {
-	    	Robot.x = Robot.x;
+		if( getOrientation() =="N") {
 	    	Robot.y = Robot.y  + this.movAmount;
 	    }
-	    if(getOrientation() =="W".charAt(0)) {
+	    if(getOrientation() =="W") {
 	    	Robot.x = Robot.x - this.movAmount;   //+-1 replaced with movAmount (so that it can be 1,2,3)
-	    	Robot.y = Robot.y;
 	    }
-	    if( getOrientation() =="S".charAt(0)) {
-	    	Robot.x = Robot.x;
+	    if( getOrientation() =="S") {
 	    	Robot.y = Robot.y - this.movAmount;
 	    }
-	    if( getOrientation() =="E".charAt(0)) {
+	    if( getOrientation() =="E") {
 	    	Robot.x = Robot.x + this.movAmount;
-	    	Robot.y = Robot.y;
 	    }
 	}
 		
