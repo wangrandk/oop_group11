@@ -7,4 +7,8 @@ public class SubDeck {
 	public ArrayList<Card> subdeck = new ArrayList<Card>();
 	
 	public SubDeck() {}
+
+	public int getSize() {
+		return subdeck.size();
+	}
 }
