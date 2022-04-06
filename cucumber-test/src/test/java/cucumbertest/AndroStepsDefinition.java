@@ -1,3 +1,5 @@
+package cucumbertest;
+
 import cucumbertest.Board;
 import cucumbertest.Robot;
 import io.cucumber.java.en.Given;
@@ -10,38 +12,38 @@ import io.cucumber.java.en.Then;
 
 
 
-public class andro_StepsDefinition {
+public class AndroStepsDefinition {
 	Robot robot = new Robot(0,0);
 	Board board = new Board();
-	Card card;
+    Card card= null;
 	
 	@Given("card with {string}")
 	public void card_with(String string) {
 		// instantiate card object based on card string
-		if(string == "MOVE1") {
-	    	card = new MoveOne(500);
-	    } else if(string == "MOVE2") {
-	    	card = new MoveTwo(500);
-	    } else if(string == "MOVE3") {
-	    	card = new MoveThree(500);
-	    }
-	    
-		// set next step for robot using given card
-		robot.setBehaviour(card);    
+//		if(string == "MOVE1") {
+//	    	card = new MoveOne(500);
+//	    } else if(string == "MOVE2") {
+//	    	card = new MoveTwo(500);
+//	    } else if(string == "MOVE3") {
+//	    	card = new MoveThree(500);
+//	    }
+//	    
+//		// set next step for robot using given card
+//		robot.setBehaviour(card);    
 	    
 	}
 
 	
 	@When("move {int} step forward")
 	public void move_step_forward(Integer int1) {
-		robot.UpdatePosition();
+//		robot.UpdatePosition();
 		
 		
 	}
 	
 	@Then("round is Done")
 	public void round_is_done() {
-	    robot.setTurnStatus(false);
+//	    robot.setTurnStatus(false);
 	}
 
 	

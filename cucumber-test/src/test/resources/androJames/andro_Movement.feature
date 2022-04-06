@@ -16,13 +16,28 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @tag
-Feature: Card selection
-   
+Feature: Movement of a robot
+
   @tag1
-  Scenario: User selects cards from a subdeck
-  	Given a full subdeck  
-  	When hand of cards is selected from a subdeck
-  	Then hand is full
-  	And subdeck is reduced
+  Scenario: 1 tile movement
+    Given card with "Move1"
+    When move 1 step forward 
+    Then round is Done 
+    #And my turn is <False>
+    #
+  #@tag1
+  #Scenario: 2 tile movement
+    #Given card with "Move2"
+    #When move 2 step forward 
+    #Then round is Done 
+    #And my turn is <False>
+    #
+  #@tag1
+  #Scenario: 3 tile movement
+    #Given card with "Move3"
+    #When move 3 step forward 
+    #Then round is Done 
+    #And my turn is <False>    
+
+  

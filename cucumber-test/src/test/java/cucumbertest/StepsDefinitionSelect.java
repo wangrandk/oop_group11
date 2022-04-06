@@ -1,3 +1,4 @@
+package cucumbertest;
 import static org.junit.Assert.assertEquals;
 
 import cucumbertest.Robot;
