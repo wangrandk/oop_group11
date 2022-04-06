@@ -8,34 +8,36 @@ import decks.SubDeck;
 import subcards.Card;
 
 class Position {
-	protected static int x;
-	protected static int y;
+	protected int x;
+	protected int y;
 	//protected static boolean isEmpty = true;
 
     public Position(int x, int y) {
-        Position.x = x;
-        Position.y = y;
+        this.x = x;
+        this.y = y;
     }
  
-    public static int getX() {
-        return Position.x;
+    public int getX() {
+        return this.x;
     }
 
-    public static int getY() {
-        return Position.y;
+    public int getY() {
+        return this.y;
     }
     //need to define what is empty
-    public static boolean isEmpty(int x,int y) {
+    public boolean isEmpty(int x,int y) {
+    	x = -1;
+    	y = -1;
     	return true;
     }
 }
 
 
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
-public class Robot  extends Position {
+public class Robot extends Position {
 
-	private int nx; 
-	private int ny;
+	private int nx = -1; 
+	private int ny = -1;
 	
 	List<String> orientations = Arrays.asList("N","W","S","E");
 	private int life = 3;
@@ -104,17 +106,17 @@ public class Robot  extends Position {
 	}
 	
 	public void giveCard(Card card) {    //restrict that no more than 5 cards can be in you hand
-		if (this.hand.size() < 5) {
-			this.hand.add(card);
-			this.subdeck.remove(card);
+		if (hand.size() < 5) {
+			hand.add(card);
+			subdeck.remove(card);
 			//remove card from a subdeck 
 		}
 		else {System.out.println("You've already played all your cards!");}
 	}
 	
 	public void replayCard(Card card) {
-		this.hand.remove(card);   //moves selected card back to a subdeck
-		this.subdeck.add(card);
+		hand.remove(card);   //moves selected card back to a subdeck
+		subdeck.add(card);
 		//add to a subdeck
 		
 	}
@@ -142,16 +144,16 @@ public class Robot  extends Position {
 	}
 	
 	public void getPosition() {
-		x = Position.getX();
-		y = Position.getY();
+		x = super.x;
+		y = super.y;
 		
 		//return this.x + this.y; 
-		System.out.println("  X is: "  + this.x + " Y is: " + this.y);
+		System.out.println("  X is: "  + x + " Y is: " + y);
 	}
 	public boolean isValidPosition(Position newPosition) {
-	    this.nx = newPosition.x; 
-	    this.ny = newPosition.y; 
-		if(Position.isEmpty(this.nx, this.ny) == true ) {
+		nx = newPosition.x; 
+	    ny = newPosition.y; 
+	    if(super.isEmpty(nx, ny) == true ) {
 			return true;
 		}
 		return false;
@@ -184,16 +186,16 @@ public class Robot  extends Position {
 	}
 	public void UpdatePosition() {    
 		if( getOrientation() =="N") {
-	    	Robot.y = Robot.y  + this.movAmount;
+	    	y = y  + this.movAmount;
 	    }
 	    if(getOrientation() =="W") {
-	    	Robot.x = Robot.x - this.movAmount;   //+-1 replaced with movAmount (so that it can be 1,2,3)
+	    	x = x - this.movAmount;   //+-1 replaced with movAmount (so that it can be 1,2,3)
 	    }
 	    if( getOrientation() =="S") {
-	    	Robot.y = Robot.y - this.movAmount;
+	    	y = y - this.movAmount;
 	    }
 	    if( getOrientation() =="E") {
-	    	Robot.x = Robot.x + this.movAmount;
+	    	x = x + this.movAmount;
 	    }
 	}
 		
