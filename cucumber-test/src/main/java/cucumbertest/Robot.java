@@ -75,8 +75,8 @@ public class Robot  extends Position {
 				this.movAmount = 3;
 				return;
 			case "RotateLeft":
-				return;
-				// TODO update orientation
+				//this.orientation= "E";            //FIX!
+				//return;				
 			case "RotateRight":
 				return;
 				// TODO update orientation
@@ -193,7 +193,7 @@ public class Robot  extends Position {
 	    if( getOrientation() =="E") {
 	    	Robot.x = Robot.x + this.movAmount;
 	    }
-	}
+	}                                               //FIX! Create new method for orientation
 		
 	
 		public static void main(String[] args) {

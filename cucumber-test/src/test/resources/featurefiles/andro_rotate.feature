@@ -17,27 +17,30 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Movement of a robot
+Feature: Rotation of a robot
 
   @tag1
-  Scenario: 1 tile movement
-    Given card with "Move1"
-    When move 1 step forward 
-    Then round is Done 
-    And my turn is <False>
-    #
-  #@tag1
-  #Scenario: 2 tile movement
-    #Given card with "Move2"
-    #When move 2 step forward 
-    #Then round is Done 
-    #And my turn is <False>
-    #
-  #@tag1
-  #Scenario: 3 tile movement
-    #Given card with "Move3"
-    #When move 3 step forward 
-    #Then round is Done 
-    #And my turn is <False>    
+  Scenario: Rotation to the left
+    Given card with "RotateLeft"
+    And robot orientation is "E"
+    When robot is rotated
+    Then robot orientation is "N"
+    And round is done
 
+
+  @tag2
+   Scenario: Rotation to the right
+    Given card with "RotateRight"
+    And robot orientation is "E"
+    When robot is rotated
+    Then robot orientation is "S"
+    And round is done
+    
+  @tag3
+   Scenario: Rotation UTurn
+    Given card with "UTurn"
+    And robot orientation is "E"
+    When robot is rotated
+    Then robot orientation is "W" 
+    And round is done 
   
