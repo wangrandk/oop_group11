@@ -25,19 +25,19 @@ Feature: Movement of a robot
     When move 1 step forward 
     Then round is Done 
     #And my turn is <False>
-    
-  @tag1
-  Scenario: 2 tile movement
-    Given card with "Move2"
-    When move 2 step forward 
-    Then round is Done 
+    #
+  #@tag1
+  #Scenario: 2 tile movement
+    #Given card with "Move2"
+    #When move 2 step forward 
+    #Then round is Done 
     #And my turn is <False>
-    
-  @tag1
-  Scenario: 3 tile movement
-    Given card with "Move3"
-    When move 3 step forward 
-    Then round is Done 
+    #
+  #@tag1
+  #Scenario: 3 tile movement
+    #Given card with "Move3"
+    #When move 3 step forward 
+    #Then round is Done 
     #And my turn is <False>    
 
   
