@@ -35,7 +35,7 @@ public class StepsDefinitionRotation {
 
 	@When("robot is rotated")
 	public void robot_is_rotated() {  //create something like UpdatePositiob(but for rotation in Robot)
-	    robot.getOrientation();       //call a new created method 
+	    robot.UpdateOrientation(card);       //call a new created method [James] done~
 	}
 
 	//@Then("robot orientation is {string}")

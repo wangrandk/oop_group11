@@ -11,16 +11,13 @@ public abstract class Card {
 	
 	public String getCard() {
 		return this.card;
-		
 	}
 	
 	public void setCard(String c) {
 		this.card = c;
 	}
 	
-	public void setAction(Robot robot) {
-		
-	}
+	public abstract void setAction(Robot r);
 	
 	public int getpoints() {
 		return points;

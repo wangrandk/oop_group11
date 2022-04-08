@@ -34,8 +34,8 @@ class Position {
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
 public class Robot  extends Position {
 
-	private  int nx; 
-	private  int ny;
+	private int nx; 
+	private int ny;
 	
 	List<String> orientations = Arrays.asList("N","W","S","E");
 	private int life = 3;
@@ -162,6 +162,7 @@ public class Robot  extends Position {
 		return false;
 		
 	}
+	
 	public void UpdatePosition(Position position) {    
 	   /* if(move(position) == true && getOrientation() =="N") {
 	    	Robot.x = position.getX();
@@ -180,6 +181,7 @@ public class Robot  extends Position {
 	    	Robot.y = position.getY();
 	    }*/
 	}
+	
 	public void UpdatePosition() {    
 		if( getOrientation() =="N") {
 	    	Robot.y = Robot.y  + this.movAmount;
@@ -193,13 +195,28 @@ public class Robot  extends Position {
 	    if( getOrientation() =="E") {
 	    	Robot.x = Robot.x + this.movAmount;
 	    }
-	}                                               //FIX! Create new method for orientation
+	} 								//FIX! Create new method for orientation
 		
-	
-		public static void main(String[] args) {
-			Robot r = new Robot(3,1);
-			System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
-			r.UpdatePosition();
-			System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
+	public void UpdateOrientation(Card card) {
+		if( card.getCard() == "RotateLeft") {
+			card.setAction(this);
 		}
+		
+	    if( card.getCard() == "RotateRight") {
+	    	card.setAction(this);
+	    }
+	    
+	    if( card.getCard() == "UTurn") {
+	    	card.setAction(this);
+	    }
+
+	}
+	
+	
+	public static void main(String[] args) {
+		Robot r = new Robot(3,1);
+		System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
+		r.UpdatePosition();
+		System.out.println("  X is: "  + r.getX() + " Y is: " + r.getY());
+	}
 }

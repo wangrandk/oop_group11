@@ -14,9 +14,28 @@ public class RotateLeft extends Card {
 	
 	@Override
 	public void setAction(Robot robot) {
-		robot.setOrientation("E");
-		robot.UpdatePosition();   //robot.(method for orientation)
-		//setdirection ako je rotate
+		
+		switch(robot.getOrientation()) {
+		
+		case "N":
+			robot.setOrientation("W");
+			break;
+		
+		case "W":
+			robot.setOrientation("S");
+			break;
+			
+		case "S":
+			robot.setOrientation("E");
+			break;
+			
+		case "E":
+			robot.setOrientation("N");
+			break;
+			
+		default:
+			System.out.println("~ Don't know robot now orientation ~");
+		}	
 	}
 }
 
