@@ -7,9 +7,9 @@
     Given your robot life is not 0
     And IsYourTurn status is true
     And position x is 3 y is 2
-    When orientation is <Orien>
-    #And the new position is valid 
-    Then  move to a new <Orien> position x is <X> y is <Y> 
+    When move towards <Orien> 
+    And  the new position towards <Orien>  x is <X> y is <Y> are valid
+    Then  by moving  to <Orien> position x is <X> y is <Y> 
 
 
   Examples:

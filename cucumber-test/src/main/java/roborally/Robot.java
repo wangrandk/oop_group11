@@ -42,11 +42,11 @@ public class Robot  extends Position {
 		return this.CurrentOrient;
 	}
 	
-	public ResponseMessage setOrientation(String orient) {
+	public void setOrientation(String orient) {
 		this.CurrentOrient = orient ;
-		ResponseMessage response = new ResponseMessage();
-	    response.setMessage("Orientation is: "+ this.CurrentOrient);
-	    return response;
+		//ResponseMessage response = new ResponseMessage();
+	    //response.setMessage("Orientation is: "+ this.CurrentOrient);
+	    //return response;
 	}
 	
 	public  void setPosition(int x, int y) {
@@ -54,12 +54,10 @@ public class Robot  extends Position {
 	    this.y = y;	   
 	}
 	
-	public void getPosition() {
+	public String getPosition() {
 		this.x = this.getX();
 		this.y = this.getY();
-		
-		//return this.x + this.y; 
-		System.out.println("  X is: "  + this.x + " Y is: " + this.y);
+		return "x: "+ this.x + ", y: " + this.y;
 	}
 	public boolean isValidPosition(Position newPosition) {
 	    this.nx = newPosition.x; 
@@ -77,25 +75,45 @@ public class Robot  extends Position {
 		return false;
 		
 	}
+	public void UpdatePosition() {    
+	    if( getOrientation() =="N") {
+	    	this.x = this.getX();
+	    	this.y = this.getY() + 1;
+	    }
+	    if( getOrientation() =="W") {
+	    	this.x = this.getX() - 1;
+	    	this.y = this.getY();
+	    }
+	    if(getOrientation() =="S") {
+	    	this.x = this.getX();
+	    	this.y = this.getY() - 1;
+	    }
+	    if( getOrientation() =="E") {
+	    	this.x = this.getX() + 1;
+	    	this.y = this.getY();
+	    }
+	}
+	/*
 	public void UpdatePosition(Position position) {    
-	   /* if(move(position) == true && getOrientation() =="N") {
-	    	Robot.x = position.getX();
-	    	Robot.y = position.getY() + 1;
+	    if(move(position) == true && getOrientation() =="N") {
+	    	this.x = this.getX();
+	    	this.y = this.getY() + 1;
 	    }
 	    if(move(position) == true && getOrientation() =="W") {
-	    	Robot.x = position.getX() - 1;
-	    	Robot.y = position.getY();
+	    	this.x = this.getX() - 1;
+	    	this.y = this.getY();
 	    }
 	    if(move(position) == true && getOrientation() =="S") {
-	    	Robot.x = position.getX();
-	    	Robot.y = position.getY() - 1;
+	    	this.x = this.getX();
+	    	this.y = position.getY() - 1;
 	    }
 	    if(move(position) == true && getOrientation() =="E") {
-	    	Robot.x = position.getX() + 1;
-	    	Robot.y = position.getY();
-	    }*/
+	    	this.x = position.getX() + 1;
+	    	this.y = position.getY();
+	    }
 	}
-	public ResponseMessage UpdatePosition() { 
+	*/
+	/*public ResponseMessage UpdatePosition() { 
 		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
 	    	this.x = this.x;
@@ -119,7 +137,7 @@ public class Robot  extends Position {
 	    }
 		return response;
 	}
-	
+	*/
 	public ResponseMessage RotateLeft() {
 		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
@@ -161,7 +179,34 @@ public class Robot  extends Position {
 		}
 		return response;
 	}
+	
+	public boolean equals(Object o) {
+		 
+        // If the object is compared with itself then return true 
+        if (o == this) {
+            return true;
+        }
+ 
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+        if (!(o instanceof Robot)) {
+            return false;
+        }
+         
+        // typecast o to Complex so that we can compare data members
+        Robot r = (Robot) o;
+         
+        // Compare the data members and return accordingly
+        return CurrentOrient.equals(r.CurrentOrient) 
+        		&& this.getX() == r.getX()
+        		&& this.getY() == r.getY();
+               
+    }
 		
+	public String toString() {
+		//return toString(i);
+		return this.getX() + " : " + this.getY();
+	}
 	
 		public static void main(String[] args) {
 			Robot r = new Robot(3,1);
