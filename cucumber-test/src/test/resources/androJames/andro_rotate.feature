@@ -21,26 +21,25 @@ Feature: Rotation of a robot
 
   @tag1
   Scenario: Rotation to the left
-    Given card with "RotateLeft"
-    And robot orientation is "E"
+    Given robot orientation is "E"
+    And card with "RotateLeft"
     When robot is rotated
-    Then robot orientation is "N"
-    And round is done
+    Then round is over
+  
 
 
   @tag2
    Scenario: Rotation to the right
-    Given card with "RotateRight"
-    And robot orientation is "E"
+    Given robot orientation is "E"
+    And card with "RotateRight"
     When robot is rotated
-    Then robot orientation is "S"
-    And round is done
+    Then round is over
+   
     
   @tag3
    Scenario: Rotation UTurn
-    Given card with "UTurn"
-    And robot orientation is "E"
+    Given robot orientation is "E"
+    And card with "UTurn"
     When robot is rotated
-    Then robot orientation is "W" 
-    And round is done 
-  
+    Then round is over
+    

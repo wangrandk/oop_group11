@@ -198,15 +198,15 @@ public class Robot  extends Position {
 	} 								//FIX! Create new method for orientation
 		
 	public void UpdateOrientation(Card card) {
-		if( card.getCard() == "RotateLeft") {
+		if( card.getCard().equals("RotateLeft")) {
 			card.setAction(this);
 		}
 		
-	    if( card.getCard() == "RotateRight") {
+	    if( card.getCard().equals("RotateRight")) {
 	    	card.setAction(this);
 	    }
 	    
-	    if( card.getCard() == "UTurn") {
+	    if( card.getCard().equals("UTurn")) {   //== changed to .equals
 	    	card.setAction(this);
 	    }
 

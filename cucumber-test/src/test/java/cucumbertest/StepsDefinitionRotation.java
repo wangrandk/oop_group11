@@ -1,3 +1,4 @@
+package cucumbertest;
 import cucumbertest.Board;
 import cucumbertest.Robot;
 import decks.Deck;
@@ -21,21 +22,12 @@ public class StepsDefinitionRotation {
 	
 	@Given("robot orientation is {string}")
 	public void robot_orientation_is(String string) {
-		// instantiate card object based on card string
-				if(string.equals("RotateLeft")) {
-			    	card = new RotateLeft(500);
-			    } else if(string.equals("RotateRight")) {
-			    	card = new RotateRight(500);
-			    } else if(string.equals("UTurn")) {
-			    	card = new UTurn(500);
-			    }
-				
-				System.out.println(card == null);
+		robot.setOrientation(string);
 	}
 
 	@When("robot is rotated")
 	public void robot_is_rotated() {  //create something like UpdatePositiob(but for rotation in Robot)
-	    robot.UpdateOrientation(card);       //call a new created method [James] done~
+	    //card.setAction(robot);       //call a new created method [James] done~
 	}
 
 	//@Then("robot orientation is {string}")
@@ -43,8 +35,8 @@ public class StepsDefinitionRotation {
 	   
 	//}
 	
-	@Then("round is Done")
-	public void round_is_done() {
+	@Then("round is over")
+	public void round_is_over() {
 	    robot.setTurnStatus(false);
 	}
 }
