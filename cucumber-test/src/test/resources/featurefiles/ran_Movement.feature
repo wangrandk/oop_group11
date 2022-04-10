@@ -25,8 +25,7 @@
     Givenyour robot life is not 0
     And IsYourTurn status is true
     
-    When start orientation is <OrientStart>
-    And rotate to the <Rotate> from <OrientStart>
+    When  rotate to the <Rotate> from <OrientStart>
     Then end orientation is <OrientEnd> from <OrientStart>
 
 
