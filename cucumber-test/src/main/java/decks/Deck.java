@@ -6,6 +6,9 @@ import subcards.Card;
 import subcards.MoveOne;
 import subcards.MoveThree;
 import subcards.MoveTwo;
+import subcards.RotateLeft;
+import subcards.RotateRight;
+import subcards.UTurn;
 
 public class Deck {
 
@@ -39,19 +42,19 @@ public class Deck {
         // ROTATE_LEFT Cards
         point = 70;
         for (int i = 1; i <= 18; i++) {
-            //deck.add(new RotateLeft(point));
+            deck.add(new RotateLeft(point));
             point = point + 20;
         }
         // ROTATE_RIGHT Cards
         point = 80;
         for (int i = 1; i <= 18; i++) {
-            //deck.add(new RotateRight(point));
+            deck.add(new RotateRight(point));
             point = point + 20;
         }
         // U_TURN Cards
         point = 10;
         for (int i = 1; i <= 6; i++) {
-           // deck.add(new UTurn(point));
+            deck.add(new UTurn(point));
             point = point + 10;
         }
 		
