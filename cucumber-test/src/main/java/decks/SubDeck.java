@@ -8,8 +8,5 @@ public class SubDeck {
 	
 	public SubDeck() {}
 
-	public int getSize() {
-		return subdeck.size();
-	}
 	
 }
