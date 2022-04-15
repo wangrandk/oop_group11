@@ -102,7 +102,7 @@ public class Robot  extends Position {
 	    	this.y = position.getY();
 	    }
 	}
-	*/
+	
 	/*public ResponseMessage UpdatePosition() { 
 		ResponseMessage response = new ResponseMessage();
 		if( getOrientation() =="N") {
