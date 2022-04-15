@@ -39,7 +39,7 @@ public class ran_StepsMove {
 		robot.UpdatePosition(); // You should call update position, and then assert (using assertEquals) to check if the new position
 								// was indeed changed. This should be done in the next Then Step.
 	}
-	@When("the new position towards N  x is {int} y is {int} are valid")
+	@Then("the new position towards N  x is {int} y is {int} are valid")
 	public void the_new_position_towards_n_x_is_y_is_are_valid(Integer int1, Integer int2) {
 		assertEquals(robot.isValidPosition(new Position(int1,int2)),true); // Why are you asserting in the when step?
 	}
@@ -55,7 +55,7 @@ public class ran_StepsMove {
 		assertEquals(robot.getOrientation(), "W");	
 		robot.UpdatePosition();
 	}
-	@When("the new position towards W  x is {int} y is {int} are valid")
+	@Then("the new position towards W  x is {int} y is {int} are valid")
 	public void the_new_position_towards_w_x_is_y_is_are_valid(Integer int1, Integer int2) {
 		assertEquals(robot.isValidPosition(new Position(int1,int2)),true);
 	}
@@ -73,7 +73,7 @@ public class ran_StepsMove {
 		robot.UpdatePosition();
 	}
 
-	@When("the new position towards S  x is {int} y is {int} are valid")
+	@Then("the new position towards S  x is {int} y is {int} are valid")
 	public void the_new_position_towards_s_x_is_y_is_are_valid(Integer int1, Integer int2) {
 		assertEquals(robot.isValidPosition(new Position(int1,int2)),true);	
 	}
@@ -90,7 +90,7 @@ public class ran_StepsMove {
 		assertEquals(robot.getOrientation(), "E");	
 		robot.UpdatePosition();
 	}
-	@When("the new position towards E  x is {int} y is {int} are valid")
+	@Then("the new position towards E  x is {int} y is {int} are valid")
 	public void the_new_position_towards_e_x_is_y_is_are_valid(Integer int1, Integer int2) {
 		assertEquals(robot.isValidPosition(new Position(int1,int2)),true);				
 	}

@@ -8,8 +8,8 @@
     And IsYourTurn status is true
     And position x is 3 y is 2
     When move towards <Orien> 
-    And  the new position towards <Orien>  x is <X> y is <Y> are valid
-    Then  by moving  to <Orien> position x is <X> y is <Y> 
+    Then  the new position towards <Orien>  x is <X> y is <Y> are valid
+    And  by moving  to <Orien> position x is <X> y is <Y> 
 
 
   Examples:
