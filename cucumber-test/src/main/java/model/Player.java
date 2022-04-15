@@ -2,8 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
-import model.card.Card;
+import cucumbertest.Board;
 import model.tile.Robot;
+import subcards.*;
 	
 public class Player {
 	
@@ -13,9 +14,10 @@ public class Player {
 	private Robot robot;
 	private Board board;
 	
-	private ConsoleMessage response = new ConsoleMessage();
 	private ArrayList<Card> roundHand = new ArrayList<Card>(9);
 	private ArrayList<Card> turnHand;
+	
+	
 
 	
 	public void setID(Integer playerID) {

@@ -1,11 +1,10 @@
 Feature: Player getting cards
 
   Background: 
-   Given A player with ID of 203492
-   And player turn status true
+    Given A player with ID of 1
 
   @tag1
-  Scenario: Player get 9 programming cards cards
+  Scenario: Player get 9 programming cards
     When GameMaster starts a new round
-    Then player receives nine programming cards
-    And console should display a sucessful message
+    Then player receives 9 programming cards
+    And player should have a hand of 9 cards

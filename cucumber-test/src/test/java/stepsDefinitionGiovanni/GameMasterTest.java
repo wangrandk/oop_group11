@@ -7,11 +7,11 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/FeatureFilesGiovanni/U2RobotInteraction",
+@CucumberOptions(features = "src/test/resources/GiovanniFeaturesFiles/GameMaster",
 				publish = true,
 				glue = {"stepsDefinitionGiovanni"},
 				plugin = {"pretty"}
 				)
 
-public class U2Test {
+public class GameMasterTest {
 }

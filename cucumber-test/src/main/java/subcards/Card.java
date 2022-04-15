@@ -29,7 +29,7 @@ public abstract class Card {
 	}
 	
 	
-	public String getMessage() {     //returns cardmessage, and tells console what to print
+	public String getMessage() {     //returns card message, and tells console what to print
 		return cardmessage;
 	}
 	
