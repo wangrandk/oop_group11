@@ -3,11 +3,25 @@ package model;
 import java.util.ArrayList;
 
 import decks.Deck;
+import subcards.Card;
 
 public class GameMaster {
 		
-	ArrayList<Player> players = new ArrayList<Player>(); // Has Players
-	Deck gameDeck = new Deck(); // Has a Deck
+	/*
+	 * final -> cannot be reassigned.
+	 * static -> Belongs to the class itself not the instance of the class.
+	 */	
+	private static final ArrayList<Player> players = new ArrayList<Player>();
+	
+	
+	// Creates and populates the Deck
+	private static final Deck gameDeck = new Deck(); 
+	
+	
+	public static Deck getGameDeck() {
+		return gameDeck;
+	}
+
 	Round round;
 	int countRounds = 0;
 	
@@ -15,11 +29,12 @@ public class GameMaster {
 	// Create Player a adds to the list of players
 	public void createPlayer() {
 		Player newPlayer = new Player(); // Create a new player
-		this.players.add(newPlayer); // add to the list
+		GameMaster.players.add(newPlayer); // Add player to the list of players
 	}
 	
 	public void startGame(ArrayList<Player> players) {		
 		newRound(players, gameDeck);
+		
 	}
 
 	// Constructor that should be called every new round.
@@ -31,7 +46,7 @@ public class GameMaster {
 	
 	// Will be called just once during the creation of the game.
 	public void newRound(ArrayList<Player> players, Deck gameDeck) {
-		this.round = new Round(players);
+		this.round = new Round(players, gameDeck);
 		countRounds++;
 	}
 	
@@ -43,12 +58,9 @@ public class GameMaster {
 		return countRounds;
 	}
 	
-	public ArrayList<Player> getPlayers() {
-		return this.players;
+	public static ArrayList<Player> getPlayers() {
+		return GameMaster.players;
 	}
-	
-
-
 	
 
 }

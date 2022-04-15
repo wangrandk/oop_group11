@@ -60,13 +60,18 @@ public class Deck {
 		
 	}
 	
-	public static void nineTosubdeck(ArrayList<Card> subdeck) {
+	public static ArrayList<Card> nineTosubdeck() {
+		
+		ArrayList<Card> roundDeck = new ArrayList<Card>();
+		
 		for (int i = 1; i <= 9; i++) {
 			Random rand = new Random();  //take random 9 cards from the deck
 	        Card card = deck.get(rand.nextInt(Deck.deck.size()));
-	        subdeck.add(card);    //subdeck is increased
+	        roundDeck.add(card);    //subdeck is increased
 	        deck.remove(card);           //deck is decreased
 		}
+		return roundDeck;
+		
 	}
 	
 }
