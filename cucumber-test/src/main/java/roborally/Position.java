@@ -26,6 +26,7 @@ public class Position {
     }
     //need to define what is empty
     public static boolean isEmpty(int x,int y) {
-    	return true;
+    	return true; // The board should check if the there is a free spot (is "empty") not the position itselft.
+    				//Position is just a x coordinate and y coordinate.
     }
 }

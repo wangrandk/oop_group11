@@ -54,7 +54,10 @@ public class Robot  extends Position {
 	    this.y = y;	   
 	}
 	
-	public String getPosition() {
+	public String getPosition() { // Why it's returning a string instead a Position?
+								  // Get position should return a Position not a string.
+								// If you ever need to print Position, you should call a method within position
+								// not within robot
 		this.x = this.getX();
 		this.y = this.getY();
 		return "x: "+ this.x + ", y: " + this.y;

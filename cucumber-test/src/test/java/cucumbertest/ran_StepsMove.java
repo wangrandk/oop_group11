@@ -24,21 +24,28 @@ public class ran_StepsMove {
 	}
 	@Given("position x is {int} y is {int}")
 	public void position_x_is_y_is(Integer int1, Integer int2) {
-		  robot.setPosition(int1, int2);
+		  robot.setPosition(int1, int2); // Shouldn't be passed the Position class since we have it already?
+		  								// should be: robot.setPosition(new Position(int1, int2))
 	}
 	@When("move towards N")
 	public void move_towards_n() {
-		robot.setOrientation("N"); 
-		assertEquals(robot.getOrientation(), "N");	
-		robot.UpdatePosition();
+		robot.setOrientation("N"); //Orientation is in Given. Since it's a precondition.
+									// I believe here, you should be calling a method(action to move the robot)
+									// and within this method you would set the new orientation 
+		
+		assertEquals(robot.getOrientation(), "N");	// This doesn't make sense. Assert Equals should be when a change
+													// in the state of the game is made. It should be on the then
+		
+		robot.UpdatePosition(); // You should call update position, and then assert (using assertEquals) to check if the new position
+								// was indeed changed. This should be done in the next Then Step.
 	}
 	@When("the new position towards N  x is {int} y is {int} are valid")
 	public void the_new_position_towards_n_x_is_y_is_are_valid(Integer int1, Integer int2) {
-		assertEquals(robot.isValidPosition(new Position(int1,int2)),true);
+		assertEquals(robot.isValidPosition(new Position(int1,int2)),true); // Why are you asserting in the when step?
 	}
 	@Then("by moving  to N position x is {int} y is {int}")
 	public void by_moving_to_n_position_x_is_y_is(Integer int1, Integer int2) {		
-		assertEquals(robot.getPosition(),  "x: "+ int1 + ", y: " + int2);	
+		assertEquals(robot.getPosition(),  "x: "+ int1 + ", y: " + int2); // Get position should return position
 	}
 	
 	@When("move towards W")
