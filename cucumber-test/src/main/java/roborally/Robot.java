@@ -9,13 +9,13 @@ public class Robot  extends Position {
 	List<String> orientation = Arrays.asList("N","W","S","E");
 	private String CurrentOrient = this.orientation.get(0);
 	Position p;
-	public Robot(int x, int y) {
-	    super(x,y);
-	}
-	
 	private int life = 3;
 	private boolean isYourTurn;
 	
+	public Robot(int x, int y) {
+	    super(x,y);
+	}
+
 	public boolean isLifeNull() {
 		if(this.getLife() != 0) {
 			return false;
@@ -49,19 +49,6 @@ public class Robot  extends Position {
 	    //return response;
 	}
 	
-	public  void setPosition(int x, int y) {
-		this.x = x;
-	    this.y = y;	   
-	}
-	
-	public String getPosition() { // Why it's returning a string instead a Position?
-								  // Get position should return a Position not a string.
-								// If you ever need to print Position, you should call a method within position
-								// not within robot
-		this.x = this.getX();
-		this.y = this.getY();
-		return "x: "+ this.x + ", y: " + this.y;
-	}
 	public boolean isValidPosition(Position newPosition) {
 	    this.nx = newPosition.x; 
 	    this.ny = newPosition.y; 

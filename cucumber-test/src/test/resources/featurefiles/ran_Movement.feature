@@ -4,7 +4,7 @@
 
   @tag1   
   Scenario Outline: Successful movement
-    Given your robot life is not 0 # to definie not 0, I think you should use Regular Expressions instead of Cucumber Expressions
+    Given your robot life is not 0 
     And IsYourTurn status is true
     And position x is 3 y is 2
     When move towards <Orien> 
