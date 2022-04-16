@@ -9,7 +9,6 @@ public class Deck {
 
 	public static final ArrayList<Card> deck = new ArrayList<Card>();
 	private static Deck instance = null;  
-
 	
 	private Deck() {
 		// MOVE_ONE Cards
@@ -58,11 +57,9 @@ public class Deck {
 	}
 	
 	
-	
 	public ArrayList<Card> getDeck() {
 		return deck;
 	}
-
 
 
 	public static Deck getInstance() {  

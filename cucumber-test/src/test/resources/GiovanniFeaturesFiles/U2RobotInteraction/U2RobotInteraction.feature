@@ -8,5 +8,5 @@ Feature: Interacting with Obstacles
   	Given board with a pit on coordinate x 2 and y 1
     When move into a position with a pit
     Then robot should be on coordinate x 2 and y 1
-    And player life status is reduced by 1
-    And robot is moved to checkpoint
+    #And player life status is reduced by 1
+    #And robot is moved to checkpoint

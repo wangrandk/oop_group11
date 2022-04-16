@@ -11,6 +11,7 @@ public abstract class Board {
 	private String difficulty;
 	
 	
+	// Constructor
 	public Board(){
         this.board = new Tile[GameSettings.NUM_COLS][GameSettings.NUM_ROWS];
 	}
@@ -24,10 +25,12 @@ public abstract class Board {
 	        }
 	    }
 	
+	// Set Title on a specific position of the Board
 	public void setTile(Tile tile, Position position) {
 		board[position.getX()][position.getY()] = tile;
 	}
 	
+	// Get the Tile from a specific position
 	public Tile getTile(Position position) {
 		return board[position.getX()][position.getY()];
 	}

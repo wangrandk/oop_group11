@@ -12,24 +12,27 @@ import utilities.Position;
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
 public class Robot  extends Tile {
 
+	// Robot Initial Settings
+	
+	private int life = 3;
+	private String orientation = "E";
+	
 	private int nx; 
 	private int ny;
 	
 	List<String> orientations = Arrays.asList("N","W","S","E");
-	private int life = 3;
+	
 	public boolean isYourTurn;
 	private int movAmount;    // new variable
 	
-	public ArrayList<Card> hand = new ArrayList<Card>();   
-	public ArrayList<Card> subdeck = new ArrayList<Card>();
+	public ArrayList<Card> subdeck = new ArrayList<Card>(); // 9 cards dealt in the turn.
+	public ArrayList<Card> hand = new ArrayList<Card>(); // 5 cards selected from the subdeck.
+
 	
-	
-	private String orientation;
 	public Position p;
 	
 	public Robot(int x, int y) {
-	    super(x,y);
-	    this.orientation = "E";  //automatically assigned to east
+	    this.p = new Position(x, y);
 	    Deck.nineTosubdeck(subdeck);	// fill robot's subdeck from main deck
 	}
 	
