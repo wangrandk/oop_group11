@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import cucumbertest.Board;
+import model.board.Board;
 import model.tile.Robot;
 import subcards.*;
 	

@@ -1,32 +1,18 @@
-package cucumbertest;
+package model.board;
 
+import cucumbertest.Position;
 import model.tile.Tile;
 import model.tile.TileFactory;
 import utilities.GameSettings;
 
-public class Board {
+public abstract class Board {
 	
-	private Tile [][] board;
-	private int [][] boardSettings;
+	private final Tile [][] board;
 	private String difficulty;
 	
 	
-	private Board(String difficulty){
-		
-		switch(difficulty){  
-	    //Case statements  
-		    case "Easy": 
-		    	boardSettings = 
-		    	break;  
-		    
-		    case "Medium":
-		    	
-		    	break;
-		    case "Hard":
-		    	
-		    	break;
-	    }  
-		
+	public Board(){
+        this.board = new Tile[GameSettings.NUM_COLS][GameSettings.NUM_ROWS];
 	}
 	
 	// Populates the board depending on the game settings.
@@ -38,9 +24,12 @@ public class Board {
 	        }
 	    }
 	
-	
 	public void setTile(Tile tile, Position position) {
 		board[position.getX()][position.getY()] = tile;
+	}
+	
+	public Tile getTile(Position position) {
+		return board[position.getX()][position.getY()];
 	}
 	
 	

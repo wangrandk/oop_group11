@@ -15,20 +15,19 @@ public class TileFactory {
     
     
     public Tile generateTile(int tileCategory) {
-        Tile tile;
+        Tile tile = null;
         
         switch(tileCategory) {
+        	// Blank Tile
         	case 0:
         		tile = new BlankTile();
         		break;
-        		
+        	// Pit
         	case 1:
         		tile = new Pit();
         		break;
         }
-		return null;
-    	
-    	
+		return tile;
     	
     }
 }

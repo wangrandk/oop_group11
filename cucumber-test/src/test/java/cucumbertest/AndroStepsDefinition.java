@@ -1,10 +1,10 @@
 package cucumbertest;
 
-import cucumbertest.Board;
 import cucumbertest.Robot;
 import decks.Deck;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import model.board.Board;
 import subcards.Card;
 import subcards.MoveOne;
 import subcards.MoveThree;

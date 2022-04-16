@@ -2,10 +2,10 @@ package stepsDefinitionGiovanni.RobotInteraction;
 
 import static org.junit.Assert.assertEquals;
 
-import cucumbertest.Board;
 import cucumbertest.Position;
 import cucumbertest.Robot;
 import io.cucumber.java.en.*;
+import model.board.Board;
 import model.tile.Pit;
 
 public class U2RobotInteractionSteps {
