@@ -169,17 +169,15 @@ public class Robot  extends Position {
 		}
 		return response;
 	}
-	
-	public boolean equals(Object o) {
-		 
+/*
+	public boolean equals(Object o) {	 
         // If the object is compared with itself then return true 
         if (o == this) {
             return true;
         }
- 
         /* Check if o is an instance of Complex or not
           "null instanceof [type]" also returns false */
-        if (!(o instanceof Robot)) {
+ /*       if (!(o instanceof Robot)) {
             return false;
         }
          
@@ -188,10 +186,25 @@ public class Robot  extends Position {
          
         // Compare the data members and return accordingly
         return CurrentOrient.equals(r.CurrentOrient) 
-        		&& this.getX() == r.getX()
-        		&& this.getY() == r.getY();
-               
-    }
+        		//&& this.getX() == r.getX()
+        		//&& this.getY() == r.getY()
+        		;           
+    } 
+	*/
+	
+	public boolean equals(Object obj) {
+		 if (obj instanceof Robot) {
+			 return (
+					 this.getX() == ((Robot) obj).getX() 
+					 && 
+					 this.getY() == ((Robot) obj).getY() 		
+					 &&
+					 this.CurrentOrient.equals(((Robot) obj).CurrentOrient) 
+					 )
+					 ;
+		    }
+	         return false;
+	    	} 
 		
 	public String toString() {
 		//return toString(i);
