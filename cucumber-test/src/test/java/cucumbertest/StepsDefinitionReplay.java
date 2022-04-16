@@ -1,11 +1,11 @@
 package cucumbertest;
 import static org.junit.Assert.assertEquals;
 
-import cucumbertest.Robot;
 import decks.Deck;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.tile.Robot;
 import subcards.Card;
 
 public class StepsDefinitionReplay {

@@ -1,6 +1,6 @@
 package subcards;
 
-import cucumbertest.Robot;
+import model.tile.Robot;
 
 public class RotateRight extends Card {
 	public RotateRight(int points) {

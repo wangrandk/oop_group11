@@ -2,8 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import cucumbertest.Robot;
 import decks.Deck;
+import model.tile.Robot;
 import subcards.MoveOne;
 import subcards.MoveThree;
 import subcards.MoveTwo;

@@ -1,6 +1,6 @@
 package subcards;
 
-import cucumbertest.Robot;
+import model.tile.Robot;
 
 //main card class, which will be extended by other variants(movement, orientation)
 

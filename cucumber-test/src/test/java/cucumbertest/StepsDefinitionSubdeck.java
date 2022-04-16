@@ -2,12 +2,12 @@ package cucumbertest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import cucumbertest.Robot;
 import decks.Deck;
 import decks.SubDeck;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.tile.Robot;
 
 public class StepsDefinitionSubdeck {
 

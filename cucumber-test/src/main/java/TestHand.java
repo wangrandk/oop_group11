@@ -2,8 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import cucumbertest.Robot;
-
+import model.tile.Robot;
 import subcards.Card;
 
 public class TestHand {

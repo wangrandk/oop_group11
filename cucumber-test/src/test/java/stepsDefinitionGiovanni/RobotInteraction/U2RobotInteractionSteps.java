@@ -2,16 +2,17 @@ package stepsDefinitionGiovanni.RobotInteraction;
 
 import static org.junit.Assert.assertEquals;
 
-import cucumbertest.Position;
-import cucumbertest.Robot;
 import io.cucumber.java.en.*;
 import model.board.Board;
+import model.board.EasyBoard;
 import model.tile.Pit;
+import model.tile.Robot;
+import utilities.Position;
 
 public class U2RobotInteractionSteps {
 	
 	Robot robot;
-	Board board;
+	EasyBoard easyBoard;
 	
 	@Given("robot on the board in x {int} and y {int}")
 	public void robot_on_the_board_in_x_and_y(Integer x, Integer y) {
@@ -26,7 +27,7 @@ public class U2RobotInteractionSteps {
 	
 	@Given("board with a pit on coordinate x {int} and y {int}")
 	public void board_with_a_pit_on_coordinate_x_and_y(Integer x, Integer y) {
-	    board.setTile(new Pit(), new Position(x, y));
+	    easyBoard.setTile(new Pit(), new Position(x, y));
 	}
 
 	@When("move into a position with a pit")
@@ -35,14 +36,13 @@ public class U2RobotInteractionSteps {
 	}
 
 	@Then("robot should be on coordinate x {int} and y {int}")
-	public void robot_should_be_on_coordinate_x_and_y(Integer int1, Integer int2) {
-	   assertEquals(robot.getPosition(), 0);
+	public void robot_should_be_on_coordinate_x_and_y(Integer x, Integer y) {
+	   assertEquals(robot.getPosition(), new Position(x, y));
 	}
 
 	@Then("player life status is reduced by {int}")
 	public void player_life_status_is_reduced_by(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    
 	}
 
 	@Then("robot is moved to checkpoint")

@@ -1,6 +1,6 @@
 package subcards;
 
-import cucumbertest.Robot;
+import model.tile.Robot;
 
 public class MoveThree extends Card {
 	

@@ -1,9 +1,9 @@
 package model.board;
 
-import cucumbertest.Position;
 import model.tile.Tile;
 import model.tile.TileFactory;
 import utilities.GameSettings;
+import utilities.Position;
 
 public abstract class Board {
 	

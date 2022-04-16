@@ -1,4 +1,4 @@
-package cucumbertest;
+package utilities;
 
 public class Position {
 	protected static int x;
