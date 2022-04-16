@@ -7,32 +7,9 @@ import decks.Deck;
 import decks.SubDeck;
 import subcards.Card;
 
-class Position {
-	protected static int x;
-	protected static int y;
-	//protected static boolean isEmpty = true;
-
-    public Position(int x, int y) {
-        Position.x = x;
-        Position.y = y;
-    }
- 
-    public static int getX() {
-        return Position.x;
-    }
-
-    public static int getY() {
-        return Position.y;
-    }
-    //need to define what is empty
-    public static boolean isEmpty(int x,int y) {
-    	return true;
-    }
-}
-
 
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
-public class Robot  extends Position {
+public class Robot  extends Tile {
 
 	private int nx; 
 	private int ny;
@@ -48,6 +25,7 @@ public class Robot  extends Position {
 	
 	private String orientation;
 	public Position p;
+	
 	public Robot(int x, int y) {
 	    super(x,y);
 	    this.orientation = "E";  //automatically assigned to east
@@ -134,18 +112,14 @@ public class Robot  extends Position {
 		this.orientation = string;
 	}
 	
-	public void setPosition(int x, int y) {
-		this.x = x;
-	    this.y = y;	   
+	public void setPosition(Position position) {
+		this.p = position;   
 	}
 	
-	public void getPosition() {
-		this.x = Position.getX();
-		this.y = Position.getY();
-		
-		//return this.x + this.y; 
-		System.out.println("  X is: "  + this.x + " Y is: " + this.y);
+	public Position getPosition() {
+		return this.p;
 	}
+	
 	public boolean isValidPosition(Position newPosition) {
 	    this.nx = newPosition.x; 
 	    this.ny = newPosition.y; 

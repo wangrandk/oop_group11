@@ -12,7 +12,7 @@ import subcards.UTurn;
 
 public class Deck {
 
-	public static ArrayList<Card> deck = new ArrayList<Card>();
+	private static final ArrayList<Card> deck = new ArrayList<Card>();
 	private static Deck instance = null;  
 
 	
@@ -62,6 +62,14 @@ public class Deck {
 		
 	}
 	
+	
+	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+
+
+
 	public static Deck getInstance() {  
 		if (instance == null){  
 			instance = new Deck();  
