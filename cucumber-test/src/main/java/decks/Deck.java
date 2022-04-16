@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import java.util.Random;
 
-import model.subcards.*;
+import model.cards.*;
 
 public class Deck {
 

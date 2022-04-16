@@ -1,4 +1,4 @@
-package model.subcards;
+package model.cards;
 
 import model.tile.Robot;
 
