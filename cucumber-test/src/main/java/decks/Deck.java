@@ -1,14 +1,9 @@
 package decks;
 import java.util.ArrayList;
+
 import java.util.Random;
 
-import subcards.Card;
-import subcards.MoveOne;
-import subcards.MoveThree;
-import subcards.MoveTwo;
-import subcards.RotateLeft;
-import subcards.RotateRight;
-import subcards.UTurn;
+import model.subcards.*;
 
 public class Deck {
 

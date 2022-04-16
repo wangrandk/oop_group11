@@ -1,11 +1,12 @@
 package model.tile;
+import model.subcards.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import decks.Deck;
 import decks.SubDeck;
-import subcards.Card;
 import utilities.Position;
 
 

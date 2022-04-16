@@ -10,11 +10,11 @@ public class Position {
         Position.y = y;
     }
  
-    public static int getX() {
+    public int getX() {
         return Position.x;
     }
 
-    public static int getY() {
+    public int getY() {
         return Position.y;
     }
     //need to define what is empty
