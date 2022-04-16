@@ -13,8 +13,10 @@ import subcards.UTurn;
 public class Deck {
 
 	public static ArrayList<Card> deck = new ArrayList<Card>();
+	private static Deck instance = null;  
+
 	
-	public Deck() {
+	private Deck() {
 		// MOVE_ONE Cards
         int point = 490;
         for (int i = 1; i <= 18; i++) {
@@ -59,6 +61,14 @@ public class Deck {
         }
 		
 	}
+	
+	public static Deck getInstance() {  
+		if (instance == null){  
+			instance = new Deck();  
+		}
+		return instance; 
+	}
+	
 	
 	public static ArrayList<Card> nineTosubdeck() {
 		

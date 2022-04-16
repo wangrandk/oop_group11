@@ -14,16 +14,17 @@ public class GameMaster {
 	private static final ArrayList<Player> players = new ArrayList<Player>();
 	
 	
-	// Creates and populates the Deck
-	private static final Deck gameDeck = new Deck(); 
+	// Creates and populates the Deck (Singleton)
+	private static final Deck gameDeck = Deck.getInstance(); 
 	
+	Round round;
+	int countRounds = 0;
 	
 	public static Deck getGameDeck() {
 		return gameDeck;
 	}
 
-	Round round;
-	int countRounds = 0;
+	
 	
 
 	// Create Player a adds to the list of players

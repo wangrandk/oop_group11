@@ -1,19 +1,11 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import decks.Deck;
 import subcards.Card;
 
 public class Round {
-
-	
-	ArrayList<Player> players;
-	Deck gameDeck;
-	ArrayList<Card> roundDeck;
-	
-	Random rand = new Random();  //take random 9 cards from the deck
 
 	
 	public Round() {
