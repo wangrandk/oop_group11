@@ -1,11 +1,12 @@
+package CardTest;
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
 import decks.Deck;
+import model.card.*;
 import model.tile.Robot;
-import model.cards.*;
 
 
 public class TestRotationLeft {

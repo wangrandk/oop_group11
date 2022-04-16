@@ -1,15 +1,16 @@
+package CardTest;
 import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
 import decks.Deck;
 import model.tile.Robot;
-import subcards.RotateLeft;
-import subcards.RotateRight;
+import model.card.*;
 
 public class TestRotationRight {
 	
-	Deck deck = new Deck();
+	Deck deck = Deck.getInstance();
 	Robot robot = new Robot(0, 0);
 	RotateRight rotateRightCard = new RotateRight(0);
 

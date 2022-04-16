@@ -1,16 +1,16 @@
+package CardTest;
 import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
 import decks.Deck;
 import model.tile.Robot;
-import subcards.MoveOne;
-import subcards.MoveThree;
-import subcards.MoveTwo;
+import model.card.*;
 
 public class TestUpdatePosition {
 
-	Deck deck = new Deck(); 	// because subdeck in robot constructor cannot be filled without main deck
+	Deck deck = Deck.getInstance(); 	// because subdeck in robot constructor cannot be filled without main deck
 	Robot robot = new Robot(0, 0);
 	MoveOne move1 = new MoveOne(610);
 	MoveTwo move2 = new MoveTwo(610);
@@ -19,11 +19,11 @@ public class TestUpdatePosition {
 	int y;
 	@Test
 	public void testUpdatePosition() {
-		x=robot.getX();
-		y=robot.getY();
+		x=robot.getPosition().getX();
+		y=robot.getPosition().getY();
 		move1.setAction(robot);
-		assertEquals(robot.getX(),x+1);
-		assertEquals(robot.getY(),y);
+		assertEquals(robot.getPosition().getX(),x+1);
+		assertEquals(robot.getPosition().getY(),y);
 		
 	}
 	

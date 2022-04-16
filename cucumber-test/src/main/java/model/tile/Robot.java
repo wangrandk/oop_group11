@@ -5,7 +5,7 @@ import java.util.List;
 
 import decks.Deck;
 import decks.SubDeck;
-import model.cards.*;
+import model.card.*;
 import utilities.Position;
 
 

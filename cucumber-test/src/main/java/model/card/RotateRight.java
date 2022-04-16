@@ -1,35 +1,35 @@
-package model.cards;
+package model.card;
 
 import model.tile.Robot;
 
-public class UTurn extends Card {
-	public UTurn(int points) {
-		super("UTurn",points);
+public class RotateRight extends Card {
+	public RotateRight(int points) {
+		super("RotateRight",points);
 	}
 	
 	
 	
 	
-	String cardmessage = "U Turned";
+	String cardmessage = "Rotated Right";
 	
 	@Override
 	public void setAction(Robot robot) {
 		switch(robot.getOrientation()) {
 		
 		case "N":
-			robot.setOrientation("S");
+			robot.setOrientation("E");
 			break;
 		
 		case "W":
-			robot.setOrientation("E");
-			break;
-			
-		case "S":
 			robot.setOrientation("N");
 			break;
 			
-		case "E":
+		case "S":
 			robot.setOrientation("W");
+			break;
+			
+		case "E":
+			robot.setOrientation("S");
 			break;
 			
 		default:

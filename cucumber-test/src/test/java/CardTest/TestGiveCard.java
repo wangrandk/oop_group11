@@ -1,3 +1,4 @@
+package CardTest;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -7,7 +8,7 @@ import model.tile.Robot;
 
 public class TestGiveCard {
 	
-	Deck deck = new Deck();
+	Deck deck = Deck.getInstance();
 	Robot robot = new Robot(0,0);
 	
 

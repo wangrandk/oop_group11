@@ -1,7 +1,7 @@
 package decks;
 import java.util.ArrayList;
 
-import model.cards.*;
+import model.card.*;
 
 
 public class SubDeck {

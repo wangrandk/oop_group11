@@ -1,6 +1,8 @@
+package CardTest;
 
 
 import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
@@ -9,7 +11,7 @@ import model.tile.Robot;
 
 public class TestDeck {
 	
-	Deck deck = new Deck();
+	Deck deck = Deck.getInstance();
 	int deckSize = Deck.deck.size();		// size when Deck.deck is first initialized
 	
 	Robot robot = new Robot(0,0);
