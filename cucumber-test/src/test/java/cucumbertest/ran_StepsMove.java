@@ -12,6 +12,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ran_StepsMove {
 	Robot robot = new Robot(3,2);
+	Robot robot_0;
+	Robot robot_1;
+	Robot robot_2;
+	Robot robot_3;
 	//ResponseMessage response;
 	//Successful movement #1(Movement of a robot)
 	@Given("your robot life is not {int}")
@@ -45,7 +49,7 @@ public class ran_StepsMove {
 	}
 	@Then("by moving  to N position x is {int} y is {int}")
 	public void by_moving_to_n_position_x_is_y_is(Integer int1, Integer int2) {		
-		Robot robot_0 = new Robot(int1,int2);
+		robot_0 = new Robot(int1,int2);
 		assertEquals(robot.getPosition(), robot_0.getPosition());				
 	}
 	
@@ -61,7 +65,8 @@ public class ran_StepsMove {
 	}
 	@Then("by moving  to W position x is {int} y is {int}")
 	public void by_moving_to_w_position_x_is_y_is(Integer int1, Integer int2) {
-		Robot robot_1 = new Robot(int1,int2);
+		robot_1 = new Robot(int1,int2);
+		//assertEquals(robot.getPosition(), robot_1.getPosition());
 		assertEquals(robot.getX(), robot_1.getX());	
 		assertEquals(robot.getY(), robot_1.getY());
 	}
@@ -79,11 +84,12 @@ public class ran_StepsMove {
 	}
 	@Then("by moving  to S position x is {int} y is {int}")
 	public void by_moving_to_s_position_x_is_y_is(Integer int1, Integer int2) {
-		Robot robot_2 = new Robot(int1,int2);
+		robot_2 = new Robot(int1,int2);
 		//assertEquals(robot.getPosition(), robot_2.getPosition());
 		assertEquals(robot.getX(), robot_2.getX());	
 		assertEquals(robot.getY(), robot_2.getY());
 	}
+	
 	@When("move towards E")
 	public void move_towards_e() {
 		robot.setOrientation("E"); 
@@ -96,7 +102,7 @@ public class ran_StepsMove {
 	}
 	@Then("by moving  to E position x is {int} y is {int}")
 	public void by_moving_to_e_position_x_is_y_is(Integer int1, Integer int2) {
-		Robot robot_3 = new Robot(int1,int2);
+		robot_3 = new Robot(int1,int2);
 		//assertEquals(robot.getPosition(), robot_3.getPosition());
 		assertEquals(robot.getX(), robot_3.getX());	
 		assertEquals(robot.getY(), robot_3.getY());
