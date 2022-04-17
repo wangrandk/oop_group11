@@ -18,12 +18,25 @@ public class Robot extends Tile {
 	Position position;
 	GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
 	
-	private int movAmount;    // new variable
+	// movAmount changes according to the card.
+	private int movAmount = 0;  
 	
 	
 	public Robot(int x, int y) {
 	    this.position = new Position(x, y);
 	}
+	
+	// Get X from the robot's position
+	public int getX() {
+		return this.getPosition().getX();
+	}
+	
+	// Get X from the robot's position
+	public int getY() {
+		return this.getPosition().getY();
+	}
+	
+	
 	
 
 	public int getmovAmount() {   // read from a card how many steps 
@@ -35,16 +48,14 @@ public class Robot extends Tile {
 	}
 	
 	
-	
-	
-	
-	public GameSettings.Orientation getOrientation() {   // get orientation from a card (or initial one(east))
+	public GameSettings.Orientation getOrientation() { 
 		return this.orientation;
 	}
 	
-	public void setOrientation(String string) {  // rotate robot to wanted orientation
-		this.orientation = string;
+	public void setOrientation(GameSettings.Orientation orientation) {
+		this.orientation = orientation;
 	}
+	
 	
 	public void setPosition(Position position) {
 		this.position = position;   
@@ -54,27 +65,13 @@ public class Robot extends Tile {
 		return this.position;
 	}
 	
-	public boolean isValidPosition(Position newPosition) {
-	    this.nx = newPosition.x; 
-	    this.ny = newPosition.y; 
-		if(Position.isEmpty(this.nx, this.ny) == true ) {
-			return true;
-		}
-		return false;
-	}
-
-	public  boolean move(Position newPosition) {
-		if(isLifeNull() == false && isYourTurn == true && isValidPosition(newPosition)== true) {
-			return true;
-		}
-		return false;
-		
-	}
-	
+	/*
+	 * movAmount will be determined by the card
+	*/
 	public void UpdatePosition() {    
 		if( getOrientation() == GameSettings.Orientation.NORTH) {
-	    	Robot.x = Robot.y  + this.movAmount;
-	    }
+	    	Robot.y = Robot.y  + this.movAmount;
+	 	    }
 	    if(getOrientation() == GameSettings.Orientation.WEST) {
 	    	Robot.x = Robot.x - this.movAmount;   //+-1 replaced with movAmount (so that it can be 1,2,3)
 	    }

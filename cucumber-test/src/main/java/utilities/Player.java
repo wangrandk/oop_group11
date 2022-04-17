@@ -45,19 +45,18 @@ public class Player {
     
 	/*
 	 * Player Card Handling. 
-	 *  - Get card from the subdeck
-	 *  
 	*/
     
-    public void giveCard(Card card) {    //restrict that no more than 5 cards can be in your hand
-		if (this.hand.size() < 5) {
+    //Restrict that no more than 5 cards can be in your hand
+    public void fiveToHand(Card card) {    
+		if (this.hand.size() != 5) {
 			this.hand.add(card);
-			this.subdeck.remove(card);
-			//remove card from a subdeck 
+			this.subdeck.remove(card); //remove card from a subdeck
 		}
-		else {System.out.println("You've already played all your cards!");}
+		else {System.out.println("You've already selected all of your cards!");}
 	}
-	
+    
+    // Put back the card from HAND to SUBDECK
 	public void replayCard(Card card) {
 		this.hand.remove(card);   //moves selected card back to a subdeck
 		this.subdeck.add(card);
@@ -104,8 +103,4 @@ public class Player {
 		this.hand = hand;
 	}
     
-    
-	
-		
-
 }
