@@ -2,56 +2,110 @@ package utilities;
 
 import java.util.ArrayList;
 
+import edu.chl.roborally.utilities.Constants;
 import model.board.Board;
+import model.card.*;
 import model.tile.Robot;
-import subcards.*;
-	
+
+/*
+ * Player mimics the status of what a real-world player would have
+*/
 public class Player {
 	
-	private boolean turnStatus = false;
-	private int playerID;
+	private boolean isYourTurn = false;
+
+	private int life = 3;
+	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;
 	
+	
+	private final int playerID;
+	private static int countPlayerId = 1;
 	private Robot robot;
-	private Board board;
-	
-	private ArrayList<Card> roundCards = new ArrayList<Card>(9);
-	public ArrayList<Card> getRoundCards() {
-		return roundCards;
-	}
-
-	public void setRoundCards(ArrayList<Card> roundCards) {
-		this.roundCards = roundCards;
-	}
-
-	private ArrayList<Card> programmedCards = new ArrayList<Card>(5);
 	
 	
+	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
+	private ArrayList<Card> hand = new ArrayList<Card>(); // Each turn
+
 	
-	public ArrayList<Card> getProgrammedCards() {
-		return programmedCards;
+	public Player(){
+		this.playerID = countPlayerId;
+		countPlayerId++;
+	}
+	
+    /**
+     * Decreases life by one.
+     */
+    private void loseLife() {
+        this.life = life - 1;
+        if (this.life <= 0) {
+        	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
+            System.out.println(this.robot.getName() + " is now Kaput and lost");
+        }
+    }
+    
+	/*
+	 * Player Card Handling. 
+	 *  - Get card from the subdeck
+	 *  
+	*/
+    
+    public void giveCard(Card card) {    //restrict that no more than 5 cards can be in your hand
+		if (this.hand.size() < 5) {
+			this.hand.add(card);
+			this.subdeck.remove(card);
+			//remove card from a subdeck 
+		}
+		else {System.out.println("You've already played all your cards!");}
+	}
+	
+	public void replayCard(Card card) {
+		this.hand.remove(card);   //moves selected card back to a subdeck
+		this.subdeck.add(card);
+		//add to a subdeck
+	}
+	
+    
+	public boolean canPlay() {
+		if(this.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
+			return true;
+		}
+		return false;
+	}
+    
+    public GameSettings.PlayerStatus getPlayerStatus() {
+		return playerStatus;
 	}
 
-	public void setProgrammedCards(ArrayList<Card> programmedCards) {
-		this.programmedCards = programmedCards;
+	public void setPlayerStatus(GameSettings.PlayerStatus playerStatus) {
+    	this.playerStatus = playerStatus;
+    }
+    
+    public boolean isYourTurn() {
+		return isYourTurn;
 	}
 
-	public void setID(Integer playerID) {
+	public void setYourTurn(boolean isYourTurn) {
+		this.isYourTurn = isYourTurn;
+	}
+
+	public ArrayList<Card> getSubdeck() {
+		return subdeck;
+	}
+
+	public void setSubdeck(ArrayList<Card> subdeck) {
+		this.subdeck = subdeck;
+	}
+
+	public ArrayList<Card> getHand() {
+		return hand;
+	}
+
+	public void setHand(ArrayList<Card> hand) {
+		this.hand = hand;
+	}
+    
+    
+	
 		
-		this.playerID = playerID;
-	}
-
-	public void setTurnStatus(boolean turnStatus) {
-		this.turnStatus = turnStatus;
-		
-	}
-	
-	public boolean getTurnStatus() {
-		return this.turnStatus;
-		
-	}
-	
-	
-
-
 
 }
