@@ -1,4 +1,4 @@
-package stepsDefinitionGiovanni.RobotInteraction;
+package StepsGiovanni.RobotInteraction;
 
 import static org.junit.Assert.assertEquals;
 

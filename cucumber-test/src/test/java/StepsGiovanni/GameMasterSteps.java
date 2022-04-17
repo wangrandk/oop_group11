@@ -1,4 +1,4 @@
-package stepsDefinitionGiovanni;
+package StepsGiovanni;
 
 import static org.junit.Assert.*;
 

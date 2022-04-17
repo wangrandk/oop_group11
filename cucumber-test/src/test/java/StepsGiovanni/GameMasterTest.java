@@ -1,4 +1,4 @@
-package stepsDefinitionGiovanni;
+package StepsGiovanni;
 
 import org.junit.runner.RunWith;
 

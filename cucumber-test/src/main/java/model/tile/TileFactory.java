@@ -5,7 +5,8 @@ public class TileFactory {
 	private static TileFactory instance;
 
     private TileFactory() {}
-
+    
+    // Singleton -> This guarentess that we just create one instance
     public static TileFactory getInstance() {
         if(instance == null){
             instance = new TileFactory();
