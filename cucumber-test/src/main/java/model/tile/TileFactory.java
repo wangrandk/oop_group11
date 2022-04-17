@@ -27,6 +27,8 @@ public class TileFactory {
         	case 1:
         		tile = new Pit();
         		break;
+        	default:
+        		tile = new BlankTile();
         }
 		return tile;
     	

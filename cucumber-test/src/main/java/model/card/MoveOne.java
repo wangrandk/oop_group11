@@ -1,5 +1,6 @@
 package model.card;
 
+import model.board.Board;
 import model.tile.Robot;
 
 public class MoveOne extends Card {
@@ -19,7 +20,7 @@ public class MoveOne extends Card {
 	@Override
 	public void setAction(Robot robot) {
 		robot.setmovAmount(1);
-		robot.UpdatePosition();
+		Board.moveRobot(robot);
 		//setdirection ako je rotate
 	}
 }

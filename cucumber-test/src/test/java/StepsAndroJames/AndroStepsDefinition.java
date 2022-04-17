@@ -1,25 +1,20 @@
 package StepsAndroJames;
 
 import decks.Deck;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import model.board.Board;
-import model.tile.Robot;
-import subcards.Card;
-import subcards.MoveOne;
-import subcards.MoveThree;
-import subcards.MoveTwo;
-import subcards.RotateLeft;
-import subcards.RotateRight;
-import subcards.UTurn;
+import model.board.*;
+import model.card.*;
+import model.tile.*;
 import io.cucumber.java.en.Then;
 
 
 
 public class AndroStepsDefinition {
-	Deck deck = new Deck();
-	Robot robot = new Robot(0,0);
-	Board board = new Board();
+	Deck deck = Deck.getInstance();
+	Robot robot = new Robot();
+	Board board = new EasyBoard();
 	Card card;
 	
 	@Given("card with {string}")
@@ -46,7 +41,7 @@ public class AndroStepsDefinition {
 	
 	@When("move {int} step forward")
 	public void move_step_forward(Integer int1) {
-		// robot.UpdatePosition();
+		board.moveRobot(robot);
 	}
 	
 	@Then("round is Done")

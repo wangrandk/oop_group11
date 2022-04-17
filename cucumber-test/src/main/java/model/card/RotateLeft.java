@@ -1,41 +1,25 @@
 package model.card;
 
+import model.board.Board;
 import model.tile.Robot;
 
 public class RotateLeft extends Card {
+	
+	private final String cardRotation = "Left";
+	String cardmessage = "Rotated Left";
+
+
 	public RotateLeft(int points) {
 		super("RotateLeft",points);
 	}
 	
-	
-	
-	
-	String cardmessage = "Rotated Left";
-	
 	@Override
 	public void setAction(Robot robot) {
-		
-		switch(robot.getOrientation()) {
-		
-		case "N":
-			robot.setOrientation("W");
-			break;
-		
-		case "W":
-			robot.setOrientation("S");
-			break;
-			
-		case "S":
-			robot.setOrientation("E");
-			break;
-			
-		case "E":
-			robot.setOrientation("N");
-			break;
-			
-		default:
-			System.out.println("~ Don't know robot now orientation ~");
-		}	
-	}
+		robot.setCardRotation(cardRotation);
+		Board.UpdateOrientation(robot);
+
+	}	
+	
+	
 }
 

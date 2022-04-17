@@ -1,14 +1,10 @@
 package utilities;
 
-import java.util.ArrayList;
-
-import subcards.*;
-
 public class GameSettings {
 	
 	
-	public static final int NUM_COLS = 13;
-	public static final int NUM_ROWS = 8;
+	public static final int NUM_COLS = 16;
+	public static final int NUM_ROWS = 12;
 
 	public enum Orientation {
 	    NORTH,

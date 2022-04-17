@@ -2,8 +2,6 @@ package utilities;
 
 import java.util.ArrayList;
 
-import edu.chl.roborally.utilities.Constants;
-import model.board.Board;
 import model.card.*;
 import model.tile.Robot;
 
@@ -16,6 +14,8 @@ public class Player {
 
 	private int life = 3;
 	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;
+	
+	private ArrayList<Position> checkPoints = null;
 	
 	
 	private final int playerID;
@@ -31,6 +31,11 @@ public class Player {
 		this.playerID = countPlayerId;
 		countPlayerId++;
 	}
+	
+	public void addCheckPoint(Position position) {
+		checkPoints.add(position);
+	}
+	
 	
     /**
      * Decreases life by one.
