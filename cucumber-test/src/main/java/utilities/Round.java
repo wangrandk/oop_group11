@@ -2,7 +2,7 @@ package utilities;
 
 import java.util.ArrayList;
 
-import decks.Deck;
+import model.card.Deck;
 import model.main.Player;
 import subcards.Card;
 

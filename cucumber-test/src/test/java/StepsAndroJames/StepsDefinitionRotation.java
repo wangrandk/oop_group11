@@ -1,9 +1,9 @@
 package StepsAndroJames;
-import decks.Deck;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import model.board.Board;
+import model.card.Deck;
 import model.tile.Robot;
 import subcards.Card;
 import subcards.MoveOne;

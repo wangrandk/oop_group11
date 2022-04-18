@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import decks.Deck;
 import model.board.Board;
 import model.board.EasyBoard;
 import model.card.*;

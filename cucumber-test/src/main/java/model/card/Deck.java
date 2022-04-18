@@ -1,9 +1,7 @@
-package decks;
+package model.card;
 import java.util.ArrayList;
 
 import java.util.Random;
-
-import model.card.*;
 
 public class Deck {
 

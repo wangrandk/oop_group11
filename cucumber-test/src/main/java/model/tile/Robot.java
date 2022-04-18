@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import decks.Deck;
-import decks.SubDeck;
 import model.card.*;
 import utilities.GameSettings;
 import utilities.Position;

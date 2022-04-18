@@ -1,7 +1,5 @@
 package StepsAndroJames;
 
-import decks.Deck;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import model.board.*;

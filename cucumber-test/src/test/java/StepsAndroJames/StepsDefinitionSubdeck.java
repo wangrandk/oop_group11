@@ -2,11 +2,11 @@ package StepsAndroJames;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import decks.Deck;
-import decks.SubDeck;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.card.Deck;
+import model.card.SubDeck;
 import model.tile.Robot;
 
 public class StepsDefinitionSubdeck {

@@ -1,8 +1,6 @@
-package decks;
+package model.card;
 import java.util.ArrayList;
 import java.util.Random;
-
-import model.card.*;
 
 
 public class SubDeck {
@@ -24,6 +22,7 @@ public class SubDeck {
 	public ArrayList<Card> getSubdeck() {
 		return subdeck;
 	}
+
 
 	
 		

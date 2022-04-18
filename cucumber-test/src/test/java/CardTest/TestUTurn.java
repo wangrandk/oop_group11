@@ -4,42 +4,64 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import decks.Deck;
 import model.tile.Robot;
+import utilities.GameSettings;
+import utilities.Position;
+import model.board.Board;
+import model.board.EasyBoard;
 import model.card.*;
 
 public class TestUTurn {
 
-	Deck deck = Deck.getInstance();
-	Robot robot = new Robot(0, 0);
-	UTurn UTurnCard = new UTurn(0);
+	UTurn uTurn = new UTurn(610);
+	Deck deck = Deck.getInstance(); 	// because subdeck in robot constructor cannot be filled without main deck
+	Robot robot = new Robot();
+	Board board = new EasyBoard();
+	
+	
+	@Test
+	public void testUpdatePositionTurnRightFromEast(){
+		robot.setPosition( new Position(0,0));
+		robot.setOrientation(GameSettings.Orientation.EAST);
+		
+		uTurn.setAction(robot);
+		
+		assertEquals(GameSettings.Orientation.WEST, robot.getOrientation());
+		
+	}
+	
+	@Test
+	public void testUpdatePositionTurnRightFromNorth(){
+		robot.setPosition( new Position(0,0));
+		robot.setOrientation(GameSettings.Orientation.NORTH);
+		
+		uTurn.setAction(robot);
+		
+		assertEquals(GameSettings.Orientation.SOUTH, robot.getOrientation());
+		
+	}
 
 	@Test
-	public void testUTurn1() {		// a robot with orientation W will have orientation S after RotateLeft card's action
-		robot.setOrientation("W");
-		UTurnCard.setAction(robot);
-		assertEquals(robot.getOrientation(), "E");
+	public void testUpdatePositionTurnRightFromWest(){
+		robot.setPosition( new Position(0,0));
+		robot.setOrientation(GameSettings.Orientation.WEST);
+		
+		uTurn.setAction(robot);
+		
+		assertEquals(GameSettings.Orientation.EAST, robot.getOrientation());
+		
 	}
 	
 	@Test
-	public void testUTurn2() {		// a robot with orientation W will have orientation S after RotateLeft card's action
-		robot.setOrientation("E");
-		UTurnCard.setAction(robot);
-		assertEquals(robot.getOrientation(), "W");
+	public void testUpdatePositionTurnRightFromSouth(){
+		robot.setPosition( new Position(0,0));
+		robot.setOrientation(GameSettings.Orientation.SOUTH);
+		
+		uTurn.setAction(robot);
+		
+		assertEquals(GameSettings.Orientation.NORTH, robot.getOrientation());
+		
 	}
-	
-	@Test
-	public void testUTurn3() {		// a robot with orientation W will have orientation S after RotateLeft card's action
-		robot.setOrientation("N");
-		UTurnCard.setAction(robot);
-		assertEquals(robot.getOrientation(), "S");
-	}
-	
-	@Test
-	public void testUTurn4() {		// a robot with orientation W will have orientation S after RotateLeft card's action
-		robot.setOrientation("S");
-		UTurnCard.setAction(robot);
-		assertEquals(robot.getOrientation(), "N");
-	}
+
 
 }

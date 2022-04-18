@@ -1,5 +1,5 @@
 package model.main;
-
+ 
 import java.util.ArrayList;
 
 import model.card.*;
@@ -25,7 +25,7 @@ public class Player {
 	private static int countPlayerId = 1;
 	private Robot robot;
 	
-	
+	 
 	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
 	private ArrayList<Card> hand = new ArrayList<Card>(); // Each turn
 

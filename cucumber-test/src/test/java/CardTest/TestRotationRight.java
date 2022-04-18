@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import decks.Deck;
 import model.tile.Robot;
 import utilities.GameSettings;
 import utilities.Position;
@@ -43,7 +42,7 @@ public class TestRotationRight {
 		assertEquals(GameSettings.Orientation.EAST, robot.getOrientation());
 		
 	}
-	
+
 	@Test
 	public void testUpdatePositionTurnRightFromWest(){
 		robot.setPosition( new Position(0,0));

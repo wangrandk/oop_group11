@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import utilities.*;
-
-import decks.Deck;
 import model.tile.*;
 import model.card.*;
 import model.*;
