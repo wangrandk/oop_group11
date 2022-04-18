@@ -1,9 +1,12 @@
-package utilities;
+package model.main;
 
 import java.util.ArrayList;
 
 import model.card.*;
 import model.tile.Robot;
+import utilities.GameSettings;
+import utilities.Position;
+import utilities.GameSettings.PlayerStatus;
 
 /*
  * Player mimics the status of what a real-world player would have

@@ -21,44 +21,58 @@ public class TestUpdatePosition {
 	MoveOne move1 = new MoveOne(610);
 	MoveTwo move2 = new MoveTwo(610);
 	MoveThree move3 = new MoveThree(610);
+	RotateRight rotateRight = new RotateRight(610);
+	RotateLeft rotateLeft = new RotateLeft(610);
 	int x;
 	int y;
 	
 	
 	@Test
 	public void testUpdatePosition() {		
-		board.setTile(robot, new Position(0,0));
+		robot.setPosition( new Position(0,0));
 		
 		move1.setAction(robot);
 		
+		// Assert x
 		assertEquals(new Position(1,0).getX(),robot.getPosition().getX());
+		
+		// Asser y
 		assertEquals(new Position(1,0).getY(),robot.getPosition().getY());
 
-		
-//		assertEquals(robot.getPosition().getX(),x+1); // Assert X
-//		assertEquals(robot.getPosition().getY(),y); // Asser Y
-		
 	}
 	
 	@Test
 	public void testUpdatePositionb() {
-		x=robot.getX();
-		y=robot.getY();
+		
+		robot.setPosition( new Position(0,0));
+		
 		move2.setAction(robot);
-		assertEquals(robot.getX(),x+2);
-		assertEquals(robot.getY(),y);
+		
+		// Assert x (should be on position 2,0) 
+		assertEquals(new Position(2,0).getX(),robot.getPosition().getX());
+		
+		// Asser y
+		assertEquals(new Position(2,0).getY(),robot.getPosition().getY());
+		
 		
 	}
 	
 	@Test
 	public void testUpdatePositionc() {
-		x=robot.getX();
-		y=robot.getY();
-		robot.setOrientation(GameSettings.Orientation.NORTH);
+		
+		robot.setPosition( new Position(0,0));
+		
 		move3.setAction(robot);
-		assertEquals(robot.getX(),x);
-		assertEquals(robot.getY(),y+3);
+		
+		// Assert x (should be on position 3,0) 
+		assertEquals(new Position(3,0).getX(),robot.getPosition().getX());
+		assertEquals(new Position(2,0).getY(),robot.getPosition().getY());
+				
 		
 	}
+	
+	
+	
+	
 
 }

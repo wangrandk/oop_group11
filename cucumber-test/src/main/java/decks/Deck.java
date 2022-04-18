@@ -28,13 +28,7 @@ public class Deck {
         for (int i = 1; i <= 6; i++) {
             deck.add(new MoveThree(point));
             point = point + 10;
-        }
-        // BACKUP Cards
-        point = 430;
-        for (int i = 1; i <= 6; i++) {
-            //deck.add(new BackupCard(point));
-            point = point + 10;
-        }
+        }  
         // ROTATE_LEFT Cards
         point = 70;
         for (int i = 1; i <= 18; i++) {
