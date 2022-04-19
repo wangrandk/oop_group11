@@ -119,7 +119,7 @@ public class Player {
 	}
 
 	public ArrayList<Card> getHand() {
-		return hand;
+		return this.hand;
 	}
 
 	public void setHand(ArrayList<Card> hand) {

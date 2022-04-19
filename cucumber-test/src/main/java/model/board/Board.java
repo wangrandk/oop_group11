@@ -65,33 +65,10 @@ public abstract class Board {
 	
 	// Move the robot on the board to the new robots position. 
 	public static void doObstacleAction(Robot robot, Player player) {
-		
-		// Check which type of tile is in the Robot's new position		
-		if (Board.getTile(robot.getPosition()) instanceof Pit) {
-			// player looses life
-			player.looseLife();
-			
-			// Robot return to the last check point
-			robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
-			
-			// Move the robot on the board with to the new Position.
-			Board.setTile(robot);
-			
-			// Update the board with the 
-			Board.setTile(new BlankTile(), robot.getInitialPosition());
-		}
-		
-//		switch(robot.getPosition()) {
-//		case instanceof Pit:
-//			if (robot.getCheckPoints().size() != 0) {
-//				robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
-//				
-//			}
-//			else {
-//				robot.setPosition(null);
-//			}
-//		}
-	}
+		// Depending on the Type of Tile, it will do an action on the Player and Robot.
+		Board.getTile(robot.getPosition()).doAction(robot, player);
+
+	}	
 	
 	// Updates the Position property of the robot.
 	public static void moveRobot(Robot robot) {

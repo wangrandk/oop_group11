@@ -6,6 +6,7 @@ import utilities.Position;
 public abstract class Tile {
 	
 	private Position position;
+	private boolean hasRobotAndAnotherTile;
 	
 	public Tile() {};
 	
@@ -17,6 +18,14 @@ public abstract class Tile {
 	public void doAction(Robot robot, Player player) {
 	}
 
+
+	public boolean isHasRobotAndAnotherTile() {
+		return this.hasRobotAndAnotherTile;
+	}
+
+	public void setHasRobotAndAnotherTile(boolean hasRobotAndAnotherTile) {
+		this.hasRobotAndAnotherTile = hasRobotAndAnotherTile;
+	}
 
 	public void setPosition(int x, int y) {
 		this.position = new Position(x, y);

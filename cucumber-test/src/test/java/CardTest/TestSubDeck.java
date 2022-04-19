@@ -18,7 +18,7 @@ public class TestSubDeck {
 	
 	@Test
 	public void testNineToSubDeck() {
-		assertEquals(9, subDeck.size());		// robot's subdeck is filled with initial 9 cards
+		assertEquals(9, subDeck.size());		// player's subdeck is filled with initial 9 cards
 	}
 	
 	
