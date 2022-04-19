@@ -15,6 +15,7 @@ import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Beer;
 import model.tile.BlankTile;
+import model.tile.CheckPoint1;
 import model.tile.Pit;
 import model.tile.Robot;
 import model.tile.Wall;
@@ -151,6 +152,35 @@ public class TestObstacles {
 		// Thus robot's intial position on the board is a Blank title
 		assertEquals(true, Board.getTile(new Position(0,0)) instanceof BlankTile);
 	}
+	
+	@Test
+	public void ifRobotHistACheckPoint1ForTheFristTime() {
+		
+		Player player = new Player();
+		player.setRobot(robot);
+		
+		// Robot on position 0,0, and checkpoint1 on position 1,0.
+		Board.setTile(robot, new Position(0,0));
+		Board.setTile(new CheckPoint1(), new Position(1,0));
+		
+
+		// Update the robots Position to a new position that has a CheckPoint1
+		move1.setAction(robot);
+		
+		// Board is going to do an Action with a Player and its robot.
+		Board.doObstacleAction(robot, player);
+		
+		// Adds the first Checkpoint to the robot
+		assertEquals(1, robot.getCheckPoints().size());
+		
+		// 
+	}
+	
+//	@Test
+//	public void ifRobotGoesToTheFirstCheckpointTwice() {
+//		
+//	}
+	
 	
 	
 	
