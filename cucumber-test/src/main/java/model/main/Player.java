@@ -15,12 +15,11 @@ import utilities.IllegalActionException;
 public class Player {
 	
 	private boolean isYourTurn = false;
+	Player player;
 
 	private int life = 3;
-	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;
 	
-	private ArrayList<Position> checkPoints = null;
-	
+	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;	
 	
 	private final int playerID;
 	private static int countPlayerId = 1;
@@ -36,21 +35,28 @@ public class Player {
 		countPlayerId++;
 	}
 	
-	public void addCheckPoint(Position position) {
-		checkPoints.add(position);
-	}
-	
 	
     /**
      * Decreases life by one.
+     * Tests if the player will die after loosing the life.
      */
-    private void loseLife() {
-        this.life = life - 1;
+    public void looseLife() {
+        this.life --;
         if (this.life <= 0) {
         	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
             System.out.println(this.robot.getName() + " is now Kaput and lost");
         }
     }
+    
+    public int getLife() {
+		return life;
+	}
+
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+
     
 	/*
 	 * Player Card Handling. 
@@ -73,7 +79,16 @@ public class Player {
 		//add to a subdeck
 	}
 	
+	
     
+	public Robot getRobot() {
+		return robot;
+	}
+
+	public void setRobot(Robot robot) {
+		this.robot = robot;
+	}
+
 	public boolean canPlay() {
 		if(this.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
 			return true;
@@ -106,11 +121,20 @@ public class Player {
 	}
 
 	public ArrayList<Card> getHand() {
-		return hand;
+		return this.hand;
 	}
 
 	public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
+	}
+
+	public void doObstacleAction(String obstacleAction) {
+		switch(obstacleAction) {
+		
+		case "Pit":
+			this.player.looseLife();
+		}
+		
 	}
     
 }
