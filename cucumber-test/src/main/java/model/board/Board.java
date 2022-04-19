@@ -1,7 +1,9 @@
 package model.board;
 
 import model.card.Card;
-
+import model.main.Player;
+import model.tile.BlankTile;
+import model.tile.Pit;
 import model.tile.Robot;
 import model.tile.Tile;
 import model.tile.TileFactory;
@@ -24,17 +26,28 @@ public abstract class Board {
 		for (int col = 0; col < GameSettings.NUM_COLS; col++) {
 			for (int row = 0; row < GameSettings.NUM_ROWS; row++) {
 				board[col][row] = TileFactory.getInstance().generateTile(boardSettings[row][col]);
+				// Sets the Position to the corresponding place in the board.
+				board[col][row].setPosition(col, row);
 			}
 		}
 	}
 
 	// Set Title on a specific position of the Board
 	public static void setTile(Tile tile, Position position) {
+		// Check the new Position
 		board[position.getX()][position.getY()] = tile;
+		tile.setPosition(position);
 	}
+	
+	// Set Title on a specific position of the Board
+	public static void setTile(Tile tile) {
+			// Check the new Position
+			board[tile.getPosition().getX()][tile.getPosition().getY()] = tile;
+		}
+		
 
 	// Get the Tile from a specific position
-	public Tile getTile(Position position) {
+	public static Tile getTile(Position position) {
 		return board[position.getX()][position.getY()];
 	}
 
@@ -48,20 +61,44 @@ public abstract class Board {
 //		return false;
 //	}
 	
-	// 
-	public static void doObstacleAction(Robot robot) {
-		switch(robot.getObstacleAction()) {
-		case "Pit":
-			if (robot.getCheckPoints().size() != 0) {
-				robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
-			}
-			else {
-				robot.setPosition(null);
-			}
+
+	
+	// Move the robot on the board to the new robots position. 
+	public static void doObstacleAction(Robot robot, Player player) {
+		
+		// Check which type of tile is in the Robot's new position		
+		if (Board.getTile(robot.getPosition()) instanceof Pit) {
+			// player looses life
+			player.looseLife();
+			
+			// Robot return to the last check point
+			robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
+			
+			// Move the robot on the board with to the new Position.
+			Board.setTile(robot);
+			
+			// Update the board with the 
+			Board.setTile(new BlankTile(), robot.getInitialPosition());
 		}
+		
+//		switch(robot.getPosition()) {
+//		case instanceof Pit:
+//			if (robot.getCheckPoints().size() != 0) {
+//				robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
+//				
+//			}
+//			else {
+//				robot.setPosition(null);
+//			}
+//		}
 	}
 	
+	// Updates the Position property of the robot.
 	public static void moveRobot(Robot robot) {
+		// Store the initial position of the robot, before the movement.
+		robot.setInitialPosition(robot.getPosition());
+		
+		// Updates the current position of the robot.
 		if (robot.getOrientation() == GameSettings.Orientation.NORTH) {
 			robot.setPosition(new Position(robot.getX(), robot.getY() + robot.getmovAmount()));
 		}
@@ -74,7 +111,6 @@ public abstract class Board {
 		if (robot.getOrientation() == GameSettings.Orientation.EAST) {
 			robot.setPosition(new Position(robot.getX() + robot.getmovAmount(), robot.getY()));
 		}
-
 	}
 
 	/*

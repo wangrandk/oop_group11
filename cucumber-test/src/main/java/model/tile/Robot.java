@@ -15,9 +15,10 @@ public class Robot extends Tile {
 	String name;
 	Robot robot;
 	Position position;
+	Position initialPosition;
 	Player player;
 	GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
-	private ArrayList<Position> checkPoints = null;
+	private ArrayList<Position> checkPoints = new ArrayList<Position>();
 
 	
 	// movAmount changes according to the card.
@@ -28,12 +29,26 @@ public class Robot extends Tile {
 	private String cardRotation = null;  
 	
 	
+	
+	
+	public Position getInitialPosition() {
+		return initialPosition;
+	}
+
+	public void setInitialPosition(Position initialPosition) {
+		this.initialPosition = initialPosition;
+	}
+
 	public ArrayList<Position> getCheckPoints() {
 		return checkPoints;
 	}
 
 	public void setCheckPoints(ArrayList<Position> checkPoints) {
 		this.checkPoints = checkPoints;
+	}
+	
+	public void addCheckPoint(Position position) {
+		this.checkPoints.add(position);
 	}
 
 	public String getObstacleAction() {
@@ -96,6 +111,7 @@ public class Robot extends Tile {
 	public String getCardRotation() {
 		return this.cardRotation;
 	}
+
 
 
 }

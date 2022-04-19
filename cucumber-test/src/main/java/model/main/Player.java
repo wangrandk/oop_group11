@@ -17,6 +17,7 @@ public class Player {
 	Player player;
 
 	private int life = 3;
+	
 	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;	
 	
 	private final int playerID;
@@ -36,14 +37,25 @@ public class Player {
 	
     /**
      * Decreases life by one.
+     * Tests if the player will die after loosing the life.
      */
-    private void looseLife() {
-        this.life = life - 1;
+    public void looseLife() {
+        this.life --;
         if (this.life <= 0) {
         	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
             System.out.println(this.robot.getName() + " is now Kaput and lost");
         }
     }
+    
+    public int getLife() {
+		return life;
+	}
+
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+
     
 	/*
 	 * Player Card Handling. 

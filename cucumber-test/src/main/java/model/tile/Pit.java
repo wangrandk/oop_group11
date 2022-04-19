@@ -13,7 +13,7 @@ public class Pit extends Tile{
 		this.obstacleAction = "Pit";
 	}
 	
-	
+	@Override
 	public void doAction(Robot robot, Player player) {
 		robot.setObstacleAction(obstacleAction);
 		Board.doObstacleAction(robot);
