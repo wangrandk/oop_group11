@@ -1,27 +1,32 @@
 package utilities;
  
 public class Position {
-	protected static int x;
-	protected static int y;
+	private int x;
+	private int y;
 	//protected static boolean isEmpty = true;
 
     public Position(int x, int y) {
-        Position.x = x;
-        Position.y = y;
+        this.x = x;
+        this.y = y;
     }
  
     public int getX() {
-        return Position.x;
+        return this.x;
     }
 
     public int getY() {
-        return Position.y;
+        return this.y;
     }
     
    
     //need to define what is empty
     public static boolean isEmpty(int x,int y) {
     	return true;
+    }
+    
+    @Override
+    public String toString() {
+        return "X=" + this.x + " Y=" + this.y;
     }
     
     

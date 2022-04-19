@@ -14,12 +14,10 @@ import utilities.GameSettings.PlayerStatus;
 public class Player {
 	
 	private boolean isYourTurn = false;
+	Player player;
 
 	private int life = 3;
-	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;
-	
-	private ArrayList<Position> checkPoints = null;
-	
+	private GameSettings.PlayerStatus playerStatus = GameSettings.PlayerStatus.ALIVE;	
 	
 	private final int playerID;
 	private static int countPlayerId = 1;
@@ -35,15 +33,11 @@ public class Player {
 		countPlayerId++;
 	}
 	
-	public void addCheckPoint(Position position) {
-		checkPoints.add(position);
-	}
-	
 	
     /**
      * Decreases life by one.
      */
-    private void loseLife() {
+    private void looseLife() {
         this.life = life - 1;
         if (this.life <= 0) {
         	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
@@ -71,7 +65,16 @@ public class Player {
 		//add to a subdeck
 	}
 	
+	
     
+	public Robot getRobot() {
+		return robot;
+	}
+
+	public void setRobot(Robot robot) {
+		this.robot = robot;
+	}
+
 	public boolean canPlay() {
 		if(this.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
 			return true;
@@ -109,6 +112,15 @@ public class Player {
 
 	public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
+	}
+
+	public void doObstacleAction(String obstacleAction) {
+		switch(obstacleAction) {
+		
+		case "Pit":
+			this.player.looseLife();
+		}
+		
 	}
     
 }

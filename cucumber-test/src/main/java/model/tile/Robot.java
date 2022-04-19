@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import model.card.*;
+import model.main.Player;
 import utilities.GameSettings;
 import utilities.Position;
 
@@ -14,13 +15,35 @@ public class Robot extends Tile {
 	String name;
 	Robot robot;
 	Position position;
+	Player player;
 	GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
+	private ArrayList<Position> checkPoints = null;
+
 	
 	// movAmount changes according to the card.
 	private int movAmount = 0;
+
+	private String obstacleAction;
+	
 	private String cardRotation = null;  
 	
 	
+	public ArrayList<Position> getCheckPoints() {
+		return checkPoints;
+	}
+
+	public void setCheckPoints(ArrayList<Position> checkPoints) {
+		this.checkPoints = checkPoints;
+	}
+
+	public String getObstacleAction() {
+		return obstacleAction;
+	}
+
+	public void setObstacleAction(String obstacleAction) {
+		this.obstacleAction = obstacleAction;
+	}
+
 	public String getName() {
 		return name;
 	}

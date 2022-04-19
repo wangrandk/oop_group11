@@ -1,11 +1,14 @@
 package model.board;
 
 import model.card.Card;
+
 import model.tile.Robot;
 import model.tile.Tile;
 import model.tile.TileFactory;
 import utilities.GameSettings;
 import utilities.Position;
+import java.util.ArrayList;
+
 
 public abstract class Board {
 
@@ -26,7 +29,7 @@ public abstract class Board {
 	}
 
 	// Set Title on a specific position of the Board
-	public void setTile(Tile tile, Position position) {
+	public static void setTile(Tile tile, Position position) {
 		board[position.getX()][position.getY()] = tile;
 	}
 
@@ -44,7 +47,20 @@ public abstract class Board {
 //		}
 //		return false;
 //	}
-
+	
+	// 
+	public static void doObstacleAction(Robot robot) {
+		switch(robot.getObstacleAction()) {
+		case "Pit":
+			if (robot.getCheckPoints().size() != 0) {
+				robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
+			}
+			else {
+				robot.setPosition(null);
+			}
+		}
+	}
+	
 	public static void moveRobot(Robot robot) {
 		if (robot.getOrientation() == GameSettings.Orientation.NORTH) {
 			robot.setPosition(new Position(robot.getX(), robot.getY() + robot.getmovAmount()));
