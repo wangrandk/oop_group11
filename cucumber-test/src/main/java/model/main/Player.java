@@ -7,6 +7,7 @@ import model.tile.Robot;
 import utilities.GameSettings;
 import utilities.Position;
 import utilities.GameSettings.PlayerStatus;
+import utilities.IllegalActionException;
 
 /*
  * Player mimics the status of what a real-world player would have
@@ -56,12 +57,13 @@ public class Player {
 	*/
     
     //Restrict that no more than 5 cards can be in your hand
-    public void fiveToHand(Card card) {    
+    public void fiveToHand(Card card) throws IllegalActionException {    
 		if (this.hand.size() != 5) {
 			this.hand.add(card);
 			this.subdeck.remove(card); //remove card from a subdeck
+		} else {
+			throw new IllegalActionException("You've already selected all of your cards!");
 		}
-		else {System.out.println("You've already selected all of your cards!");}
 	}
     
     // Put back the card from HAND to SUBDECK

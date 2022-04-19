@@ -17,27 +17,13 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Movement of a robot
+Feature: Deselect a card
 
   @tag1
-  Scenario: 1 tile movement
-    Given card with "Move1"
-    When move 1 step forward 
-    Then round is Done 
-    #And my turn is <False>
+  Scenario: Return card back to a subdeck
+    Given a subdeck
+    And a hand of cards
+    When card is deselected
+    Then hand of cards is decreased
+    And subdeck is increased
     
-  @tag2
-  Scenario: 2 tile movement
-    Given card with "Move2"
-    When move 2 step forward 
-    Then round is Done 
-    #And my turn is <False>
-    
-  @tag3
-  Scenario: 3 tile movement
-    Given card with "Move3"
-    When move 3 step forward 
-    Then round is Done 
-    #And my turn is <False>    
-
-  

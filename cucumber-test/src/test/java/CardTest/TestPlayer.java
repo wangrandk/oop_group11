@@ -9,6 +9,7 @@ import model.card.Deck;
 import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Robot;
+import utilities.IllegalActionException;
 
 public class TestPlayer {
 	
@@ -18,10 +19,14 @@ public class TestPlayer {
 	
 	
 	@Test
-	public void testFiveToHand() {
-		SubDeck subDeck = new SubDeck(deck.getDeck());
+	public void testFiveToHand() throws IllegalActionException {
+		SubDeck subdeck = new SubDeck(deck.getDeck());
 		
-		player.setSubdeck(subDeck.getSubdeck());
+		assertEquals(9, player.getSubdeck().size());
+		assertEquals(0, player.getHand().size());
+		
+		//player.setSubdeck(subDeck.getSubdeck());
+		
 		
 		player.fiveToHand(player.getSubdeck().get(0));
 		
@@ -36,7 +41,7 @@ public class TestPlayer {
 	}
 	
 	@Test 
-	public void testReplayCard(){
+	public void testReplayCard() throws IllegalActionException{
 		SubDeck subDeck = new SubDeck(deck.getDeck());
 		
 		player.setSubdeck(subDeck.getSubdeck());
