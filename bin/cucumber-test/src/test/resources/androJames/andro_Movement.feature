@@ -38,6 +38,4 @@ Feature: Movement of a robot
     Given card with "Move3"
     When move 3 step forward 
     Then round is Done 
-    #And my turn is <False>    
-
-  
+    #And my turn is <False>

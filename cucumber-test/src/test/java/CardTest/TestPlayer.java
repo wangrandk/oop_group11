@@ -20,13 +20,9 @@ public class TestPlayer {
 	
 	@Test
 	public void testFiveToHand() throws IllegalActionException {
-		SubDeck subdeck = new SubDeck(deck.getDeck());
+		SubDeck subDeck = new SubDeck(deck.getDeck());
 		
-		assertEquals(9, player.getSubdeck().size());
-		assertEquals(0, player.getHand().size());
-		
-		//player.setSubdeck(subDeck.getSubdeck());
-		
+		player.setSubdeck(subDeck.getSubdeck());	
 		
 		player.fiveToHand(player.getSubdeck().get(0));
 		

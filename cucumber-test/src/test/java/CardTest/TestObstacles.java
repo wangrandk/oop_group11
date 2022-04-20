@@ -19,6 +19,7 @@ import model.tile.CheckPoint1;
 import model.tile.Pit;
 import model.tile.Robot;
 import model.tile.Wall;
+import utilities.IllegalActionException;
 import utilities.Position;
 
 public class TestObstacles {
@@ -100,7 +101,7 @@ public class TestObstacles {
 	}
 	
 	@Test
-	public void ifRobotHitsABeer() {
+	public void ifRobotHitsABeer() throws IllegalActionException {
 		// Setup
 		Player player = new Player();
 		player.setRobot(robot);

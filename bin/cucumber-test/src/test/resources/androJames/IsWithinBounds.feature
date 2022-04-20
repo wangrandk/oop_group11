@@ -17,27 +17,20 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Movement of a robot
+Feature: Raising exception for illegal action
 
   @tag1
-  Scenario: 1 tile movement
-    Given card with "Move1"
-    When move 1 step forward 
-    Then round is Done 
-    #And my turn is <False>
-    
-  @tag2
-  Scenario: 2 tile movement
-    Given card with "Move2"
-    When move 2 step forward 
-    Then round is Done 
-    #And my turn is <False>
-    
-  @tag3
-  Scenario: 3 tile movement
-    Given card with "Move3"
-    When move 3 step forward 
-    Then round is Done 
-    #And my turn is <False>    
+  Scenario: Robot final position placed out of bounds
+    Given current robot position 
+    When action is executed
+    And robot new postion is out of bounds
+    Then an exception is raised
 
-  
+
+  @tag2
+  Scenario: player selects more than five cards
+    Given hand with five cards
+    And player turn <True>
+    When player selects card from a subdeck
+    Then error message should be printed
+    
