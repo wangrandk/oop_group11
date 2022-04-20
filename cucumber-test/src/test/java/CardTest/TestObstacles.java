@@ -87,7 +87,7 @@ public class TestObstacles {
 		// Board is going to do an Action with a Player and its robot.
 		Board.doObstacleAction(robot, player);
 		
-		// Thus Player should stay the same , thus having 3
+		// Thus Player'life should stay the same , thus having 3
 		assertEquals(3, player.getLife());
 		
 		// Thus the robot should be at the Board at this its initial position
@@ -95,7 +95,6 @@ public class TestObstacles {
 		
 		// Thus Position of the wall should be continue to be a wall
 		assertEquals(true, Board.getTile(new Position(1,0)) instanceof Wall);
-	
 		
 	}
 	
@@ -112,7 +111,7 @@ public class TestObstacles {
 		player.fiveToHand(subDeck.get(0));
 		player.fiveToHand(subDeck.get(0));
 		player.fiveToHand(subDeck.get(0));
-		
+				
 		// Player initial Hand before shuffle
 		ArrayList<Card> playerHandBeforeShuffle = new ArrayList<Card>();
 		// Clone the initial hand.
@@ -128,7 +127,7 @@ public class TestObstacles {
 		Board.setTile(new Beer(), new Position(1,0));
 		
 
-		// Apply the card Action (Update the robots Position to a new position that has a pit)
+		// Apply the card Action (Update the robots Position to a new position that has a beer)
 		move1.setAction(robot);
 		
 		// Board is going to do an Action with a Player and its robot.
