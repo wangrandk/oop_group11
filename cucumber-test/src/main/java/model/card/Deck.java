@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
-
+//f
 	private static final ArrayList<Card> deck = new ArrayList<Card>();
 	private static Deck instance = null;  
 	
