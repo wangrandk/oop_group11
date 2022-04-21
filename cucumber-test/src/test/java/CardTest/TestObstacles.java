@@ -48,7 +48,7 @@ public class TestObstacles {
 		move1.setAction(robot);
 
 		// Set RobotCheckpoint
-		robot.addCheckPoint(new Position(2,2));
+		robot.setSpawnPosition(new Position(2,2));
 
 		
 		// Board is gonna do Action with a Player and its robot.
@@ -169,9 +169,6 @@ public class TestObstacles {
 		
 		// Board is going to do an Action with a Player and its robot.
 		Board.doObstacleAction(robot, player);
-		
-		// Adds the first Checkpoint to the robot
-		assertEquals(1, robot.getCheckPoints().size());
 		
 		// 
 	}

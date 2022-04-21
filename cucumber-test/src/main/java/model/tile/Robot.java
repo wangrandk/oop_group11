@@ -12,25 +12,31 @@ import utilities.Position;
 //when round is over, call 1 by 1 card to execute, and remove from a robot hand *future
 public class Robot extends Tile {
 	
-	String name;
-	Robot robot;
-	Position position;
-	Position initialPosition;
-	Player player;
-	GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
-	private ArrayList<Position> checkPoints = new ArrayList<Position>();
+	private String name;
+	private Robot robot;
+	private Position position;
+	private Position initialPosition;
+	private Player player;
+	private GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
+	private Position spawnPosition;
 
 	
 	// movAmount changes according to the card.
 	private int movAmount = 0;
 
-	private String obstacleAction;
 	
 	private String cardRotation = null;  
 	
 	
 	
-	
+	public Position getSpawnPosition() {
+		return spawnPosition;
+	}
+
+	public void setSpawnPosition(Position spawnPosition) {
+		this.spawnPosition = spawnPosition;
+	}
+
 	public Position getInitialPosition() {
 		return initialPosition;
 	}
@@ -39,25 +45,6 @@ public class Robot extends Tile {
 		this.initialPosition = initialPosition;
 	}
 
-	public ArrayList<Position> getCheckPoints() {
-		return checkPoints;
-	}
-
-	public void setCheckPoints(ArrayList<Position> checkPoints) {
-		this.checkPoints = checkPoints;
-	}
-	
-	public void addCheckPoint(Position position) {
-		this.checkPoints.add(position);
-	}
-
-	public String getObstacleAction() {
-		return obstacleAction;
-	}
-
-	public void setObstacleAction(String obstacleAction) {
-		this.obstacleAction = obstacleAction;
-	}
 
 	public String getName() {
 		return name;

@@ -14,7 +14,7 @@ public class Pit extends Tile{
 		player.looseLife();
 		
 		// Robot return to the last check point
-		robot.setPosition(robot.getCheckPoints().get(robot.getCheckPoints().size() - 1));
+		robot.setPosition(robot.getSpawnPosition());
 		
 		// Move the robot on the board with to the new Position.
 		Board.setTile(robot);
