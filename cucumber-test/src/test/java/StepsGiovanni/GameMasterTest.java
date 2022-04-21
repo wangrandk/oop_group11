@@ -7,9 +7,9 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/GiovanniFeaturesFiles/GameMaster",
+@CucumberOptions(features = "src/test/resources/GiovanniFeaturesFiles/U2RobotInteraction",
 				publish = true,
-				glue = {"stepsDefinitionGiovanni"},
+				glue = {"StepsGiovanni"},
 				plugin = {"pretty"}
 				)
 
