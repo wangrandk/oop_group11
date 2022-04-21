@@ -13,5 +13,6 @@ import io.cucumber.junit.CucumberOptions;
 				plugin = {"pretty"}
 				)
 
-public class GameMasterTest {
+public class TestRunner {
+	
 }
