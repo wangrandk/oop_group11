@@ -24,7 +24,7 @@ public class startpanel extends JPanel implements ActionListener {
 	    buttonPanel = new StyledJPanel(new GridLayout(2,1));
         buttonPanel.setPreferredSize(new Dimension(150,100));
         try {
-            imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("roborally_start.jpg"));
+            imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
         } catch (java.io.IOException | NullPointerException e){
             System.out.println("roborally_start.jpg could not be read");
         }        

@@ -10,11 +10,12 @@ public class GUI {
 	private final JFrame mainframe;
 	private startpanel startPanel;
     private SelectPlayersPanel selectPlayersPanel;
+    private chooseMap chooseMap;
 
 //	
 	public GUI() {
 		mainframe = new mainframe();
-		showStartPanel();
+		chooseMap();
 	}
 	
 	public void showStartPanel() {
@@ -28,5 +29,11 @@ public class GUI {
 		selectPlayersPanel = new SelectPlayersPanel();
 		mainframe.remove(startPanel);
 		mainframe.add(selectPlayersPanel);
+	}
+	
+	public void chooseMap() {
+		chooseMap = new chooseMap();
+		mainframe.remove(startPanel);
+		mainframe.add(chooseMap);
 	}
 }
