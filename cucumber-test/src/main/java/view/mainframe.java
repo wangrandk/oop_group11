@@ -16,6 +16,7 @@ public class mainframe extends JFrame {
         setTitle("RoboRally");
 		setPreferredSize(new Dimension(1000,1000));		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		pack();
 		setVisible(true);
 

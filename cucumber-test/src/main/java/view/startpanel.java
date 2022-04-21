@@ -13,28 +13,24 @@ import javax.swing.*;
 
 
 public class startpanel extends JPanel implements ActionListener {
-	private final JButton newGame;
-	private final JButton exitGame;
+	private JButton newGame;
+	private JButton exitGame;
 	private Image imageBG;
-	private final JPanel buttonPanel;
+	private JPanel buttonPanel;
 	
 
 	
-	public startpanel() {
+	public startpanel() throws IOException {
 	    buttonPanel = new StyledJPanel(new GridLayout(2,1));
         buttonPanel.setPreferredSize(new Dimension(150,100));
-        try {
-            imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
-        } catch (java.io.IOException | NullPointerException e){
-            System.out.println("roborally_start.jpg could not be read");
-        }        
+        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
         newGame = new Button("start_btn.png","start_btn_hover.png");
         newGame.addActionListener(this);
         exitGame = new Button("exit_btn.png","exit_btn_hover.png");
         exitGame.addActionListener(this);
         buttonPanel.add(newGame);
         buttonPanel.add(exitGame);
-        buttonPanel.setLocation(425, 500);
+//        buttonPanel.setLocation(425, 500);
         add(buttonPanel);
         
 		
@@ -48,12 +44,13 @@ public class startpanel extends JPanel implements ActionListener {
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(newGame)) {
-//			GUI.showPlayersPanel();
+		if (e.getSource() == newGame) {
+			GUI.showChooseMap();
+			}
+		else if (e.getSource() == exitGame) {
+			System.exit(1);
 		}
-	}
-	
-		
+		}
 }
 	
 	

@@ -1,39 +1,44 @@
 package view;
 
 import java.awt.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
 import view.SelectPlayersPanel;
 
 public class GUI {
-	private final JFrame mainframe;
-	private startpanel startPanel;
-    private SelectPlayersPanel selectPlayersPanel;
-    private chooseMap chooseMap;
+	private static JFrame mainframe;
+	private static startpanel startPanel;
+    private static SelectPlayersPanel selectPlayersPanel;
+    private static ChooseMap chooseMap;
 
 //	
-	public GUI() {
+	public GUI() throws IOException {
 		mainframe = new mainframe();
-		chooseMap();
+		showStartPanel();
 	}
 	
-	public void showStartPanel() {
+	public void showStartPanel() throws IOException {
 		startPanel = new startpanel();
 		mainframe.add(startPanel);
-		mainframe.pack();
+		mainframe.revalidate();
 		mainframe.repaint();
 	}
 	
-	public void showPlayersPanel() {
+	public static void showPlayersPanel() {
 		selectPlayersPanel = new SelectPlayersPanel();
 		mainframe.remove(startPanel);
 		mainframe.add(selectPlayersPanel);
+		mainframe.revalidate();
+		mainframe.repaint();
 	}
 	
-	public void chooseMap() {
-		chooseMap = new chooseMap();
+	public static void showChooseMap() {
+		chooseMap = new ChooseMap();
 		mainframe.remove(startPanel);
 		mainframe.add(chooseMap);
+		mainframe.revalidate();
+		mainframe.repaint();
 	}
 }
