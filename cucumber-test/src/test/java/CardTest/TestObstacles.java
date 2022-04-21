@@ -32,7 +32,7 @@ public class TestObstacles {
 	MoveOne move1 = new MoveOne(610);
 	
 	
-
+ 
 	@Test
 	public void ifRobotFallingIntoAPit(){
 		Player player = new Player();
