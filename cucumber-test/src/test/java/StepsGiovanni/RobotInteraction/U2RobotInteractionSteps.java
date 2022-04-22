@@ -35,7 +35,7 @@ public class U2RobotInteractionSteps {
 
 	Position initialPosition;
 	Position spawnPosition;
-	
+	 
 
 	@Given("a player with a robot")
 	public void a_player_with_a_robot() {
@@ -52,7 +52,7 @@ public class U2RobotInteractionSteps {
 	public void robots_orientaiton_is_east() {
 	    robot.setOrientation(GameSettings.Orientation.EAST);
 	}
-
+ 
 	@Given("there is a Pit in x {int} and y {int}")
 	public void there_is_a_pit_in_x_and_y(Integer x, Integer y) {
 		Board.setTile(new Pit(), new Position(x,y));
@@ -63,7 +63,7 @@ public class U2RobotInteractionSteps {
 		spawnPosition = new Position(x,y);
 		robot.setSpawnPosition(spawnPosition);
 	}
-
+ 
 	@When("a card move1 one acts on the robot")
 	public void a_card_move1_one_acts_on_the_robot() {
 	    move1.setAction(robot);

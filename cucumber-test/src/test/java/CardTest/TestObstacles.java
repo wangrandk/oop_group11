@@ -15,7 +15,7 @@ import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Beer;
 import model.tile.BlankTile;
-import model.tile.CheckPoint1;
+import model.tile.Finish;
 import model.tile.Pit;
 import model.tile.Robot;
 import model.tile.Wall;
@@ -161,7 +161,7 @@ public class TestObstacles {
 		
 		// Robot on position 0,0, and checkpoint1 on position 1,0.
 		Board.setTile(robot, new Position(0,0));
-		Board.setTile(new CheckPoint1(), new Position(1,0));
+		Board.setTile(new Finish(), new Position(1,0));
 		
 
 		// Update the robots Position to a new position that has a CheckPoint1

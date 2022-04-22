@@ -18,9 +18,6 @@ public class TileFactory {
     /*
 	 * Blank (0)
 	 * POSITIVE: (1 - 10)
-	 *  - FirstCheckPoint(1):
-	 *  - SecondCheckPoint(2):
-	 *  - FinalCheckPoint(3):
 	 *  - RobotStarPosition(4)
 	 * 	- Heal(5): Increase one Life
 	 *  - ConveyorBelt(6): 
@@ -37,7 +34,7 @@ public class TileFactory {
         
         switch(tileCategory) {
         	// Blank Tile
-        	case 99:
+        	case 0:
         		tile = new BlankTile();
         		break;
         	// First CheckPoint
@@ -50,9 +47,9 @@ public class TileFactory {
 //        	case 3:
 //        		tile = new FinalCheckPoint();
 //        		break;
-//        	case 4:
-//        		tile = new RobotStarPosition();
-//        		break;
+        	case 4:
+        		tile = new Robot();
+        		break;
 //        	case 5:
 //        		tile = new HealPlayer();
 //        		break;
@@ -63,9 +60,9 @@ public class TileFactory {
         	case 11:
         		tile = new Pit();
         		break;
-//        	case 12:
-//        		tile = new Wall();
-//        		break;
+        	case 12:
+        		tile = new Wall();
+        		break;
 //        	case 13:
 //        		tile = new AlcoholicOil();
 //        		break;

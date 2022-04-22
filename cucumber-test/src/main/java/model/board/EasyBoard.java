@@ -20,18 +20,18 @@ public class EasyBoard extends Board {
 	 * - Pit(11): It decrease one life of the player
 	 * - Wall(12): It cannot pas through it (If there is wall on the NewPosition, dont't move) 
 	 * - Beer(13): It messes up the order of the hand.
-	 *
+	 * 
 	*/
     private final int[][] boardSettings = {   
     		{11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  0},
     		{ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-    		{ 4,  0,  0,  0,  6,  0,  1,  0,  0,  0, 12,  0,  0,  0,  0},
+    		{ 0,  0,  0,  0,  6,  0,  1,  0,  0,  0, 12,  0,  0,  0,  0},
     		{12,  0,  0,  0,  0,  0, 11,  0, 11,  0,  0,  0, 11,  0,  0},
     		{ 4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 11,  0,  0},
     		{12,  0,  0,  6,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
     		{ 4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  11},
     		{12,  0,  0,  0,  0,  0,  0,  5,  0,  0,  0,  0,  0,  0,  0},
-    		{ 4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    		{ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
     		{ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
     		{ 0,  0,  0,  0,  0,  0,  5,  0,  2,  0,  0,  0,  0,  0,  0},
     		{ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}};
@@ -41,5 +41,10 @@ public class EasyBoard extends Board {
 		super();
 		populateBoard(boardSettings);
 	}
+		
+	
+	
+	
+
 
 }

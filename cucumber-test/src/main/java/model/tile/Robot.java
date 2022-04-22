@@ -1,4 +1,5 @@
 package model.tile;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +15,32 @@ public class Robot extends Tile {
 	
 	private String name;
 	private Robot robot;
+	public static int robotId = 1;
 	private Position position;
 	private Position initialPosition;
 	private Player player;
 	private GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
 	private Position spawnPosition;
+	
+	private URL tileImage;
+	
+	// TODO
+	private URL orientationImage;
 
+	
+	public Robot() {
+		
+		if (robotId == 1) {
+			this.name = "Hank";
+			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/hank.png");
+		}
+		if (robotId == 2) {
+			this.name = "twitch";
+			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/twitch.png");
+		}
+		robotId = robotId + 1;
+	}
+ 
 	
 	// movAmount changes according to the card.
 	private int movAmount = 0;
@@ -27,6 +48,9 @@ public class Robot extends Tile {
 	
 	private String cardRotation = null;  
 	
+	public URL getImage() {
+		return this.tileImage;
+	}
 	
 	
 	public Position getSpawnPosition() {

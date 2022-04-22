@@ -1,9 +1,13 @@
 package model.tile;
 
+import java.net.URL;
+
 import model.board.Board;
 import model.main.Player;
 
 public class Wall extends Tile{
+	
+	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/wall.png");
 	
 	@Override
 	public void doAction(Robot robot, Player player) {
@@ -16,5 +20,11 @@ public class Wall extends Tile{
 		
 		
 	}
+	
+	@Override
+	public URL getImage() {
+		return tileImage;
+	}
+	
 
 }
