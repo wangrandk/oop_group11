@@ -8,7 +8,7 @@ import model.main.Player;
 
 public class Pit extends Tile{
 	
-	private URL pitImage = this.getClass().getClassLoader().getResource("view/maps/pit.png");
+	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/pit.png");
 
 	
 	@Override
@@ -29,7 +29,7 @@ public class Pit extends Tile{
 
 	@Override
 	public URL getImage() {
-		return pitImage;
+		return tileImage;
 	}
 	
 	

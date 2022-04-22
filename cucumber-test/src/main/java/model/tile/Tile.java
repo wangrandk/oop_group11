@@ -10,7 +10,7 @@ public abstract class Tile {
 	
 	private Position position;
 	private boolean hasRobotAndAnotherTile;
-	private Image tileImage;
+	private URL tileImage; 
 	
 	public Tile() {};
 	
@@ -45,6 +45,10 @@ public abstract class Tile {
 		return this.position;
 	}
 
-	public abstract URL getImage();
+	public URL getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

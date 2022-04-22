@@ -18,7 +18,7 @@ public class TestRotationLeft {
 	Deck deck = Deck.getInstance(); 	// because subdeck in robot constructor cannot be filled without main deck
 	Robot robot = new Robot();
 	Board board = new EasyBoard();
-
+ 
 	@Test
 	public void testUpdatePositionTurnLeftFromEast(){
 		robot.setPosition( new Position(0,0));

@@ -15,7 +15,8 @@ public class GameSettings {
 	
 	public enum PlayerStatus{
 		ALIVE,
-		DEAD
+		DEAD,
+		WON
 	}
 }
 

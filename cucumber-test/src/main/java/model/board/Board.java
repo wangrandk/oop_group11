@@ -69,7 +69,7 @@ public abstract class Board {
 		Board.getTile(robot.getPosition()).doAction(robot, player);
 
 	}	
-	
+	 
 	// Updates the Position property of the robot.
 	public static void moveRobot(Robot robot) {
 		// Store the initial position of the robot, before the movement.
