@@ -1,5 +1,7 @@
 package model.card;
 
+import java.net.URL;
+
 import model.tile.Robot;
 
 //main card class, which will be extended by other variants(movement, orientation)
@@ -8,6 +10,7 @@ public abstract class Card {
 	private String card;
 	private final int points;
 	String cardmessage;
+	private URL cardImage;
 	
 	public String getCard() {
 		return this.card;
@@ -33,5 +36,8 @@ public abstract class Card {
 		return cardmessage;
 	}
 	
+	public URL getCardImage() {
+		return null;
+	}
 	
 }
