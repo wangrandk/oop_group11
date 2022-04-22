@@ -11,15 +11,21 @@ import javax.swing.*;
 public class ChooseMap extends JPanel implements ActionListener {
 	
 	
+	private static BorderLayout layout;
 	private final JButton arrowRight;
 	private final JButton arrowLeft;
-	private final JButton exit;
+//	private final JButton exit;
 	private final JButton start;
 	private final JPanel mapPanel;
 	private Image imageBG;
-	private final JLabel easy;
-	private final JLabel medium;
-	private final JLabel hard;
+	private final JLabel easyLabel;
+	private final JLabel mediumLabel;
+	private final JLabel hardLabel;
+	private boolean easy;
+	private boolean medium;
+	private boolean hard;
+	private JButton title;
+	
 	
 	
 	
@@ -27,9 +33,9 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		
 		
-		
+        setLayout(null);
 		mapPanel = new StyledJPanel(new BorderLayout());
-        mapPanel.setPreferredSize(new Dimension(700,500));
+        mapPanel.setSize(800,500);
         try {
 			imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
 		} catch (IOException e) {
@@ -38,44 +44,90 @@ public class ChooseMap extends JPanel implements ActionListener {
 		}
         start = new Button("start_btn.png","start_btn_hover.png");
         start.addActionListener(this);
-        exit = new Button("exit_btn.png","exit_btn_hover.png");
-        exit.addActionListener(this);
-        arrowRight = new Button("plus-4x.png");
+//        exit = new Button("exit_btn.png","exit_btn_hover.png");
+//        exit.addActionListener(this);
+//        arrowRight = new Button("plus-4x.png");
+        arrowRight = new Button("arrowRight.png");
         arrowRight.addActionListener(this);
-        arrowLeft = new Button("minus-4x.png");
+//        arrowLeft = new Button("minus-4x.png");
+        arrowLeft = new Button("arrowLeft.png");
         arrowLeft.addActionListener(this);
-        easy = new StyledLabel("Easy");
-        medium = new StyledLabel("Medium");
-        hard = new StyledLabel("hard");
-        
-        mapPanel.add(arrowLeft,BorderLayout.LINE_START);
-        mapPanel.add(arrowRight,BorderLayout.LINE_END);
-        mapPanel.add(exit,BorderLayout.PAGE_START);
-        mapPanel.add(start,BorderLayout.PAGE_END);
-        mapPanel.add(easy,BorderLayout.CENTER);
-        mapPanel.setLocation(100, 700);
-        this.add(mapPanel);
+        easyLabel = new StyledLabel("Easy");
+        mediumLabel = new StyledLabel("Medium");
+        hardLabel = new StyledLabel("hard");
+        title = new Button("../text/difficulty.png");
+        title.setLocation(250,25);
+        mapPanel.add(arrowLeft,BorderLayout.WEST);
+        mapPanel.add(arrowRight,BorderLayout.EAST);
+//        mapPanel.add(exit,BorderLayout.NORTH);
+        mapPanel.add(start,BorderLayout.SOUTH);
+        mapPanel.add(easyLabel,BorderLayout.CENTER);
+        mapPanel.add(title, BorderLayout.NORTH);
+        easy = true;
+        add(mapPanel);
+        mapPanel.setLocation(750-400,250);
         
 
 		
 		
 	}
 	
+//	public void addListeners() {
+//		int level = 1;
+//		BorderLayout layout = (BorderLayout)mapPanel.getLayout();
+//		arrowLeft.addActionListener(new ActionListener() {
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//		switch (level) {
+//		case 1:
+//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+//	        mapPanel.add(easyLabel,BorderLayout.CENTER);
+//	        break;
+//	        
+//		case 2:
+//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+//	        mapPanel.add(mediumLabel,BorderLayout.CENTER);
+//	        level--;
+//	        break;
+//		case 3:
+//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+//	        mapPanel.add(hardLabel,BorderLayout.CENTER);
+//	        level--;
+//	        break;
+//		}
+//		}
+//	});
+//	}
+	
+	
 	public void showEasy() {
-		mapPanel.remove(medium);
-        mapPanel.add(easy,BorderLayout.CENTER);
+		layout = (BorderLayout)mapPanel.getLayout();
+		mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+        mapPanel.add(easyLabel,BorderLayout.CENTER);
+        mapPanel.revalidate();
+        mapPanel.repaint();
+        medium = false;
+        easy = true;
 	}
 	
 	public void showMedium() {
-		mapPanel.remove(easy);
-		mapPanel.remove(hard);
-        mapPanel.add(medium,BorderLayout.CENTER);
+		layout = (BorderLayout)mapPanel.getLayout();
+		mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+        mapPanel.add(mediumLabel,BorderLayout.CENTER);
+        mapPanel.revalidate();
+        mapPanel.repaint();
+        medium = true;
 
 	}
 	
 	public void showHard() {
-		mapPanel.remove(medium);
-        mapPanel.add(hard,BorderLayout.CENTER);
+		layout = (BorderLayout)mapPanel.getLayout();
+		mapPanel.remove(ChooseMap.layout.getLayoutComponent(BorderLayout.CENTER));
+        mapPanel.add(hardLabel,BorderLayout.CENTER);
+        mapPanel.revalidate();
+        mapPanel.repaint();
+        medium = false;
+        hard = true;
         
 	}
 
@@ -86,21 +138,46 @@ public class ChooseMap extends JPanel implements ActionListener {
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == arrowLeft) {
+		if (e.getSource().equals(arrowLeft) && medium == true) {
 			showEasy();
 			}
-		else if (e.getSource() == arrowRight) {
+		else if (e.getSource().equals(arrowRight) && easy == true) {
+			easy = false;
 			showMedium();
 		}
 		
-		else if (e.getSource() == exit) {
-			System.exit(1);
+		else if (e.getSource().equals(arrowRight) && medium == true) {
+			showHard();
+		}
+		
+		else if (e.getSource().equals(arrowLeft) && hard == true) {
+			hard = false;
+			showMedium();
+		}
+		
+		else if (e.getSource().equals(arrowLeft) && easy == true) {
+		
+		}
+		
+		else if (e.getSource().equals(arrowRight) && hard == true) {
 			
 		}
+		
+//		else if (e.getSource() == exit) {
+//			System.exit(1);
+//			
+//		}
+		
 		
 		else if (e.getSource() == start) {
 //			GUI.startGame();
 		}
+		
+		else {
+			
+		}
+		
+		
 		
 	}
 	

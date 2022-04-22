@@ -14,9 +14,10 @@ public class mainframe extends JFrame {
         Image img = kit.createImage("https://dbdzm869oupei.cloudfront.net/img/sticker/large/8340.jpg");
         setIconImage(img);
         setTitle("RoboRally");
-		setPreferredSize(new Dimension(1000,1000));		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
+		setPreferredSize(new Dimension(1500,1000));
+		
 		pack();
 		setVisible(true);
 

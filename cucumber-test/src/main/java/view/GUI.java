@@ -40,5 +40,6 @@ public class GUI {
 		mainframe.add(chooseMap);
 		mainframe.revalidate();
 		mainframe.repaint();
+		
 	}
 }
