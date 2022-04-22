@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import model.board.*;
 import model.card.*;
+import model.main.Player;
 import model.tile.*;
 import io.cucumber.java.en.Then;
 
@@ -14,6 +15,7 @@ public class AndroStepsDefinition {
 	Robot robot = new Robot();
 	Board board = new EasyBoard();
 	Card card;
+	Player player;
 	
 	@Given("card with {string}")
 	public void card_with(String string) {
@@ -39,12 +41,13 @@ public class AndroStepsDefinition {
 	
 	@When("move {int} step forward")
 	public void move_step_forward(Integer int1) {
-		board.moveRobot(robot);
+		Board.moveRobot(robot);
+		Board.doObstacleAction(robot, player);
 	}
 	
 	@Then("round is Done")
 	public void round_is_done() {
-	    robot.setTurnStatus(false);
+	    player.setPlayerStatus(false);
 	}
 
 	
