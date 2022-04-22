@@ -1,11 +1,14 @@
 package model.tile;
 
+import java.awt.Image;
+import java.net.URL;
+
 import model.board.Board;
 import model.main.Player;
 
 public class Pit extends Tile{
 	
-	// Decreases 1 point of Player's life 
+	private URL pitImage = this.getClass().getClassLoader().getResource("view/maps/pit.png");
 
 	
 	@Override
@@ -22,5 +25,13 @@ public class Pit extends Tile{
 		// Update the board with the 
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
 	}
+
+
+	@Override
+	public URL getImage() {
+		return pitImage;
+	}
+	
+	
 
 }

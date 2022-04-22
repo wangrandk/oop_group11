@@ -22,7 +22,7 @@ public class startpanel extends JPanel implements ActionListener {
 	
 	public startpanel() throws IOException {
 	    buttonPanel = new StyledJPanel(new GridLayout(2,1));
-        buttonPanel.setSize(new Dimension(150,100));
+        buttonPanel.setSize(150,100);
         setLayout(null);
         imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
         newGame = new Button("start_btn.png","start_btn_hover.png");
@@ -31,8 +31,8 @@ public class startpanel extends JPanel implements ActionListener {
         exitGame.addActionListener(this);
         buttonPanel.add(newGame);
         buttonPanel.add(exitGame);
-        add(buttonPanel);
         buttonPanel.setLocation(675, 450);
+        add(buttonPanel);
 
         
 		

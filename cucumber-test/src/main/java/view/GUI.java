@@ -9,7 +9,7 @@ import view.SelectPlayersPanel;
 
 public class GUI {
 	private static JFrame mainframe;
-	private static startpanel startPanel;
+	private static boardView startPanel;
     private static SelectPlayersPanel selectPlayersPanel;
     private static ChooseMap chooseMap;
 
@@ -17,10 +17,10 @@ public class GUI {
 	public GUI() throws IOException {
 		mainframe = new mainframe();
 		showStartPanel();
-	}
+		}
 	
 	public void showStartPanel() throws IOException {
-		startPanel = new startpanel();
+		startPanel = new boardView();
 		mainframe.add(startPanel);
 		mainframe.revalidate();
 		mainframe.repaint();

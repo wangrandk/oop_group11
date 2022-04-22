@@ -1,5 +1,8 @@
 package model.tile;
 
+import java.awt.Image;
+import java.net.URL;
+
 import model.main.Player;
 import utilities.Position;
 
@@ -7,6 +10,7 @@ public abstract class Tile {
 	
 	private Position position;
 	private boolean hasRobotAndAnotherTile;
+	private Image tileImage;
 	
 	public Tile() {};
 	
@@ -40,5 +44,7 @@ public abstract class Tile {
 		// TODO Auto-generated method stub
 		return this.position;
 	}
+
+	public abstract URL getImage();
 
 }
