@@ -37,7 +37,7 @@ public class TileFactory {
         
         switch(tileCategory) {
         	// Blank Tile
-        	case 0:
+        	case 99:
         		tile = new BlankTile();
         		break;
         	// First CheckPoint
@@ -70,7 +70,7 @@ public class TileFactory {
 //        		tile = new AlcoholicOil();
 //        		break;
         	default:
-        		tile = new BlankTile();
+        		tile = new Pit();
         		break;
         }
 		return tile;
