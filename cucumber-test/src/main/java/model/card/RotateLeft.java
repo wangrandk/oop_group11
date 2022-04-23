@@ -7,9 +7,8 @@ import model.tile.Robot;
 
 public class RotateLeft extends Card {
 	
-	private URL rotateLeftImage = this.getClass().getClassLoader().getResource("view/maps/rotate_left.png");
-	private URL rotateLeftPick = this.getClass().getClassLoader().getResource("view/maps/rotate_left_pick.png");
-	private URL rotateLeftRollover = this.getClass().getClassLoader().getResource("view/maps/rotate_left_pick_rollover.png");
+	private URL cardImage = this.getClass().getClassLoader().getResource("view/rotate_left.png");
+	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/rotate_left_pick.png");
 	
 	
 	private final String cardRotation = "Left";
@@ -25,6 +24,16 @@ public class RotateLeft extends Card {
 		Board.UpdateOrientation(robot);
 
 	}	
+	
+	@Override
+	public URL getCardImage() {
+		return cardImage;
+	}
+	
+	@Override
+	public URL getCardImagePick() {
+		return cardImagePick;
+	}
 	
 	
 }

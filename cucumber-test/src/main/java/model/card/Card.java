@@ -11,6 +11,10 @@ public abstract class Card {
 	private final int points;
 	String cardmessage;
 	private URL cardImage;
+	private URL cardImagePick;
+	
+	
+
 	
 	public String getCard() {
 		return this.card;
@@ -37,6 +41,10 @@ public abstract class Card {
 	}
 	
 	public URL getCardImage() {
+		return null;
+	}
+
+	public URL getCardImagePick() {
 		return null;
 	}
 	

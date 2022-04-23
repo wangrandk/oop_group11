@@ -7,11 +7,8 @@ import model.tile.Robot;
 
 public class MoveOne extends Card {
 	
-	private URL cardImage = this.getClass().getClassLoader().getResource("view/maps/move1.png");
-	//private URL move1Image = this.getClass().getClassLoader().getResource("view/maps/move1.png");
-	//private URL move1ImagePick = this.getClass().getClassLoader().getResource("view/maps/move1_pick.png");
-	//private URL move1ImageRollover = this.getClass().getClassLoader().getResource("view/maps/move1_pick_rollover.png");
-
+	private URL cardImage = this.getClass().getClassLoader().getResource("view/move1.png");
+	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/move1_pick.png");
 	
 	public MoveOne(int points) {
 		super("Move1",points);
@@ -34,4 +31,10 @@ public class MoveOne extends Card {
 	public URL getCardImage() {
 		return cardImage;
 	}
+	
+	@Override
+	public URL getCardImagePick() {
+		return cardImagePick;
+	}
+	
 }
