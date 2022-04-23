@@ -18,7 +18,7 @@ class Button extends JButton {
      * @param normal The name of the image in the resource folder.
      */
     public Button (String normal){
-        this.setIcon(createIcon(this.getClass().getClassLoader().getResource("view/menu_buttons/" + normal)));
+        this.setIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal)));
         styleButton();
     }
 
