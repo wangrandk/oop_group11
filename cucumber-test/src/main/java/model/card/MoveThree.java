@@ -7,8 +7,8 @@ import model.tile.Robot;
 
 public class MoveThree extends Card {
 	
-	private URL cardImage = this.getClass().getClassLoader().getResource("view/move3.png");
-	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/move3_pick.png");
+	private String cardImage = "move3.png";
+	private String cardImagePick = "move3_pick.png";
 	
 	public MoveThree(int points) {
 		super("Move3",points);
@@ -25,12 +25,12 @@ public class MoveThree extends Card {
 	}
 	
 	@Override
-	public URL getCardImage() {
+	public String getCardImage() {
 		return cardImage;
 	}
 	
 	@Override
-	public URL getCardImagePick() {
+	public String getCardImagePick() {
 		return cardImagePick;
 	}
 	

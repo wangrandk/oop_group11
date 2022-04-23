@@ -7,8 +7,8 @@ import model.tile.Robot;
 
 public class RotateLeft extends Card {
 	
-	private URL cardImage = this.getClass().getClassLoader().getResource("view/rotate_left.png");
-	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/rotate_left_pick.png");
+	private String cardImage = "rotate_left.png";
+	private String cardImagePick = "rotate_left_pick.png";
 	
 	
 	private final String cardRotation = "Left";
@@ -26,12 +26,12 @@ public class RotateLeft extends Card {
 	}	
 	
 	@Override
-	public URL getCardImage() {
+	public String getCardImage() {
 		return cardImage;
 	}
 	
 	@Override
-	public URL getCardImagePick() {
+	public String getCardImagePick() {
 		return cardImagePick;
 	}
 	

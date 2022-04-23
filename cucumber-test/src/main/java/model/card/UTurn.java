@@ -7,8 +7,8 @@ import model.tile.Robot;
 
 public class UTurn extends Card {
 	
-	private URL cardImage = this.getClass().getClassLoader().getResource("view/u_turn.png");
-	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/u_turn_pick.png");
+	private String cardImage = "u_turn.png";
+	private String cardImagePick = "u_turn_pick.png";
 	
 	
 	private final String cardRotation = "UTurn";
@@ -27,12 +27,12 @@ public class UTurn extends Card {
 	}
 	
 	@Override
-	public URL getCardImage() {
+	public String getCardImage() {
 		return cardImage;
 	}
 	
 	@Override
-	public URL getCardImagePick() {
+	public String getCardImagePick() {
 		return cardImagePick;
 	}
 }

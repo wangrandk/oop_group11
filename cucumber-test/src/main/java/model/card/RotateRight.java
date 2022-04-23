@@ -9,8 +9,8 @@ import utilities.GameSettings;
 
 public class RotateRight extends Card {
 	
-	private URL cardImage = this.getClass().getClassLoader().getResource("view/rotate_right.png");
-	private URL cardImagePick = this.getClass().getClassLoader().getResource("view/rotate_right_pick.png");
+	private String cardImage = "rotate_right.png";
+	private String cardImagePick = "rotate_right_pick.png";
 	
 	
 	private final String cardRotation = "Right";
@@ -31,12 +31,12 @@ public class RotateRight extends Card {
 	}
 	
 	@Override
-	public URL getCardImage() {
+	public String getCardImage() {
 		return cardImage;
 	}
 	
 	@Override
-	public URL getCardImagePick() {
+	public String getCardImagePick() {
 		return cardImagePick;
 	}
 	
