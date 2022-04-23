@@ -25,9 +25,9 @@ public class startpanel extends JPanel implements ActionListener {
         buttonPanel.setSize(150,100);
         setLayout(null);
         imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
-        newGame = new Button("start_btn.png","start_btn_hover.png");
+        newGame = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
         newGame.addActionListener(this);
-        exitGame = new Button("exit_btn.png","exit_btn_hover.png");
+        exitGame = new Button("menu_buttons/exit_btn.png","menu_buttons/exit_btn_hover.png");
         exitGame.addActionListener(this);
         buttonPanel.add(newGame);
         buttonPanel.add(exitGame);
