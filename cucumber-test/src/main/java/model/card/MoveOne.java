@@ -1,10 +1,16 @@
 package model.card;
 
+import java.net.URL;
+
 import model.board.Board;
 import model.tile.Robot;
 
 public class MoveOne extends Card {
 	
+	private URL cardImage = this.getClass().getClassLoader().getResource("view/maps/move1.png");
+	//private URL move1Image = this.getClass().getClassLoader().getResource("view/maps/move1.png");
+	//private URL move1ImagePick = this.getClass().getClassLoader().getResource("view/maps/move1_pick.png");
+	//private URL move1ImageRollover = this.getClass().getClassLoader().getResource("view/maps/move1_pick_rollover.png");
 
 	
 	public MoveOne(int points) {
@@ -22,5 +28,10 @@ public class MoveOne extends Card {
 		robot.setmovAmount(1);
 		Board.moveRobot(robot);
 		//setdirection ako je rotate
+	}
+	
+	@Override
+	public URL getCardImage() {
+		return cardImage;
 	}
 }

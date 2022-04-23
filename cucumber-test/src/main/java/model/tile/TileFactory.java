@@ -39,10 +39,10 @@ public class TileFactory {
         		break;
         	// First CheckPoint
 //        	case 1:
-//        		tile = new FirstCheckPoint();
+//        		tile = new FirstCheckPoint();  DONT
 //        		break;
 //        	case 2:
-//        		tile = new SecondCheckPoint();
+//        		tile = new SecondCheckPoint();     DONT
 //        		break;
 //        	case 3:
 //        		tile = new FinalCheckPoint();
