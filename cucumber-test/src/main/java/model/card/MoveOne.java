@@ -30,7 +30,13 @@ public class MoveOne extends Card {
 	}
 	
 	@Override
-	public URL getCardImage() {
+	public String getCardImage() {
 		return cardImage;
 	}
+	
+	@Override
+	public String getCardImagePick() {
+		return cardImagePick;
+	}
+	
 }

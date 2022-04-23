@@ -7,10 +7,8 @@ import model.tile.Robot;
 
 public class UTurn extends Card {
 	
-	private URL UTurnImage = this.getClass().getClassLoader().getResource("view/maps/u_turn.png");
-	private URL UTurnPick = this.getClass().getClassLoader().getResource("view/maps/u_turn_pick.png");
-	private URL UTurnRollover = this.getClass().getClassLoader().getResource("view/maps/u_turn_pick_rollover.png");
-	
+	private String cardImage = "u_turn.png";
+	private String cardImagePick = "u_turn_pick.png";
 	
 	private final String cardRotation = "UTurn";
 	String cardmessage = "U Turned";
@@ -25,5 +23,14 @@ public class UTurn extends Card {
 	public void setAction(Robot robot) {
 		robot.setCardRotation(cardRotation);
 		Board.UpdateOrientation(robot);
+	}
+	@Override
+	public String getCardImage() {
+		return cardImage;
+	}
+	
+	@Override
+	public String getCardImagePick() {
+		return cardImagePick;
 	}
 }

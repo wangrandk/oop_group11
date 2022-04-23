@@ -36,7 +36,12 @@ public abstract class Card {
 		return cardmessage;
 	}
 	
-	public URL getCardImage() {
+	public String getCardImage() {
+		return null;
+	}
+
+	public String getCardImagePick() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

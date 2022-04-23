@@ -8,11 +8,9 @@ import utilities.GameSettings;
 
 
 public class RotateRight extends Card {
-	
-	private URL rotateRightImage = this.getClass().getClassLoader().getResource("view/maps/rotate_right.png");
-	private URL rotateRightPick = this.getClass().getClassLoader().getResource("view/maps/rotate_right_pick.png");
-	private URL rotateRightRollover = this.getClass().getClassLoader().getResource("view/maps/rotate_right_pick_rollover.png");
-	
+
+	private String cardImage = "rotate_right.png";
+	private String cardImagePick = "rotate_right_pick.png";
 	
 	private final String cardRotation = "Right";
 	String cardmessage = "Rotated Right";
@@ -29,6 +27,16 @@ public class RotateRight extends Card {
 		robot.setCardRotation(cardRotation);
 		Board.UpdateOrientation(robot);
 
+	}
+	
+	@Override
+	public String getCardImage() {
+		return cardImage;
+	}
+	
+	@Override
+	public String getCardImagePick() {
+		return cardImagePick;
 	}
 	
 }
