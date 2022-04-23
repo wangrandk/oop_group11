@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class boardView extends JPanel {
 	
-	private JPanel board;
+	private JPanel grid;
 	int numCols = GameSettings.NUM_COLS;
 	int numRows = GameSettings.NUM_ROWS;
 	private EasyBoard easyBoard;
@@ -26,23 +26,22 @@ public class boardView extends JPanel {
 	
 
 	
-	public boardView() throws IOException {
+	public boardView(Board board) throws IOException {
 		setLayout(null);
 		setSize(64*numCols,66*numRows);
 		setLocation(5,5);
-		easyBoard = new EasyBoard();
-	    board = new StyledJPanel(new GridLayout(numRows,numCols));
-        board.setSize(64*numCols,66*numRows);
+	    grid = new StyledJPanel(new GridLayout(numRows,numCols));
+        grid.setSize(64*numCols,66*numRows);
 //        board.setLocation(500, 500);
         for (int i =0; i<(numRows); i++){
             for (int j =0; j<numCols;j++) {
             	final JLabel label = new JLabel((1+j)+","+(i+1));
-                label.setIcon(new ImageIcon(easyBoard.getTile(new Position(j,i)).getImage()));
+                label.setIcon(new ImageIcon(board.getTile(new Position(j,i)).getImage()));
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                board.add(label);
+                grid.add(label);
             }
         }
-        add(board);       
+        add(grid);       
 		
 		
 		

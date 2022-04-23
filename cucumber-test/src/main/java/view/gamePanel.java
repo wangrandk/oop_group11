@@ -7,18 +7,22 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import model.board.Board;
+import model.main.Player;
+
 public class gamePanel extends JPanel {
 	private boardView boardView;
 	private controlView controlView;
 	private Image imageBG;
+	private Player player;
+	private Board board;
 
 	
-	public gamePanel() throws IOException {
+	public gamePanel(Player player, Board board) throws IOException {
 		setLayout(null);
 		setSize(1000,1000);
-        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
-		boardView = new boardView();
-		controlView = new controlView();
+		boardView = new boardView(board);
+		controlView = new controlView(player);
 		add(boardView);
 		add(controlView);
 		

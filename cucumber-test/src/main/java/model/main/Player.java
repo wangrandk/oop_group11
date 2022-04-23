@@ -33,6 +33,20 @@ public class Player {
 	public Player(){
 		this.playerID = countPlayerId;
 		countPlayerId++;
+		this.setHand(generateEmptyHand());
+	}
+	
+	public ArrayList<Card> generateEmptyHand(){
+		ArrayList<Card> emptyHand = new ArrayList<Card>();
+		
+		emptyHand.add(new EmptyCard(0));
+		emptyHand.add(new EmptyCard(0));
+		emptyHand.add(new EmptyCard(0));
+		emptyHand.add(new EmptyCard(0));
+		emptyHand.add(new EmptyCard(0));
+		
+		return emptyHand;
+		
 	}
 	
 	
@@ -67,9 +81,7 @@ public class Player {
 		if (this.hand.size() != 5) {
 			this.hand.add(card);
 			this.subdeck.remove(card); //remove card from a subdeck
-		} else {
-			throw new IllegalActionException("You've already selected all of your cards!");
-		}
+		} 
 	}
     
     // Put back the card from HAND to SUBDECK
