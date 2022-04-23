@@ -4,33 +4,34 @@ import java.net.URL;
 
 import model.board.Board;
 import model.main.Player;
-import utilities.GameSettings;
 
-public class Finish extends Tile{
+public class Heal extends Tile{
 	
 	
-	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/finish.png");
-	
-	private String wonMessage;
+	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/heal.png");
 
 	
 	@Override
 	public void doAction(Robot robot, Player player) {
 		
+		// If player has less than 3 lives, it will increase the players life by 1.
+		if (player.getLife() < 3 ) {
+			player.setLife(player.getLife() + 1);
+		}
+		
+		// Robot stays in the same position
+		
 		// Move the robot on the board with to the new Position.
 		Board.setTile(robot);
 		
-		// It should end the game by settings the player status to Won.
-		player.setPlayerStatus(GameSettings.PlayerStatus.WON);
-				
-				// Update the board with the robot's initial position
+		// Update the board with the robot's initial position
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
 	}
 
-	
+
 	@Override
 	public URL getImage() {
 		return tileImage;
 	}
-	
+
 }

@@ -8,13 +8,10 @@ public class EasyBoard extends Board {
 	/*
 	 * Blank (0)
 	 * POSITIVE: (1 - 10)
-	 *  - FirstCheckPoint(1):
-	 *  - SecondCheckPoint(2):
-	 *  - ThreeCheckPoint(3):
-	 *  - RobotStarPosition(4)
 	 * 	- Heal(5): Increase one Life
 	 *  - ConveyorBelt(6): 
 	 *  	 Move one tile extra.
+	 *  - Finish (3)
 	 * 	
 	 * NEGATIVE (11 - 20)
 	 * - Pit(11): It decrease one life of the player

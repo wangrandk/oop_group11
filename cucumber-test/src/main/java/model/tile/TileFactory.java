@@ -37,21 +37,14 @@ public class TileFactory {
         	case 0:
         		tile = new BlankTile();
         		break;
-        	// First CheckPoint
-//        	case 1:
-//        		tile = new FirstCheckPoint();  DONT
-//        		break;
-//        	case 2:
-//        		tile = new SecondCheckPoint();     DONT
-//        		break;
-//        	case 3:
-//        		tile = new FinalCheckPoint();
-//        		break;
+        	case 3:
+        		tile = new Finish();
+        		break;
         	case 4:
         		tile = new Robot();
         		break;
 //        	case 5:
-//        		tile = new HealPlayer();
+//        		tile = new Heal();
 //        		break;
 //        	case 6:
 //        		tile = new ConveyorBeltForwardOne();
