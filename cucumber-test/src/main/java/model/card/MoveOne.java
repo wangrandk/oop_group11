@@ -6,6 +6,9 @@ import model.board.Board;
 import model.tile.Robot;
 
 public class MoveOne extends Card {
+
+	private String cardImage = "move1.png";
+	private String cardImagePick = "move1_pick.png";
 	
 	
 	
