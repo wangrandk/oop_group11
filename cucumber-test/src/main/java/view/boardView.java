@@ -18,7 +18,6 @@ import javax.swing.*;
 
 public class boardView extends JPanel {
 	
-	private Image imageBG;
 	private JPanel board;
 	int numCols = GameSettings.NUM_COLS;
 	int numRows = GameSettings.NUM_ROWS;
@@ -28,33 +27,27 @@ public class boardView extends JPanel {
 
 	
 	public boardView() throws IOException {
+		setLayout(null);
+		setSize(64*numCols,66*numRows);
+		setLocation(5,5);
 		easyBoard = new EasyBoard();
-		
 	    board = new StyledJPanel(new GridLayout(numRows,numCols));
-        board.setSize(1490,750);
-        setLayout(null);
-        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
-        board.setLocation(5, 5);
-        for (int i =0; i<(numCols); i++){
-            for (int j =0; j<numRows;j++) {
-            	final JLabel label = new JLabel();
-                label.setIcon(new ImageIcon(easyBoard.getTile(new Position(i,j)).getImage()));
+        board.setSize(64*numCols,66*numRows);
+//        board.setLocation(500, 500);
+        for (int i =0; i<(numRows); i++){
+            for (int j =0; j<numCols;j++) {
+            	final JLabel label = new JLabel((1+j)+","+(i+1));
+                label.setIcon(new ImageIcon(easyBoard.getTile(new Position(j,i)).getImage()));
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 board.add(label);
             }
         }
-        add(board);
-
-        
+        add(board);       
 		
 		
 		
 	}
-	@Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(imageBG, 0, 0, getWidth(), getHeight(), this);
-    }
+	
 }
 	
 	
