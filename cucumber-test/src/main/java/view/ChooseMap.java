@@ -42,20 +42,20 @@ public class ChooseMap extends JPanel implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        start = new Button("start_btn.png","start_btn_hover.png");
+        start = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
         start.addActionListener(this);
 //        exit = new Button("exit_btn.png","exit_btn_hover.png");
 //        exit.addActionListener(this);
 //        arrowRight = new Button("plus-4x.png");
-        arrowRight = new Button("arrowRight.png");
+        arrowRight = new Button("menu_buttons/arrowRight.png");
         arrowRight.addActionListener(this);
 //        arrowLeft = new Button("minus-4x.png");
-        arrowLeft = new Button("arrowLeft.png");
+        arrowLeft = new Button("menu_buttons/arrowLeft.png");
         arrowLeft.addActionListener(this);
         easyLabel = new StyledLabel("Easy");
         mediumLabel = new StyledLabel("Medium");
         hardLabel = new StyledLabel("hard");
-        title = new Button("../text/difficulty.png");
+        title = new Button("text/difficulty.png");
         title.setLocation(250,25);
         mapPanel.add(arrowLeft,BorderLayout.WEST);
         mapPanel.add(arrowRight,BorderLayout.EAST);

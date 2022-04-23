@@ -13,6 +13,7 @@ import model.card.MoveOne;
 import model.card.SubDeck;
 import model.main.Player;
 import utilities.GameSettings;
+import utilities.IllegalActionException;
 import utilities.Position;
 
 import javax.imageio.ImageIO;
@@ -25,34 +26,40 @@ public class controlView extends JPanel implements ActionListener {
 	private JPanel controlPanel;
 	private JPanel handPanel;
 	private JPanel deckPanel;
-	private Player player1;
+	private Player player;
 	private ArrayList<Card> deck;
+    Button[] handCard = new Button[5];
+    Button[] subCard = new Button[9];
+
 
 	
-	public controlView() throws IOException {
+	public controlView(Player player) throws IOException {
+		this.player = player;
 		setLayout(null);
 		
 		setLocation(0,66*12+5);
 		
-		player1 = new Player();
 		deck = Deck.getInstance().getDeck();
 		
 		SubDeck subdeck1 = new SubDeck(deck);
 		
-		player1.setSubdeck(subdeck1.getSubdeck());
+		player.setSubdeck(subdeck1.getSubdeck());
 		
-		Card move1 = new MoveOne(610);
 		
 		ArrayList <Card> fakeHand = new ArrayList<Card>();
+		ArrayList <Card> emptyHand = new ArrayList<Card>();
+
 		
-		fakeHand.add(move1);
-		fakeHand.add(move1);
-		fakeHand.add(move1);
-		fakeHand.add(move1);
-		fakeHand.add(move1);
+		fakeHand.add(player.getSubdeck().get(0));
+		fakeHand.add(player.getSubdeck().get(1));
+		fakeHand.add(player.getSubdeck().get(2));
+		fakeHand.add(player.getSubdeck().get(3));
+		fakeHand.add(player.getSubdeck().get(4));
+		emptyHand.add(player.getSubdeck().get(5));
+
+	
 		
-		
-		player1.setHand(fakeHand);
+//		player.setHand(emptyHand);
 		
 		
 	    controlPanel = new StyledJPanel(new BorderLayout());
@@ -67,22 +74,35 @@ public class controlView extends JPanel implements ActionListener {
         controlPanel.setLocation(64*15/2+(64*15)/6,0);
 
  
-    	for (int i =0; i<(1*5); i++){
-    		final JButton handCard = new Button(player1.getHand().get(i).getCardImage());
-//        	handCard.addActionListener(this);
-            handPanel.add(handCard);
+    	for (int i = 0; i<handCard.length; i++){
+    		if (player.getHand().size() == 0) {
+    			handCard[i] = new Button("hidden.png");
+	            handPanel.add(handCard[i]);
+    		}
+    		
+    		
+    		if (player.getHand().size() == 1) {
+    			handCard[i] = new Button(player.getHand().get(i).getCardImage());
+	            handPanel.add(handCard[i]);
+    		}
+    		
+    		else {
+	    		handCard[i] = new Button(player.getHand().get(i).getCardImage());
+	        	handCard[i].addActionListener(this);
+	            handPanel.add(handCard[i]);
+    		}
+    			
     	}
         			
         	
         	
           
+    	for (int i =0; i<(1*9); i++){
+    		subCard[i] = new Button(player.getSubdeck().get(i).getCardImagePick());
+        	subCard[i].addActionListener(this);
+            deckPanel.add(subCard[i]);
+    	}
         
-        for (int i =0; i<(1*9); i++){
-        	final JButton subCard = new Button("../move1_pick.png","../move1_pick_rollover.png");
-        	subCard.addActionListener(this);
-            deckPanel.add(subCard);
-            
-        }
         setSize(1000,250);
         add(handPanel);
         add(deckPanel);
@@ -97,10 +117,25 @@ public class controlView extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+		if (e.getSource() == subCard[0]) {
+			try {
+				player.fiveToHand(player.getSubdeck().get(0));
+				revalidate();
+				repaint();
+				
+			} catch (IllegalActionException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+			
+			
+		else if (e.getSource() == handCard[0]) {
+//			System.exit(1);
+//		}
 	
+	}
+}
 }
 	
 	
