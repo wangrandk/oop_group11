@@ -9,7 +9,7 @@ import view.SelectPlayersPanel;
 
 public class GUI {
 	private static JFrame mainframe;
-	private static boardView startPanel;
+	private static startpanel startPanel;
     private static SelectPlayersPanel selectPlayersPanel;
     private static ChooseMap chooseMap;
     private static gamePanel gamePanel;
@@ -20,11 +20,12 @@ public class GUI {
 //	
 	public GUI() throws IOException {
 		mainframe = new mainframe();
-		startGame();
+//		startGame();
+		showStartPanel();
 		}
 	
 	public void showStartPanel() throws IOException {
-		startPanel = new boardView();
+		startPanel = new startpanel();
 		mainframe.add(startPanel);
 		mainframe.revalidate();
 		mainframe.repaint();
@@ -47,8 +48,11 @@ public class GUI {
 		
 	}
 	
-	public void startGame() throws IOException {
+	public static void startGame() throws IOException {
+		mainframe.setPreferredSize(new Dimension(1000,1000));
 		mainframe.setLayout(null);
+//		mainframe.remove(chooseMap);
+
 
 		gamePanel = new gamePanel();
 		mainframe.add(gamePanel);

@@ -170,7 +170,12 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		
 		else if (e.getSource() == start) {
-//			GUI.startGame();
+			try {
+				GUI.startGame();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		else {
