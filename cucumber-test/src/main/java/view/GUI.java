@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import model.board.Board;
 import model.board.EasyBoard;
 import model.main.Player;
 import view.SelectPlayersPanel;
@@ -50,13 +51,13 @@ public class GUI {
 		
 	}
 	
-	public static void startGame() throws IOException {
+	public static void startGame(Board board) throws IOException {
 		mainframe.setPreferredSize(new Dimension(1000,1000));
 		mainframe.setLayout(null);
 		mainframe.remove(chooseMap);
 
 
-		gamePanel = new gamePanel(new Player(), new EasyBoard());
+		gamePanel = new gamePanel(new Player(),board);
 		mainframe.add(gamePanel);
 		mainframe.pack();
 		mainframe.revalidate();
