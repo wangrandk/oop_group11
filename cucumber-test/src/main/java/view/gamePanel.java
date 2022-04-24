@@ -22,9 +22,11 @@ public class gamePanel extends JPanel {
 		setLayout(null);
 		setSize(1000,1000);
 		boardView = new boardView(board);
-		controlView = new controlView(player);
+		controlView = new controlView(player,board);
 		add(boardView);
 		add(controlView);
+		revalidate();
+		repaint();
 		
 	}
 	
@@ -33,5 +35,10 @@ public class gamePanel extends JPanel {
         super.paintComponent(g);
 //        g.drawImage(imageBG, 0, 0, getWidth(), getHeight(), this);
     }
+	
+	public void update() {
+		revalidate();
+		repaint();
+	}
 
 }

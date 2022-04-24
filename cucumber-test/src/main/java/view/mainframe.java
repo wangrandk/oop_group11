@@ -22,6 +22,10 @@ public class mainframe extends JFrame {
 		pack();
 
 	}
+	
+	public void update() {
+		repaint();
+	}
 
 	
 

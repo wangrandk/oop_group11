@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import model.board.Board;
+import model.main.Player;
 
 public class ChooseMap extends JPanel implements ActionListener {
 	
@@ -178,7 +179,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && easy == true) {
 			try {
-				GUI.startGame(new model.board.EasyBoard());
+				GUI.showGame(new Player(),new model.board.BlankBoard());
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -189,7 +190,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && medium == true) {
 			try {
-				GUI.startGame(new model.board.MediumBoard());
+				GUI.showGame(new Player(),new model.board.MediumBoard());
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -200,7 +201,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else {
 			try {
-				GUI.startGame(new model.board.FinalBoard());
+				GUI.showGame(new Player(),new model.board.FinalBoard());
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

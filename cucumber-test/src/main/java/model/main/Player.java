@@ -24,10 +24,13 @@ public class Player {
 	private final int playerID;
 	private static int countPlayerId = 1;
 	private Robot robot;
+	boolean handFull;
+
 	
 	 
 	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
 	private ArrayList<Card> hand = new ArrayList<Card>(); // Each turn
+	private boolean subdeckFull;
 
 	
 	public Player(){
@@ -75,21 +78,89 @@ public class Player {
 	/*
 	 * Player Card Handling. 
 	*/
+	public void checkFullHand() {
+		for (Card card : this.getHand()) {
+			if (card instanceof EmptyCard) {
+				this.handFull = false;
+				break;
+			}
+			else {
+				this.handFull = true;
+				break;
+			}
+		}
+	
+	}
+	public void checkFullSubdeck() {
+		for (Card card : this.getSubdeck()) {
+			if (card instanceof EmptyCard) {
+				this.subdeckFull = false;
+				break;
+			}
+			else {
+				this.subdeckFull = true;
+				break;
+			}
+		}
+	
+	}
     
     //Restrict that no more than 5 cards can be in your hand
-    public void fiveToHand(Card card) throws IllegalActionException {    
-		if (this.hand.size() != 5) {
-			this.hand.add(card);
-			this.subdeck.remove(card); //remove card from a subdeck
-		} 
+    public void fiveToHand(Card card) throws IllegalActionException {   
+    	this.checkFullHand();
+    	if (card instanceof EmptyCard) {
+    		
+    	}
+    	else {
+    		if (this.isHandFull() == false) {
+    			int removedCardSubdeck;
+    			Card removedHand;
+    			removedCardSubdeck = this.subdeck.indexOf(card);
+    			removedHand = this.getHand().get(0);
+    			
+    			this.subdeck.remove(card);
+    			this.subdeck.add(removedCardSubdeck,removedHand);
+    			
+    			this.hand.remove(removedHand);
+    			this.hand.add(card);
+    		}
+    		
+    	}
+	
 	}
     
-    // Put back the card from HAND to SUBDECK
+    public boolean isHandFull() {
+		return handFull;
+	}
+
+	// Put back the card from HAND to SUBDECK
 	public void replayCard(Card card) {
-		this.hand.remove(card);   //moves selected card back to a subdeck
-		this.subdeck.add(card);
+	
+		this.checkFullSubdeck();
+		
+		if (card instanceof EmptyCard) {
+			
+		}
+		else {
+			if (this.isSubdeckFull() == false) {
+				int removedCardHand;
+				Card removedSubdeck;
+				removedCardHand = this.hand.indexOf(card);
+				removedSubdeck = this.getSubdeck().get(0);
+				
+				this.hand.remove(card);
+				this.hand.add(removedCardHand,new EmptyCard(0));
+				
+				this.subdeck.remove(removedSubdeck);
+				this.subdeck.add(card);
+			}
+			
+		}
+	
+		
 		//add to a subdeck
 	}
+	
 	
 	
     
@@ -147,6 +218,10 @@ public class Player {
 			this.player.looseLife();
 		}
 		
+	}
+
+	public boolean isSubdeckFull() {
+		return subdeckFull;
 	}
     
 }
