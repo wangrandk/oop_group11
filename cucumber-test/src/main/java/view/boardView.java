@@ -32,10 +32,9 @@ public class boardView extends JPanel {
 		setLocation(5,5);
 	    grid = new StyledJPanel(new GridLayout(numRows,numCols));
         grid.setSize(64*numCols,66*numRows);
-//        board.setLocation(500, 500);
         for (int i =0; i<(numRows); i++){
             for (int j =0; j<numCols;j++) {
-            	final JLabel label = new JLabel((1+j)+","+(i+1));
+            	final JLabel label = new JLabel();
                 label.setIcon(new ImageIcon(board.getTile(new Position(j,i)).getImage()));
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 grid.add(label);

@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import model.board.Board;
+
 public class ChooseMap extends JPanel implements ActionListener {
 	
 	
@@ -18,13 +20,13 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private final JButton start;
 	private final JPanel mapPanel;
 	private Image imageBG;
-	private final JLabel easyLabel;
-	private final JLabel mediumLabel;
-	private final JLabel hardLabel;
+	private final JLabel easyPic;
+	private final JLabel mediumPic;
+	private final JLabel hardPic;
 	private boolean easy;
 	private boolean medium;
 	private boolean hard;
-	private JButton title;
+	private JLabel title;
 	
 	
 	
@@ -44,24 +46,35 @@ public class ChooseMap extends JPanel implements ActionListener {
 		}
         start = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
         start.addActionListener(this);
-//        exit = new Button("exit_btn.png","exit_btn_hover.png");
-//        exit.addActionListener(this);
-//        arrowRight = new Button("plus-4x.png");
+        
+        
         arrowRight = new Button("menu_buttons/arrowRight.png");
         arrowRight.addActionListener(this);
-//        arrowLeft = new Button("minus-4x.png");
+        
         arrowLeft = new Button("menu_buttons/arrowLeft.png");
         arrowLeft.addActionListener(this);
-        easyLabel = new StyledLabel("Easy");
-        mediumLabel = new StyledLabel("Medium");
-        hardLabel = new StyledLabel("hard");
-        title = new Button("text/difficulty.png");
+        
+        
+        easyPic = new JLabel(new ImageIcon(this.getClass().getClassLoader().getResource("view/maps/easyBoard.png")));
+        
+        mediumPic = new JLabel(new ImageIcon(this.getClass().getClassLoader().getResource("view/maps/mediumBoard.png")));
+
+        
+        hardPic = new JLabel(new ImageIcon(this.getClass().getClassLoader().getResource("view/maps/hardBoard.png")));
+
+        
+        title = new JLabel(new ImageIcon(this.getClass().getClassLoader().getResource("view/text/difficulty.png")));
         title.setLocation(250,25);
+        
+       
+        
+//        levelPanel.add(easyLabel,BorderLayout.NORTH);
+//        levelPanel.add(easyPic,BorderLayout.CENTER);
+        
         mapPanel.add(arrowLeft,BorderLayout.WEST);
         mapPanel.add(arrowRight,BorderLayout.EAST);
-//        mapPanel.add(exit,BorderLayout.NORTH);
         mapPanel.add(start,BorderLayout.SOUTH);
-        mapPanel.add(easyLabel,BorderLayout.CENTER);
+        mapPanel.add(easyPic,BorderLayout.CENTER);
         mapPanel.add(title, BorderLayout.NORTH);
         easy = true;
         add(mapPanel);
@@ -103,7 +116,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	public void showEasy() {
 		layout = (BorderLayout)mapPanel.getLayout();
 		mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-        mapPanel.add(easyLabel,BorderLayout.CENTER);
+        mapPanel.add(easyPic,BorderLayout.CENTER);
         mapPanel.revalidate();
         mapPanel.repaint();
         medium = false;
@@ -113,7 +126,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	public void showMedium() {
 		layout = (BorderLayout)mapPanel.getLayout();
 		mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-        mapPanel.add(mediumLabel,BorderLayout.CENTER);
+        mapPanel.add(mediumPic,BorderLayout.CENTER);
         mapPanel.revalidate();
         mapPanel.repaint();
         medium = true;
@@ -123,7 +136,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	public void showHard() {
 		layout = (BorderLayout)mapPanel.getLayout();
 		mapPanel.remove(ChooseMap.layout.getLayoutComponent(BorderLayout.CENTER));
-        mapPanel.add(hardLabel,BorderLayout.CENTER);
+        mapPanel.add(hardPic,BorderLayout.CENTER);
         mapPanel.revalidate();
         mapPanel.repaint();
         medium = false;
@@ -163,22 +176,35 @@ public class ChooseMap extends JPanel implements ActionListener {
 			
 		}
 		
-//		else if (e.getSource() == exit) {
-//			System.exit(1);
-//			
-//		}
-		
-		
-		else if (e.getSource() == start) {
+		else if (e.getSource() == start && easy == true) {
 			try {
-				GUI.startGame();
+				GUI.startGame(new model.board.EasyBoard());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		
+		
+		else if (e.getSource() == start && medium == true) {
+			try {
+				GUI.startGame(new model.board.MediumBoard());
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
+			
+		
 		
 		else {
+			try {
+				GUI.startGame(new model.board.FinalBoard());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+		}
 			
 		}
 		
