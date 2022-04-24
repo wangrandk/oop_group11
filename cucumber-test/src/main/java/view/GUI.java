@@ -18,6 +18,7 @@ public class GUI {
     private static gamePanel gamePanel;
     private static controlView controlView;
     private static boardView boardView;
+    private static Boolean isChooseMap;
     
 
 //	
@@ -37,7 +38,6 @@ public class GUI {
 	public static void showPlayersPanel() {
 		selectPlayersPanel = new SelectPlayersPanel();
 		mainframe.remove(startPanel);
-		mainframe.add(selectPlayersPanel);
 		mainframe.revalidate();
 		mainframe.repaint();
 	}
@@ -48,16 +48,26 @@ public class GUI {
 		mainframe.add(chooseMap);
 		mainframe.revalidate();
 		mainframe.repaint();
+		isChooseMap = true;
 		
 	}
 	
-	public static void startGame(Board board) throws IOException {
+	public static void showGame(Player player,Board board) throws IOException {
 		mainframe.setPreferredSize(new Dimension(1000,1000));
 		mainframe.setLayout(null);
-		mainframe.remove(chooseMap);
+		if (isChooseMap == true) {
+			mainframe.remove(chooseMap);
+			isChooseMap = false;
 
+			
+		}
+		else {
+			mainframe.remove(gamePanel);
+		}
+		
 
-		gamePanel = new gamePanel(new Player(),board);
+		gamePanel = new gamePanel(player,board);
+
 		mainframe.add(gamePanel);
 		mainframe.pack();
 		mainframe.revalidate();
@@ -67,4 +77,8 @@ public class GUI {
 
 
 	}
+	
 }
+		
+	
+
