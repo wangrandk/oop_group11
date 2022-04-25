@@ -19,7 +19,7 @@ public class ConveyorBelt extends Tile {
 		robot.setPosition(new Position(robot.getX()+1, robot.getY()));
 		
 		// Move the robot on the board with to the new Position.
-		Board.setTile(robot);
+		Board.setTile(robot); 
 		
 		// Update the initial position of the Robot with the 
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
