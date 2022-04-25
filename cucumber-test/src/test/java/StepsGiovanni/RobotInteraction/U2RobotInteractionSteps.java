@@ -14,6 +14,7 @@ import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Beer;
 import model.tile.BlankTile;
+import model.tile.Heal;
 import model.tile.Pit;
 import model.tile.Robot;
 import model.tile.Wall;
@@ -187,6 +188,52 @@ public class U2RobotInteractionSteps {
 	@Then("Robots initial position should be a blank title")
 	public void robots_initial_position_should_be_a_blank_title() {
 		// Thus robot's intial position on the board is a Blank title
+		assertEquals(true, Board.getTile(new Position(0,0)) instanceof BlankTile);
+	}
+	
+	@Given("players life is {int}")
+	public void players_life_is_two(Integer life) {
+		player.setLife(2);
+
+	}
+	
+	@Given("there is a heal in x {int} and y {int}")
+	public void there_is_a_heal_in_x_and_y(Integer x, Integer y) {
+		
+		 assertEquals(2, player.getLife());
+
+		Board.setTile(robot, new Position(0,0));
+		Board.setTile(new Heal(), new Position(x,y));
+		
+	}
+
+	@When("a card move1 one acts on robot")
+	public void a_card_move1_one_acts_on_robot() {
+		// Apply the card Action (Update the robots Position to a new position that has a Heal)
+		move1.setAction(robot);
+	}
+	
+	@When("board affects both player nad robot")
+	public void board_affects_both_player_nad_robot() {
+		// Board is going to do an Action with a Player and its robot.
+		Board.doObstacleAction(robot, player);
+				
+	}
+
+	@Then("player life should continue be increased by {int}")
+	public void player_life_should_continue_be_increased_by(Integer int1) {
+	   
+	   assertEquals(3, player.getLife());
+	}
+	
+	
+	@Then("Robot moves to the new position")
+	public void robot_moves_to_the_new_position() {
+		assertEquals(true, Board.getTile(new Position(1,0)) instanceof Robot);
+	}
+
+	@Then("Robots initial position is a blank title")
+	public void robots_initial_position_is_a_blank_title() {
 		assertEquals(true, Board.getTile(new Position(0,0)) instanceof BlankTile);
 	}
 	

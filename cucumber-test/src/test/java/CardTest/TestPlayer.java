@@ -24,6 +24,9 @@ public class TestPlayer {
 		
 		player.setSubdeck(subDeck.getSubdeck());	
 		
+		assertEquals(9, player.getSubdeck().size());
+
+		
 		player.fiveToHand(player.getSubdeck().get(0));
 		
 		// SubDeck should have 8 cards

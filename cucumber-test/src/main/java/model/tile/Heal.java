@@ -15,9 +15,7 @@ public class Heal extends Tile{
 	public void doAction(Robot robot, Player player) {
 		
 		// If player has less than 3 lives, it will increase the players life by 1.
-		if (player.getLife() < 3 ) {
-			player.setLife(player.getLife() + 1);
-		}
+		player.increaseLife();
 		
 		// Robot stays in the same position
 		
