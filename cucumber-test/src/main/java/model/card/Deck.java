@@ -49,9 +49,10 @@ public class Deck {
 	}
 	
 	
-	public ArrayList<Card> getDeck() {
+	public static ArrayList<Card> getDeck() {
 		return deck;
 	}
+	
 	
 	public static Deck getInstance() {  
 		if (instance == null){  

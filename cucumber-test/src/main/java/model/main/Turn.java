@@ -3,23 +3,25 @@ package model.main;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import model.Game;
+import model.board.Board;
 import utilities.EventList;
 import utilities.GameSettings;
 
 public class Turn {
-	private final RoboRally model;
+	private final Game model;
     private final ArrayList<Player> players;
     private final int turnIndex;
     private final ArrayList<RegisterCard> activeCards = new ArrayList<>();
     private final Map<RegisterCard,Player> activeCardPlayer = new HashMap<>();
-    private final GameBoard board;
+    private final Board board;
 
     /**
      * Creates the turn and runs the start method that performs all tasks needed for a turn.
      * @param model The top model class of the current game that holds useful information.
      * @param turnIndex The index of the turn in the current round. Can be 1 to 5.
      */
-    public Turn(RoboRally model, int turnIndex) {
+    public Turn(Game model, int turnIndex) {
         this.model = model;
         this.board = model.getBoard();
         this.players = this.model.getPlayers();

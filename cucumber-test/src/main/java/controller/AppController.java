@@ -3,12 +3,19 @@ package controller;
 import model.Game;
 
 public class AppController {
-//methods we should use: loadGame(), newGame/round(), isGameRunning() and its opposite, closeGame(), victory(),
-// 
-	
-	private Game game;
+	//AppController class will initialize whole application;
+		private GameController gameController;
 
-	public AppController(Game game) {
-        this.game = game;
-    }
-}
+		public AppController() {
+	        initGameController();
+		}
+
+	    private void initGameController() {
+	        if (gameController == null) {
+	            gameController = new GameController();
+	        } else {
+	            System.out.println("Game is already running");
+	        }
+	    }
+		
+	}
