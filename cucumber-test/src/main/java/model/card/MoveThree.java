@@ -14,7 +14,7 @@ public class MoveThree extends Card {
 	public MoveThree(int points) {
 		super("Move3",points);
 	}
-	
+	 
 	
 	String cardmessage = "Moved 3 tiles";
 	

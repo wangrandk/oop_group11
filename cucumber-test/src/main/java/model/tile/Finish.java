@@ -12,7 +12,7 @@ public class Finish extends Tile{
 	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/finish.png");
 	
 	private String wonMessage;
-
+ 
 	
 	@Override
 	public void doAction(Robot robot, Player player) {
@@ -23,7 +23,7 @@ public class Finish extends Tile{
 		// It should end the game by settings the player status to Won.
 		player.setPlayerStatus(GameSettings.PlayerStatus.WON);
 				
-				// Update the board with the robot's initial position
+		// Update the board with the robot's initial position
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
 	}
 
