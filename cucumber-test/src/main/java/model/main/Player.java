@@ -116,25 +116,82 @@ public class Player {
     public void fiveToHand(Card card) throws IllegalActionException {   
     	this.checkFullHand();
     	if (card instanceof EmptyCard) {
-    		
+    		// do nothing
     	}
     	else {
     		if (this.isHandFull() == false) {
-    			int removedCardSubdeck;
-    			Card removedHand;
-    			removedCardSubdeck = this.subdeck.indexOf(card);
-    			removedHand = this.getHand().get(0);
+    			    			
+    			// Loop through the hand to add the the in order
+    			for (Card handCard : this.hand) {
+    				// When it encounter an EmptyCard, add the card from the subdeck in that position
+    				if (handCard instanceof EmptyCard) {
+    					// Replaces (removes) the card from the subdeck, and add an empty card
+    					this.subdeck.set(this.subdeck.indexOf(card), new EmptyCard(0));
+    					
+    					//Replaces the card from the subdeck, in the specific.
+    					this.hand.set(this.hand.indexOf(handCard), card);
+    					    					
+    					break;
+    				}
+    			}
     			
-    			this.subdeck.remove(card);
-    			this.subdeck.add(removedCardSubdeck,removedHand);
     			
-    			this.hand.remove(removedHand);
-    			this.hand.add(card);
+    			
+//    			Card removedHand;
+//    			int removedCardSubdeck = this.subdeck.indexOf(card);
+//    			removedHand = this.getHand().get(0);
+//    			
+//    			this.subdeck.remove(card);
+//    			this.subdeck.add(removedCardSubdeck,removedHand);
+//    			
+//    			this.hand.remove(removedHand);
+//    			this.hand.add(card);
     		}
     		
     	}
 	
 	}
+    
+ // Put back the card from HAND to SUBDECK
+ 	public void replayCard(Card card) {
+ 	
+ 		this.checkFullSubdeck();
+ 		
+ 		if (card instanceof EmptyCard) {
+ 			// don't transfer the card from the subdeck to the Hand
+ 		}
+ 		else {
+ 			if (this.isSubdeckFull() == false) { // if the subDeck is not full
+    			for (Card subDeckCard : this.subdeck) {
+    				// When it encounter an EmptyCard, add the card from the subdeck in that position
+    				if (subDeckCard instanceof EmptyCard) {
+    					// Replaces (removes) the card from the hand, and add an empty card
+    					this.hand.set(this.hand.indexOf(card), new EmptyCard(0));
+    					
+    					//Replaces the card from the subdeck, in the specific.
+    					this.subdeck.set(this.subdeck.indexOf(card), card);
+    					break;
+    				}
+    			}
+ 				
+ 				
+// 				int removedCardHand; // index from the removed card from the hand
+// 				Card removedSubdeck;
+// 				removedCardHand = this.hand.indexOf(card);
+// 				removedSubdeck = this.getSubdeck().get(0);
+// 				
+// 				this.hand.remove(card);
+// 				this.hand.add(removedCardHand,new EmptyCard(0));
+// 				
+// 				this.subdeck.remove(removedSubdeck);
+// 				this.subdeck.add(card);
+ 			}
+ 			 
+ 		}
+ 	
+ 		
+ 		//add to a subdeck
+ 	}
     
     
     
@@ -143,33 +200,7 @@ public class Player {
 		return handFull;
 	}
 
-	// Put back the card from HAND to SUBDECK
-	public void replayCard(Card card) {
 	
-		this.checkFullSubdeck();
-		
-		if (card instanceof EmptyCard) {
-			
-		}
-		else {
-			if (this.isSubdeckFull() == false) {
-				int removedCardHand;
-				Card removedSubdeck;
-				removedCardHand = this.hand.indexOf(card);
-				removedSubdeck = this.getSubdeck().get(0);
-				
-				this.hand.remove(card);
-				this.hand.add(removedCardHand,new EmptyCard(0));
-				
-				this.subdeck.remove(removedSubdeck);
-				this.subdeck.add(card);
-			}
-			
-		}
-	
-		
-		//add to a subdeck
-	}
 	
 	
 	
