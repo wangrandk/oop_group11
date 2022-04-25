@@ -66,8 +66,15 @@ public class Player {
     }
     
     public int getLife() {
-		return life;
+		return this.life;
 	}
+    
+    // Increase the player's life by one, with below than 3.
+    public void increaseLife() {
+    	if (this.getLife() < 3 ) {
+    		this.life++;
+		}
+    }
 
 
 	public void setLife(int life) {

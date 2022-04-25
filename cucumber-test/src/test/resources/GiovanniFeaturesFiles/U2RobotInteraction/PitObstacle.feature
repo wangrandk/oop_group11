@@ -32,3 +32,14 @@ Feature: Interacting with Obstacles
     Then Initial Hand is different then shuffled hand
 		And Robot should have moved to the new position
 		And Robots initial position should be a blank title
+		
+	Scenario: Robot hitting a Heal
+	  Given players life is 2
+	  And there is a heal in x 1 and y 0
+  	When a card move1 one acts on robot
+    And board affects both player nad robot
+    Then player life should continue be increased by 1
+		And Robot moves to the new position
+		And Robots initial position is a blank title
+	
+	
