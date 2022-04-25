@@ -37,7 +37,7 @@ public class Player {
 		this.playerID = countPlayerId;
 		countPlayerId++;
 		this.setHand(generateEmptyHand());
-	}
+	} 
 	
 	public ArrayList<Card> generateEmptyHand(){
 		ArrayList<Card> emptyHand = new ArrayList<Card>();
