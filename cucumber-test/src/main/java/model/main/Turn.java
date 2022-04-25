@@ -1,7 +1,11 @@
 package model.main;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import model.Game;
 import model.board.Board;
@@ -11,13 +15,14 @@ import utilities.GameSettings;
 import model.Game;
 import model.board.Board;
 import model.card.Card;
+import model.card.CardCompare;
 
 public class Turn {
 	private final Game model;
     private final ArrayList<Player> players;
     private final int turnIndex;
     private final ArrayList<Card> activeCards = new ArrayList<>();
-    private final Map<RegisterCard,Player> activeCardPlayer = new HashMap<>();
+    private final Map<Card, Player> activeCardPlayer = new HashMap<>();
     private final Board board;
 
     /**
@@ -45,10 +50,9 @@ public class Turn {
         sortActiveCards();
         executeActiveCards();
         executeBoardElements();
-        new FireLasers(players);
-        checkIfOnlyOneSurvivor();
-        EventTram.getInstance().publish(EventTram.Event.UPDATE_BOARD, null, null);
-        EventTram.getInstance().publish(EventTram.Event.UPDATE_STATUS, null, null);
+        checkIfSomeoneDead();
+        EventList.getInstance().publish(EventList.Event.UPDATE_BOARD, null, null);
+        EventList.getInstance().publish(EventList.Event.UPDATE_STATUS, null, null);
     }
 
     /*
@@ -62,10 +66,10 @@ public class Turn {
     private void revealProgrammedCards() {
         for (Player player : players) {
             ArrayList<Card> handcards = player.getHand();
-            handcards.setHidden(false);
-            activeCards.add(card);
-            activeCardPlayer.put(card,player);
-            System.out.println("picked card with index " + turnIndex + " from " + player.getName());
+            handcards.setHidden(false); /* [James] Do we have this method or not? */
+            activeCards.add(handcards.get(turnIndex - 1));
+            activeCardPlayer.put(handcards.get(turnIndex - 1), player);
+            System.out.println("picked card with index " + turnIndex + " from " + player.getPlayerID());
         }
     }
 
@@ -74,21 +78,21 @@ public class Turn {
      * This will be the card that will be executed first.
      */
     private void sortActiveCards() {
-        Collections.sort(activeCards, new RegisterCardCompare());
+        Collections.sort(activeCards, new CardCompare());
     }
 
     /**
      * Loops through the sorted cards and calls the execute method if a player is alive.
      */
     private void executeActiveCards() {
-        EventTram.getInstance().publish(EventTram.Event.PRINT_MESSAGE, "ANALYSING CARDS" + "\n", Color.MAGENTA);
-        for (RegisterCard card : activeCards) {
+        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "ANALYSING CARDS" + "\n", Color.MAGENTA);
+        for (Card card : activeCards) {
             Player player = activeCardPlayer.get(card);
-            if (player.isAlive()) {
-                ArrayList<GameAction> actions = card.getActions();
-                EventTram.getInstance().publish(EventTram.Event.PRINT_MESSAGE, "Priority " + card.getPoints() + ": \n", null);
-                EventTram.getInstance().publish(EventTram.Event.PRINT_MESSAGE,  player.getName() + " ", player.getColor());
-                EventTram.getInstance().publish(EventTram.Event.PRINT_MESSAGE,  card.getMessage() + "\n", null);
+            if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
+                ArrayList<String> actions = card.getCard();
+                EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "Priority " + card.getpoints() + ": \n", null);
+                EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE,  player.getPlayerID() + " ", null);
+                EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE,  card.getMessage() + "\n", null);
                 for (GameAction action : actions) {
                     player.setMovingDirection(player.getDirection());
                     executeAction(action,player);
@@ -187,7 +191,7 @@ public class Turn {
 
     // TODO Give priority to game tiles so we can execute some tiles before others
     private void executeBoardElements() {
-        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , null);
+        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , Color.MAGENTA);
         for (Player player : players) {
             if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
                 try {
