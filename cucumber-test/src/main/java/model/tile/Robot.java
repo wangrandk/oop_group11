@@ -54,7 +54,7 @@ public class Robot extends Tile {
 	
 	
 	public Position getSpawnPosition() {
-		return spawnPosition;
+		return this.spawnPosition;
 	}
 
 	public void setSpawnPosition(Position spawnPosition) {
