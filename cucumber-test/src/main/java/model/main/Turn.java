@@ -6,20 +6,24 @@ import java.util.Iterator;
 import utilities.EventList;
 import utilities.GameSettings;
 
+import model.Game;
+import model.board.Board;
+import model.card.Card;
+
 public class Turn {
-	private final RoboRally model;
+	private final Game model;
     private final ArrayList<Player> players;
     private final int turnIndex;
-    private final ArrayList<RegisterCard> activeCards = new ArrayList<>();
+    private final ArrayList<Card> activeCards = new ArrayList<>();
     private final Map<RegisterCard,Player> activeCardPlayer = new HashMap<>();
-    private final GameBoard board;
+    private final Board board;
 
     /**
      * Creates the turn and runs the start method that performs all tasks needed for a turn.
      * @param model The top model class of the current game that holds useful information.
      * @param turnIndex The index of the turn in the current round. Can be 1 to 5.
      */
-    public Turn(RoboRally model, int turnIndex) {
+    public Turn(Game model, int turnIndex) {
         this.model = model;
         this.board = model.getBoard();
         this.players = this.model.getPlayers();
@@ -55,8 +59,8 @@ public class Turn {
      */
     private void revealProgrammedCards() {
         for (Player player : players) {
-            RegisterCard card = player.getProgrammedCard(turnIndex);
-            card.setHidden(false);
+            ArrayList<Card> handcards = player.getHand();
+            handcards.setHidden(false);
             activeCards.add(card);
             activeCardPlayer.put(card,player);
             System.out.println("picked card with index " + turnIndex + " from " + player.getName());
@@ -179,19 +183,20 @@ public class Turn {
         return null;
     }
 
-    // TODO Give priority to gametiles so we can execute some tiles before others
+    // TODO Give priority to game tiles so we can execute some tiles before others
     private void executeBoardElements() {
-        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , Color.MAGENTA);
+        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , null);
         for (Player player : players) {
-            if (player.isAlive()) {
+            if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
                 try {
-                    for (GameAction action : model.getBoard().getTile(player.getPosition()).getActions()) {
+                    for (GameAction action : model.getBoard().getTile(player.getRobot().getPosition()).doAction(player.getRobot(), player)) {
                         // TODO Set player moving direction from tiles direction
                         executeAction(action, player);
                     }
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Player fell and died");
-                    player.kill();
+                    player.setLife(0);
+                    player.setPlayerStatus(GameSettings.PlayerStatus.DEAD);
                 }
             }
         }
