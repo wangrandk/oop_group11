@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 				glue = {"StepsGiovanni"},
 				plugin = {"pretty"}
 				)
-
+ 
 public class TestRunner {
 	
 }

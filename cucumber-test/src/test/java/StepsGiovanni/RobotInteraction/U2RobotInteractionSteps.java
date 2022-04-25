@@ -83,7 +83,7 @@ public class U2RobotInteractionSteps {
 
 	@Then("robot should be back to its spawn position")
 	public void robot_should_be_back_to_its_spawn_position() {
-		assertEquals(true, Board.getTile(spawnPosition) instanceof Robot);
+		assertEquals(true, Board.getTile(robot.getSpawnPosition()) instanceof Robot);
 
 	}
 
