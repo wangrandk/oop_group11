@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import model.Game;
 import model.board.Board;
 import model.board.EasyBoard;
@@ -19,11 +18,6 @@ import utilities.GameSettings;
 import utilities.IEventHandler;
 import utilities.Round;
 
-/**
- * Created by Pertta on 15-04-23.
- *
- * This class is the game master. The flow of the game is controlled here.
- */
 class GameController extends Thread implements IEventHandler {
 
     private Game model = null;
@@ -38,8 +32,7 @@ class GameController extends Thread implements IEventHandler {
 
 
     
-     //Behaves as a listener for events coming from the model and view
-     
+     //Behaves as a listener for events coming from the model and view 
     GameController() {
         EventList.getInstance().register(this);
     }
