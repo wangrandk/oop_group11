@@ -129,6 +129,9 @@ public class Player {
 	
 	}
     
+    
+    
+    
     public boolean isHandFull() {
 		return handFull;
 	}
@@ -222,6 +225,10 @@ public class Player {
 
 	public boolean isSubdeckFull() {
 		return subdeckFull;
+	}
+
+	public int getPlayerID() {
+		return playerID;
 	}
     
 }

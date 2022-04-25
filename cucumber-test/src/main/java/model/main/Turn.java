@@ -3,6 +3,8 @@ package model.main;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import model.Game;
+import model.board.Board;
 import utilities.EventList;
 import utilities.GameSettings;
 

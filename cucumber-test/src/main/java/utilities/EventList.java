@@ -30,9 +30,9 @@ public class EventList {
         /**
          * These events are used during setup to set number of players and map in model.
          *
-         * The objects are the number of players and the map in question.
+         * The objects are there maps in question.
          */
-        PLAYERS_SELECTED,
+        
         MAP_SELECTED,
 
         /**

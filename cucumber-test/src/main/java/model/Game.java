@@ -1,13 +1,15 @@
 package model;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 //import model.cards.RegisterCard;
 
 import utilities.EventList;
 import utilities.IEventHandler;
 import model.board.EasyBoard;
+import model.board.FinalBoard;
+import model.board.MediumBoard;
 import model.board.Board;
 import model.card.Card;
 import model.card.Deck;
@@ -46,6 +48,7 @@ public class Game implements IEventHandler{
 	    private final ArrayList<Player> players;
 	    private Deck deck;
 	    private boolean gameIsRunning;
+	    
 
 	    /**
 	     * Creates the model for the game and does the required tasks to start the first round.
@@ -99,7 +102,27 @@ public class Game implements IEventHandler{
 	            System.out.println("Player: " + ((Robot) o).getName() + " won the game");
 	            System.out.println("Fire event so that the GUI know that we should end the game");
 	        }
-	    }	
+	    }
+
+	    //returns cards to deck when turns of both players are done
+		public void returnCardsToDeck() {
+			 for (Player player : players) {
+				 for(int i = 0; i < 5; i++) {
+					 	Card tempCard = player.getHand().get(0);
+					 	Deck.getDeck().add(tempCard);
+					 	player.getHand().remove(tempCard);
+			    	}
+				 
+		            /*for (RegisterCard card : player.getProgrammedCards()) {
+		                if (!card.isLocked()) {
+		                    deck.addCard(card);
+		                }
+		            }
+		            player.emptyProgrammedCards();*/
+		        }
+			
+			
+		}
 		
 
 }
