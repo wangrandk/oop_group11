@@ -14,6 +14,7 @@ import model.card.EmptyCard;
 import model.card.MoveOne;
 import model.card.SubDeck;
 import model.main.Player;
+import model.tile.Pit;
 import model.tile.Robot;
 import utilities.GameSettings;
 import utilities.IllegalActionException;
@@ -98,7 +99,6 @@ public class controlView extends JPanel implements ActionListener {
         deckPanel.setLocation(64*15/2,0);
         controlPanel.setLocation(64*15/2+(64*15)/6,0);
         
-        player.setLife(2);
         player.setRobot(playerRobot);
 
         
@@ -216,16 +216,25 @@ public class controlView extends JPanel implements ActionListener {
 			}
 		}
 		if (e.getSource() == nextTurnButton) {
-			Card cardMovement = player.getHand().get(0);
-			
-			cardMovement.setAction(player.getRobot());
-			board.doObstacleAction(player.getRobot(), player);
-			try {
-				GUI.showGame(player, board);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			playerRobot.setPosition(new Position(1,4));
+			playerRobot.setSpawnPosition(new Position(1,4));
+
+
+			for (int i = 0; i < player.getHand().size();i++) {
+				Card cardMovement = player.getHand().get(i);
+				
+				
+				
+				cardMovement.setAction(playerRobot);
+				Board.doObstacleAction(playerRobot, player);
+				try {
+					GUI.showGame(player, board);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
+			
 
 		}
 		
