@@ -19,6 +19,8 @@ public class gamePanel extends JPanel {
 
 	
 	public gamePanel(Player player, Board board) throws IOException {
+		this.player = player;
+		this.board = board;
 		setLayout(null);
 		setSize(1000,1000);
 		boardView = new boardView(board);
@@ -29,6 +31,10 @@ public class gamePanel extends JPanel {
 		repaint();
 		
 	}
+	
+	public Player getPlayer() {
+        return player;
+    }
 	
 	@Override
     public void paintComponent(Graphics g) {

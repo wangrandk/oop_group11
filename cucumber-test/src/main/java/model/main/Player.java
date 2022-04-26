@@ -31,6 +31,8 @@ public class Player {
 	 
 	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
 	private ArrayList<Card> hand = new ArrayList<Card>(); // Each turn
+	public static ArrayList<Player> players = new ArrayList<Player>(); // Each turn
+	
 	private boolean subdeckFull = true;
 
 	
@@ -38,6 +40,7 @@ public class Player {
 		this.playerID = countPlayerId;
 		countPlayerId++;
 		this.setHand(generateEmptyHand());
+		players.add(this);
 	} 
 	
 	public ArrayList<Card> generateEmptyHand(){
