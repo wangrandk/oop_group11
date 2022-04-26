@@ -241,6 +241,163 @@ public class controlView extends JPanel implements ActionListener {
 		
 			
 	}
+
+
+
+
+	public void updateStatusView() {
+		if (player.getLife() == 3) {
+        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
+        }
+        else if (player.getLife() == 2) {
+        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/twolives.png")));
+
+        }
+        else if (player.getLife() == 1) {
+        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/onelife.png")));
+
+        }
+        controlPanel.add(livesLabel);
+		
+		/*lifeTokensPanel.setLifeTokens(player.getLifeTokens());*/
+       // robotStatusLabel.setText("<html><FONT COLOR=WHITE>Status: </FONT>" + player.getStatus());
+        switch (player.getPlayerStatus()) {
+            case ALIVE:
+                //robotStatusLabel.setForeground(Color.GREEN);
+                break;
+            case DEAD:
+                //robotStatusLabel.setForeground(Color.RED);
+                break;
+            case KAPUT:
+                //robotStatusLabel.setForeground(Color.BLACK);
+                break;
+        }
+        //checkpointLabel.setText("Checkpoints cleared: " + player.getCheckpointID() + "/3");
+    }
+
+
+
+
+	public void setTurnIndicator(int turn) {
+//		turnLabel1.setForeground(Color.WHITE);
+//        turnLabel2.setForeground(Color.WHITE);
+//        turnLabel3.setForeground(Color.WHITE);
+//        turnLabel4.setForeground(Color.WHITE);
+//        turnLabel5.setForeground(Color.WHITE);
+//        switch (turn) {
+//            case 0:
+//                break;
+//            case 1:
+//                turnLabel1.setForeground(Color.RED);
+//                break;
+//            case 2:
+//                turnLabel2.setForeground(Color.RED);
+//                break;
+//            case 3:
+//                turnLabel3.setForeground(Color.RED);
+//                break;
+//            case 4:
+//                turnLabel4.setForeground(Color.RED);
+//                break;
+//            case 5:
+//                turnLabel5.setForeground(Color.RED);
+//                break;
+//        }
+		
+	}
+
+
+
+
+	public void setRegisterCardIconsChangeable() {
+//		 for (RegisterCardIcon icon : registerCardIcons) {
+//	            if (icon.getCard() != null && !icon.getCard().isLocked()) {
+//	                icon.setChangeable(true);
+//	            }
+//	        }
+		
+	}
+
+
+
+
+	public void resetRegisterCards() {
+//		for (int i = 0; i < 5; i++) {
+//            if (player.getProgrammedCard(i) != null && player.getProgrammedCard(i).isLocked()) {
+//                registerCardIcons[i].setCard(player.getProgrammedCard(i));
+//                registerCardIcons[i].setChangeable(false);
+//            } else {
+//                registerCardIcons[i].removeCard();
+//            }
+//        }
+		
+	}
+
+
+
+
+	public void resetNewCardButtons() {
+//		pickCardsView.removeAll();
+//        for (int index = 0; index < 9; index++) {
+//            PickNewCardButton btn = new PickNewCardButton();
+//            pickCardsView.add(btn);
+//        }
+//		
+	}
+
+
+
+
+	/**
+     * Sets if the done button should be enabled.
+     * @param b True to enable, false to disable.
+     */
+//    public void setDoneButtonEnabled(boolean b) {
+//        doneButton.setEnabled(b);
+//    }
+//
+//    /**
+//     * Sets if the next turn button should be enabled.
+//     * @param b True to enable, false to disable.
+//     */
+//    public void setNextTurnButtonEnabled(boolean b) {
+//        nextTurnButton.setEnabled(b);
+//    }
+//
+//    /**
+//     * Sets if the power down button should be enabled.
+//     * @param b True to enable, false to disable.
+//     */
+//    public void setPowerDownButtonEnabled(boolean b) {
+//        powerDownButton.setEnabled(b);
+//    }
+
+
+
+
+	public void newCardsToPick() {
+		// TODO Auto-generated method stub
+//		newCardsToPick = player.getDealtCards();
+//        refreshNewCardButtons();
+	}
+
+
+
+
+	public void setDoneButtonEnabled(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public void setRegisterCardIconsNotChangeable() {
+		// TODO Auto-generated method stub
+//		for (RegisterCardIcon icon : registerCardIcons) {
+//            icon.setChangeable(false);
+//        }
+	}
 }
 
 	
