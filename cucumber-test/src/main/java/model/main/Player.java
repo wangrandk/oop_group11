@@ -30,7 +30,7 @@ public class Player {
 	 
 	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
 	private ArrayList<Card> hand = new ArrayList<Card>(); // Each turn
-	private boolean subdeckFull;
+	private boolean subdeckFull = true;
 
 	
 	public Player(){
@@ -89,11 +89,11 @@ public class Player {
 		for (Card card : this.getHand()) {
 			if (card instanceof EmptyCard) {
 				this.handFull = false;
+				this.subdeckFull = false;
 				break;
 			}
 			else {
 				this.handFull = true;
-				break;
 			}
 		}
 	
@@ -106,7 +106,7 @@ public class Player {
 			}
 			else {
 				this.subdeckFull = true;
-				break;
+				this.handFull = false;
 			}
 		}
 	
@@ -119,7 +119,7 @@ public class Player {
     		// do nothing
     	}
     	else {
-    		if (this.isHandFull() == false) {
+    		if (this.handFull == false) {
     			    			
     			// Loop through the hand to add the the in order
     			for (Card handCard : this.hand) {
@@ -169,7 +169,13 @@ public class Player {
     					this.hand.set(this.hand.indexOf(card), new EmptyCard(0));
     					
     					//Replaces the card from the subdeck, in the specific.
-    					this.subdeck.set(this.subdeck.indexOf(card), card);
+    					for (Card subdeckCard : this.getSubdeck()) {
+    						if (subdeckCard instanceof EmptyCard) {
+    	    					this.subdeck.set(this.getSubdeck().indexOf(subdeckCard),card);
+    	    					break;
+
+    						}
+    					}
     					break;
     				}
     			}
