@@ -12,6 +12,7 @@ import utilities.IllegalActionException;
 /*
  * Player mimics the status of what a real-world player would have
 */
+//
 public class Player {
 	
 	private boolean isYourTurn = false;
