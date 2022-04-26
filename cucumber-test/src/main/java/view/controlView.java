@@ -188,7 +188,7 @@ public class controlView extends JPanel implements ActionListener {
 				
 				try {
 					player.fiveToHand(player.getSubdeck().get(i));
-					GUI.showGame(player, board);
+					GUI.showGame(Player.players, board);
 
 				} catch (IllegalActionException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -207,7 +207,7 @@ public class controlView extends JPanel implements ActionListener {
 				
 				try {
 					player.replayCard(player.getHand().get(i));
-					GUI.showGame(player, board);
+					GUI.showGame(Player.players, board);
 
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -228,7 +228,7 @@ public class controlView extends JPanel implements ActionListener {
 				cardMovement.setAction(playerRobot);
 				Board.doObstacleAction(playerRobot, player);
 				try {
-					GUI.showGame(player, board);
+					GUI.showGame(Player.players, board);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -26,6 +26,7 @@ class GameController extends Thread implements IEventHandler {
     private int turnIndex = 0;
     private boolean readyForNewTurn = false;
     private boolean readyForNewRound = true;
+    public static ArrayList<Player> players = new ArrayList<Player>();
     
     //array list of boards to be selected
     private ArrayList<Board> boards = new ArrayList<Board>(Arrays.asList(new EasyBoard(), new MediumBoard(), new FinalBoard()));
@@ -40,8 +41,7 @@ class GameController extends Thread implements IEventHandler {
     /**
      * Creates 2 players and their robots(constant) and returns the list of created players
      */
-    private ArrayList<Player> createPlayers() {
-        ArrayList<Player> players = new ArrayList<>();
+    public ArrayList<Player> createPlayers() {
         
         players.add(new Player());
         players.add(new Player());
