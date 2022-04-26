@@ -22,39 +22,15 @@ import utilities.GameSettings;
 import utilities.Position;
 
 public class Game implements IEventHandler{
-	/*
-	public static void main(String[] args) {
-		
-		// create the board
-		new EasyBoard();
-		
-		// create the game's deck
-		Deck deck = Deck.getInstance();
-	
-		// Create player 1 and 2
-		Player player1 = new Player();
-		Player player2 = new Player();
-		
-		// Set each player a Robot (we always know are the robot is our board)
-		player1.setRobot(Board.getTile(new Position(4,0)));
-		
-	
-		// While some of the players did not win, the game will Run
-		while (player.getPlayerStatus() != GameSettings.PlayerStatus.WON) {
-			// The game will be played in rounds.
-			 * }
-		*/	
+
 	    private final Board board;
 	    private final ArrayList<Player> players;
 	    private Deck deck;
 	    private boolean gameIsRunning;
+	
 	    
-
-	    /**
-	     * Creates the model for the game and does the required tasks to start the first round.
-	     * @param players The player that are about to play the game.
-	     * @param map The map which the game will be played on.
-	     */
+	    //game model is created which executes required tasks to start the initial round
+	    //board on which the game will be played and players that will participate are passed as arguments
 	    public Game(ArrayList<Player> players, Board board) {
 	        this.players = players;
 	        this.board = board;
@@ -63,34 +39,26 @@ public class Game implements IEventHandler{
 	        gameIsRunning = true;
 	    }
 	    
-	    /**
-	     * Returns all players that are in the game.
-	     * @return A list containing all players in the game.
-	     */
+	    
+	    //list of all players that are participating is returned
 	    public ArrayList<Player> getPlayers() {
 	        return players;
 	    }
 
-	    /**
-	     * Returns the game board that the game is played on.
-	     * @return The game board that the game is played on.
-	     */
+
+	    //board on which the game will be played is returned
 	    public Board getBoard() {
 	        return board;
 	    }
 
-	    /**
-	     * Returns the card deck as it currently is in the game.
-	     * @return The card deck in the game.
-	     */
+	
+	    //current game deck is returned 
 	    public Deck getDeck() {
 	        return deck;
 	    }
 
-	    /**
-	     * Returns true if the game loop is still running.
-	     * @return True if the game is running, false if not.
-	     */
+	  
+	    //if game is still running, True is returned, and False if opposite
 	    public boolean isGameRunning() {
 	        return gameIsRunning;
 	    }
