@@ -26,6 +26,7 @@ public class Player {
 	private static int countPlayerId = 1;
 	private Robot robot;
 	boolean handFull;
+	private int handSize = 5;
 
 	
 	 
@@ -45,15 +46,17 @@ public class Player {
 	
 	public ArrayList<Card> generateEmptyHand(){
 		ArrayList<Card> emptyHand = new ArrayList<Card>();
-		
+		/*
 		emptyHand.add(new EmptyCard(0));
 		emptyHand.add(new EmptyCard(0));
 		emptyHand.add(new EmptyCard(0));
 		emptyHand.add(new EmptyCard(0));
 		emptyHand.add(new EmptyCard(0));
-		
-		return emptyHand;
-		
+		*/
+		for (int i = 0; i < handSize; i++) {            	
+        	emptyHand.add(new EmptyCard(0));
+        }
+		return emptyHand;	
 	}
 	
 	
@@ -277,6 +280,11 @@ public class Player {
 
 	public int getPlayerID() {
 		return playerID;
+	}
+
+	public void set(Card card, EmptyCard emptyCard) {
+		card = emptyCard;
+		
 	}
     
 }
