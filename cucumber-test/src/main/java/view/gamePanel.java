@@ -47,4 +47,13 @@ public class gamePanel extends JPanel {
 		repaint();
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////7
+	public boardView getBoardView() {
+		return this.boardView;
+	}
+
+	public controlView getControlView() {
+		return this.controlView;
+	}
+
 }
