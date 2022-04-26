@@ -11,6 +11,7 @@ public final class Main {
 	}
 
 	//main method from where application is activated
+	//default functionalities by javax.swing
 	public static void main(String[] args) throws IOException {
 		try {
             UIManager.setLookAndFeel(
