@@ -11,12 +11,9 @@ import model.Game;
 import model.board.Board;
 import utilities.EventList;
 import utilities.GameSettings;
-import utilities.Position;
-import model.Game;
-import model.board.Board;
 import model.card.Card;
 import model.card.CardCompare;
-import model.tile.Tile;
+
 
 public class Turn {
 	private final Game model;
@@ -51,6 +48,7 @@ public class Turn {
         sortActiveCards();
         executeActiveCards();
         checkIfSomeoneDead();
+        checkIfSomeoneWon();
         EventList.getInstance().publish(EventList.Event.UPDATE_BOARD, null, null);
         EventList.getInstance().publish(EventList.Event.UPDATE_STATUS, null, null);
     }
@@ -113,7 +111,6 @@ public class Turn {
     /**
      * Checks if only one player is dead and all others are alive
      */ 
-    /* [James] complete this method */
     private void checkIfSomeoneDead() {
         int nbrPlayersKaput = 0;
         for (Player player : players) {
@@ -141,8 +138,15 @@ public class Turn {
         }
         for(Player player : players) {
         	EventList.getInstance().publish(EventList.Event.VICTORY, player, null);
-        	/*[James] Not sure is this method work as still not very know how the "publish" works.
-        	 * Maybe need to modify*/
         }  
     }
+    
+    private void checkIfSomeoneWon() {
+    	for(Player player: players) {
+    		if(player.getPlayerStatus() == GameSettings.PlayerStatus.WON) {
+    			EventList.getInstance().publish(EventList.Event.VICTORY, player, null);
+    		}
+    	}
+    }
+    
 }
