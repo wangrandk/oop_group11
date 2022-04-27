@@ -71,12 +71,6 @@ public class EventList {
          */
         PLAYER_PICKED_CARDS,
 
-        /**
-         * If a player chooses to power down, this event is fired.
-         *
-         * The object is the player that chose to power down.
-         */
-        POWER_DOWN,
 
         /**
          * Is fired when the model is ready for a new turn.

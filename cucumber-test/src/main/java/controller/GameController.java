@@ -106,8 +106,7 @@ class GameController extends Thread implements IEventHandler {
                 readyForNewTurn = true;
                 runGame();
                 break;
-            case POWER_DOWN:
-                ((Player) o).setPlayerStatus(GameSettings.PlayerStatus.POWERDOWN);
+            
         }
     }
 

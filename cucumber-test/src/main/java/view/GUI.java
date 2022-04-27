@@ -155,6 +155,7 @@ public class GUI implements IEventHandler{
                 break;
         }
     }
+	
 
 	private void setGamePanelsForNewTurn(int turnIndex) {
 		for (gamePanel panel : gamePanels) {

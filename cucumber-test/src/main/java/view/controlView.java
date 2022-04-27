@@ -16,7 +16,9 @@ import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Pit;
 import model.tile.Robot;
+import utilities.EventList;
 import utilities.GameSettings;
+import utilities.IEventHandler;
 import utilities.IllegalActionException;
 import utilities.Position;
 
@@ -25,7 +27,7 @@ import javax.swing.*;
 
 
 
-public class controlView extends JPanel implements ActionListener {
+public class controlView extends JPanel implements ActionListener,IEventHandler {
 	
 	private JPanel controlPanel;
 	private JPanel handPanel;
@@ -40,6 +42,7 @@ public class controlView extends JPanel implements ActionListener {
     private JLabel playerNameLabel;
     private Button nextTurnButton;
     private JLabel robotImage;
+    private int a;
  
 
     public static ArrayList<Card> subdeck1 = new SubDeck(deck).getSubdeck();
@@ -274,6 +277,53 @@ public class controlView extends JPanel implements ActionListener {
         }
         //checkpointLabel.setText("Checkpoints cleared: " + player.getCheckpointID() + "/3");
     }
+	
+	
+	@Override
+    public void onEvent(EventList.Event evt, Object o, Object o2) {
+		
+		
+		
+		
+        if (EventList.Event.PICK_CARDS == evt) {
+        	for (int i=0;i<subCard.length;i++) {
+        		a = i;
+        		subCard[i].addActionListener(new ActionListener() {
+        			public void actionPerformed(ActionEvent e) {
+        				//for (int i=0;i<subCard.length;i++) {
+						if (e.getSource() == subCard[a]) {
+							
+							try {
+								player.fiveToHand(player.getSubdeck().get(a));
+								GUI.showGame(Player.players, board);
+			
+							} catch (IllegalActionException | IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+			    }
+        					
+			});
+		} 
+        	}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
