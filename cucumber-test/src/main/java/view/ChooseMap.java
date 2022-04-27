@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import model.board.BlankBoard;
 import model.board.Board;
 import model.main.Player;
 import model.tile.Robot;
@@ -30,16 +31,14 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private boolean medium;
 	private boolean hard;
 	private JLabel title;
-	static Player p1;
-	static Player p2;
+
 
 	
 	
 	
 	
 	public ChooseMap() {
-		p1 = new Player();
-		p2 = new Player();
+	
 		
 		
 		
@@ -186,9 +185,8 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && easy == true) {
 			try {
-				GUI.showGame(Player.players,new model.board.BlankBoard());
-				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
-				p1.setRobot((Robot) Board.getTile(new Position(1,6)));
+				roboController.setBoard(1);
+				GUI.showGame(null);
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -200,7 +198,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && medium == true) {
 			try {
-				GUI.showGame(Player.players,new model.board.MediumBoard());
+				GUI.showGame(null);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -211,7 +209,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else {
 			try {
-				GUI.showGame(Player.players,new model.board.FinalBoard());
+				GUI.showGame(null);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

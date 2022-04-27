@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.card.*;
 import model.tile.Robot;
+import model.tile.Tile;
 import utilities.GameSettings;
 import utilities.Position;
 import utilities.GameSettings.PlayerStatus;
@@ -210,7 +211,7 @@ public class Player {
     
     
     public boolean isHandFull() {
-		return handFull;
+		return this.handFull;
 	}
 
 	
@@ -219,7 +220,7 @@ public class Player {
 	
     
 	public Robot getRobot() {
-		return robot;
+		return this.robot;
 	}
 
 	public void setRobot(Robot robot) {
@@ -234,7 +235,7 @@ public class Player {
 	}
     
     public GameSettings.PlayerStatus getPlayerStatus() {
-		return playerStatus;
+		return this.playerStatus;
 	}
 
 	public void setPlayerStatus(GameSettings.PlayerStatus playerStatus) {
@@ -250,7 +251,7 @@ public class Player {
 	}
 
 	public ArrayList<Card> getSubdeck() {
-		return subdeck;
+		return this.subdeck;
 	}
 
 	public void setSubdeck(ArrayList<Card> subdeck) {
@@ -275,16 +276,17 @@ public class Player {
 	}
 
 	public boolean isSubdeckFull() {
-		return subdeckFull;
+		return this.subdeckFull;
 	}
 
 	public int getPlayerID() {
-		return playerID;
+		return this.playerID;
 	}
 
 	public void set(Card card, EmptyCard emptyCard) {
 		card = emptyCard;
 		
 	}
+
     
 }

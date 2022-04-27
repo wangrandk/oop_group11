@@ -17,14 +17,5 @@ import java.net.URL;
 
 
 class SelectPlayersPanel extends Player{
-static Player player1;
-static Player player2;
-   
 
-    
-    public SelectPlayersPanel() {
-    	player1 = new Player();
-    	player2 = new Player();
-    	
-    }
 }
