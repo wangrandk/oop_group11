@@ -30,16 +30,13 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private boolean medium;
 	private boolean hard;
 	private JLabel title;
-	static Player p1;
-	static Player p2;
+
 
 	
 	
 	
 	
 	public ChooseMap() {
-		p1 = new Player();
-		p2 = new Player();
 		
 		
 		
@@ -53,7 +50,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 			e.printStackTrace();
 		}
         start = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
-        start.addActionListener(this);
+        addListeners(start,this);
         
         
         arrowRight = new Button("menu_buttons/arrowRight.png");
@@ -92,33 +89,10 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		
 	}
+	public void addListeners(JButton b,ActionListener listener) {
+		b.addActionListener(listener);
+	}
 	
-//	public void addListeners() {
-//		int level = 1;
-//		BorderLayout layout = (BorderLayout)mapPanel.getLayout();
-//		arrowLeft.addActionListener(new ActionListener() {
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//		switch (level) {
-//		case 1:
-//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-//	        mapPanel.add(easyLabel,BorderLayout.CENTER);
-//	        break;
-//	        
-//		case 2:
-//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-//	        mapPanel.add(mediumLabel,BorderLayout.CENTER);
-//	        level--;
-//	        break;
-//		case 3:
-//			mapPanel.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-//	        mapPanel.add(hardLabel,BorderLayout.CENTER);
-//	        level--;
-//	        break;
-//		}
-//		}
-//	});
-//	}
 	
 	
 	public void showEasy() {
@@ -187,7 +161,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		else if (e.getSource() == start && easy == true) {
 			try {
 //				GUI.showGame(Player.players,new model.board.BlankBoard());
-				GUI.showGame(new Player(),new model.board.BlankBoard());
+				GUI.showGame(roboController.p1,roboController.BlankBoard);
 
 //				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 //				p1.setRobot((Robot) Board.getTile(new Position(1,6)));

@@ -184,7 +184,9 @@ public class controlView extends JPanel implements ActionListener {
 }
 
 	
-	
+	public void addListeners(ActionListener listener) {
+		addActionListener(listener);
+	}
 
 
 	@Override
@@ -230,21 +232,14 @@ public class controlView extends JPanel implements ActionListener {
 			playerRobot.setSpawnPosition(new Position(1,4));
 
 
-			for (int i = 0; i < player.getHand().size();i++) {
-				Card cardMovement = player.getHand().get(i);
-				
-				
-				
-				cardMovement.setAction(playerRobot);
-				Board.doObstacleAction(playerRobot, player);
-				try {
-//					GUI.showGame(Player.players, board);
-					GUI.showGame(player, board);
+			roboController.moveRobot(player);
+			try {
+//				GUI.showGame(Player.players, board);
+				GUI.showGame(player, board);
 
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 			
 
