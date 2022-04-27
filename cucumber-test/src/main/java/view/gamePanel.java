@@ -9,37 +9,36 @@ import javax.swing.JPanel;
 
 import model.board.Board;
 import model.main.Player;
+import model.tile.Tile;
 
 public class gamePanel extends JPanel {
 	private boardView boardView;
 	private controlView controlView;
 	private Image imageBG;
 	private Player player;
-	private Board board;
 
 	
-	public gamePanel(Player player, Board board) throws IOException {
+	public gamePanel(Player player) throws IOException {
 		this.player = player;
-		this.board = board;
 		setLayout(null);
 		setSize(1000,1000);
-		boardView = new boardView(board);
-		controlView = new controlView(player,board);
-		add(boardView);
+		boardView = new boardView();
+		controlView = new controlView(player);
 		add(controlView);
-		revalidate();
-		repaint();
+		add(boardView);
+
+		
 		
 	}
 	
 	public Player getPlayer() {
-        return player;
+        return this.player;
     }
 	
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-//        g.drawImage(imageBG, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(imageBG, 0, 0, getWidth(), getHeight(), this);
     }
 	
 	public void update() {
