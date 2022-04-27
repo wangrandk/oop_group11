@@ -30,7 +30,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private boolean medium;
 	private boolean hard;
 	private JLabel title;
-	static Player p1 = new Player();
+	static Player player1;
 
 
 	
@@ -39,7 +39,9 @@ public class ChooseMap extends JPanel implements ActionListener {
 	
 	public ChooseMap() {
 		
-		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
+		player1 = new Player();
+		
+		player1.setRobot((Robot) Board.getTile(new Position(1,4)));
 		
         setLayout(null);
 		mapPanel = new StyledJPanel(new BorderLayout());
@@ -73,8 +75,6 @@ public class ChooseMap extends JPanel implements ActionListener {
         
        
         
-//        levelPanel.add(easyLabel,BorderLayout.NORTH);
-//        levelPanel.add(easyPic,BorderLayout.CENTER);
         
         mapPanel.add(arrowLeft,BorderLayout.WEST);
         mapPanel.add(arrowRight,BorderLayout.EAST);
@@ -159,7 +159,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		else if (e.getSource() == start && easy == true) {
 			try {
 //				GUI.showGame(Player.players,new model.board.BlankBoard());
-				GUI.showGame(p1,new model.board.BlankBoard());
+				GUI.showGame(player1,new model.board.BlankBoard());
 
 //				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 //				p1.setRobot((Robot) Board.getTile(new Position(1,6)));
