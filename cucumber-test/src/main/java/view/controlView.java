@@ -185,22 +185,24 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 			}
 		}
 		if (e.getSource() == nextTurnButton) {
-
-
-			for (int i = 0; i < player.getHand().size();i++) {
-				Card cardMovement = player.getHand().get(i);
-				
-				
-				
-				cardMovement.setAction(player.getRobot());
-				Board.doObstacleAction(player.getRobot(), player);
-				try {
-					GUI.showGame(player);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+			
+			for (Player player : Player.players) {
+				for (int i = 0; i < player.getHand().size();i++) {
+					Card cardMovement = player.getHand().get(i);
+					
+					
+					
+					cardMovement.setAction(player.getRobot());
+					Board.doObstacleAction(player.getRobot(), player);
+					try {
+						GUI.showGame(player);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
+			
 			
 
 		}

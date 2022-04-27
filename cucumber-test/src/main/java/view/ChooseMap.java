@@ -198,6 +198,8 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && medium == true) {
 			try {
+				roboController.setBoard(2);
+
 				GUI.showGame(null);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -209,6 +211,8 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else {
 			try {
+				roboController.setBoard(3);
+
 				GUI.showGame(null);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block

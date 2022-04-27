@@ -72,7 +72,6 @@ public class GUI {
 	}
 	
 	public static void showGame(Player player) throws IOException {
-		roboController.setRobots();
 
 		mainframe.setPreferredSize(new Dimension(1000,1000));
 		mainframe.setLayout(new BorderLayout());
@@ -84,6 +83,8 @@ public class GUI {
 		
 
 		if (isChooseMap == true) {
+			roboController.setRobots();
+
 			mainframe.remove(chooseMap);
 			isChooseMap = false;
 			tabbedPane = new JTabbedPane();

@@ -26,6 +26,7 @@ public class roboController {
 	public static void main(String[] args) throws IOException {
 		p1 = new Player();
 		p2 = new Player();
+		
 		deck = Deck.getInstance().getDeck();
 		newRound();
 
@@ -48,7 +49,8 @@ public class roboController {
 
 		// Creates the Deck (Statc Accessible)
 		 
-	
+
+		
 		
 		
 		/*
@@ -70,7 +72,13 @@ public class roboController {
 	
 	public static void setBoard(int i) {
 		if (i == 1) {
-			board = new BlankBoard();
+			board = new EasyBoard();
+		}
+		else if (i == 2) {
+			board = new MediumBoard();
+		}
+		else if (i == 3) {
+			board = new FinalBoard();
 		}
 		
 	}
@@ -80,7 +88,9 @@ public class roboController {
 		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
 		
 		p1.getRobot().setPosition(new Position(1,4));
-		p1.getRobot().setPosition(new Position(1,6));
+		p2.getRobot().setPosition(new Position(1,6));
+		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
+		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
 	}
 		
 		 		 
@@ -88,11 +98,16 @@ public class roboController {
 	
 	// Starts a New Round
 	public static void newRound() {
+		
 		for (Player player : Player.players ){
 			
 			// deal Subdeck for each player
 			player.setSubdeck(new SubDeck(deck).getSubdeck());
 			
+			
+			
+			// Stores robots initial positions
+
 			
 			// Set the players hand to EMPTY CARDS
 //			player.setHand(Player.generateEmptyHand());
