@@ -11,11 +11,12 @@ import model.Game;
 import model.board.Board;
 import utilities.EventList;
 import utilities.GameSettings;
-
+import utilities.Position;
 import model.Game;
 import model.board.Board;
 import model.card.Card;
 import model.card.CardCompare;
+import model.tile.Tile;
 
 public class Turn {
 	private final Game model;
@@ -49,7 +50,6 @@ public class Turn {
         revealProgrammedCards();
         sortActiveCards();
         executeActiveCards();
-        executeBoardElements();
         checkIfSomeoneDead();
         EventList.getInstance().publish(EventList.Event.UPDATE_BOARD, null, null);
         EventList.getInstance().publish(EventList.Event.UPDATE_STATUS, null, null);
@@ -66,7 +66,6 @@ public class Turn {
     private void revealProgrammedCards() {
         for (Player player : players) {
             ArrayList<Card> handcards = player.getHand();
-            handcards.setHidden(false); /* [James] Do we have this method or not? */
             activeCards.add(handcards.get(turnIndex - 1));
             activeCardPlayer.put(handcards.get(turnIndex - 1), player);
             System.out.println("picked card with index " + turnIndex + " from " + player.getPlayerID());
@@ -89,125 +88,28 @@ public class Turn {
         for (Card card : activeCards) {
             Player player = activeCardPlayer.get(card);
             if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
-                ArrayList<String> actions = card.getCard();
                 EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "Priority " + card.getpoints() + ": \n", null);
                 EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE,  player.getPlayerID() + " ", null);
                 EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE,  card.getMessage() + "\n", null);
-                for (GameAction action : actions) {
-                    player.setMovingDirection(player.getDirection());
-                    executeAction(action,player);
-                }
+                executeActionAndBoardElements(card, player);
             }
         }
     }
 
     /**
      * Performs the given action for the given player.
-     * If the action is a move action the method checks if the player can
-     * move there. If it can it checks if there is another player present
-     * at the new position. If there is, it calls itself again on that player.
-     * This creates the "pushing" logic on the board.
-     * If any of these modes fail the methods returns false which causes
-     * all of the movement for all players in the chain to be aborted.
-     * This creates the "hitting a wall" logic on the board.
-     * @param action The game action to be performed.
-     * @param player The player to be affected by the action.
-     * @return True if all whole action chain is good, false if any action fails.
+     * The function for facing different Tiles or Players is setting in each Tile 
+     * @param card The card to be performed.
+     * @param player The player to be affected by the card.
      */
-    private boolean executeAction(GameAction action, Player player) {
-        action.doAction(player);
-        if (action instanceof MovePlayer || action instanceof BackUpPlayer) {
-            if (!playerIsHittingWall(player)) {
-                if (enemyAtNextPosition(player.getNextPosition()) != null) {
-                    Player enemy = enemyAtNextPosition(player.getNextPosition());
-                    enemy.setMovingDirection(player.getMovingDirection());
-                    if (executeAction(new MovePlayer(), enemy)) {
-                        player.setPosition(player.getNextPosition().clone());
-                        for (GameAction tileBeforeAction : board.getTile(player.getPosition()).getBeforeAction()) {
-                            tileBeforeAction.doAction(player);
-                        }
-                        return true;
-                    }
-                } else {
-                    player.setPosition(player.getNextPosition().clone());
-                    try {
-
-                        for (GameAction tileBeforeAction : board.getTile(player.getPosition()).getBeforeAction()) {
-                            tileBeforeAction.doAction(player);
-                        }
-                        return true;
-
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        // If player is out of bounds we kill him
-                        System.out.println("Player fell of board and died");
-                        player.kill();
-                    }
-                }
-            }
-        }
-        return false;
+    private void executeActionAndBoardElements(Card card, Player player) {
+    	card.setAction(player.getRobot());
+    	EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , Color.MAGENTA);
+		this.board.doObstacleAction(player.getRobot(), player);
+    		
     }
-
-    /**
-     * Returns if a player is hitting a wall when moving to its new position.
-     * @param player The player to check.
-     * @return True if player would hit a wall, false if not.
-     */
-    private boolean playerIsHittingWall(Player player) {
-        for (Attribute attribute: model.getBoard().getTile(player.getPosition()).getBeforeAttributes()) {
-            if (attribute instanceof WallAttribute) {
-                if (player.getMovingDirection() == (((WallAttribute) attribute).getDirection())){
-                    return true;
-                }
-            }
-        }
-        try {
-            for (Attribute attribute: model.getBoard().getTile(player.getNextPosition()).getBeforeAttributes()) {
-                if (attribute instanceof WallAttribute) {
-                    if (player.getMovingDirection() == (((WallAttribute) attribute).getDirection().getOpposite())) {
-                        return true;
-                    }
-                }
-            }
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    /**
-     * Check if there is another player at a position and returns that player if there is.
-     * @param position The position to check.
-     * @return A player if found, otherwise null.
-     */
-    private Player enemyAtNextPosition(Position position) {
-        for (Player enemy : players) {
-            if (position.equals(enemy.getPosition())) {
-                return enemy;
-            }
-        }
-        return null;
-    }
-
-    // TODO Give priority to game tiles so we can execute some tiles before others
-    private void executeBoardElements() {
-        EventList.getInstance().publish(EventList.Event.PRINT_MESSAGE, "TILE ACTIONS" + "\n" , Color.MAGENTA);
-        for (Player player : players) {
-            if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
-                try {
-                    for (GameAction action : model.getBoard().getTile(player.getRobot().getPosition()).doAction(player.getRobot(), player)) {
-                        // TODO Set player moving direction from tiles direction
-                        executeAction(action, player);
-                    }
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("Player fell and died");
-                    player.setLife(0);
-                    player.setPlayerStatus(GameSettings.PlayerStatus.DEAD);
-                }
-            }
-        }
-    }
-
+    
+    
     /**
      * Checks if only one player is dead and all others are alive
      */ 

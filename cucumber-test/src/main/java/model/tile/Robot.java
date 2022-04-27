@@ -123,7 +123,17 @@ public class Robot extends Tile {
 		return this.cardRotation;
 	}
 
-
+	@Override
+	public void doAction(Robot robot, Player player) {
+		// Nothing happens to the Player
+		
+		// Robot remains on the initial same position
+		robot.setPosition(robot.getInitialPosition());
+		
+		// Nothing Changes on the board
+		
+		
+	}
 
 }
 	
