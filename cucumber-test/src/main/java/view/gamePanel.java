@@ -18,13 +18,11 @@ public class gamePanel extends JPanel {
 	private Board board;
 
 	
-	public gamePanel(Player player, Board board) throws IOException {
-		this.player = player;
-		this.board = board;
+	public gamePanel() throws IOException {
 		setLayout(null);
 		setSize(1000,1000);
 		boardView = new boardView(board);
-		controlView = new controlView(player,board);
+		controlView = new controlView();
 		add(boardView);
 		add(controlView);
 		revalidate();

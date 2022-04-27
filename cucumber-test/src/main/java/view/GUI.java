@@ -80,7 +80,7 @@ public class GUI implements IEventHandler{
 //		}
 //	}
 	
-	public static void showGame(ArrayList<Player> players,Board board) throws IOException {
+	public static void showGame() throws IOException {
 //		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 //		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
 //		mainframe.setPreferredSize(new Dimension(1000,1000));
@@ -88,8 +88,8 @@ public class GUI implements IEventHandler{
 		mainframe.setLayout(new BorderLayout());
 		JTabbedPane tabbedPane = new JTabbedPane();
 		
-		for (Player player : players) {
-			gamePanels.add(new gamePanel(player,board));
+		for (Player player : Player.players) {
+			gamePanels.add(new gamePanel());
 		}
 		
 		for (gamePanel panel : gamePanels) {
@@ -207,8 +207,8 @@ public class GUI implements IEventHandler{
 	}
 
 	private void createGamePanels() throws IOException {
-		for (Player player : model.getPlayers()) {
-            gamePanels.add(new gamePanel(player, model.getBoard()));
+		for (Player player : Player.players) {
+            gamePanels.add(new gamePanel());
         }
 		
 	}

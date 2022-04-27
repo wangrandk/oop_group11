@@ -16,6 +16,7 @@ import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Pit;
 import model.tile.Robot;
+import model.tile.Tile;
 import utilities.GameSettings;
 import utilities.IllegalActionException;
 import utilities.Position;
@@ -23,34 +24,36 @@ import utilities.Position;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
+import view.*;
+import model.board.*;
 
 public class controlView extends JPanel implements ActionListener {
 	
 	private JPanel controlPanel;
 	private JPanel handPanel;
 	private JPanel deckPanel;
-	public static Player player;
-	private static ArrayList<Card> deck = Deck.getInstance().getDeck();;
+//	public static Player player;
+//	private static ArrayList<Card> deck = Deck.getInstance().getDeck();;
     Button[] handCard = new Button[5];
     Button[] subCard = new Button[9];
-    public static Board board;
     private Button readyButton;
     private JLabel livesLabel;
     private JLabel playerNameLabel;
     private Button nextTurnButton;
     private JLabel robotImage;
+	private Tile[][] board;
+    
  
 
-    public static ArrayList<Card> subdeck1 = new SubDeck(deck).getSubdeck();
+//    public static ArrayList<Card> subdeck1 = new SubDeck(deck).getSubdeck();
     
     public static Robot playerRobot = (Robot) Board.getTile(new Position(1,4));
 	
 
+ 
 	
-	public controlView(Player player, Board board) throws IOException {
-		this.board = board;
-		this.player = player;
+	public controlView() throws IOException {
+		this.board = Board.board;
 		setLayout(null);
 		
 		setLocation(0,66*12+5);
@@ -68,20 +71,20 @@ public class controlView extends JPanel implements ActionListener {
 
 
 		
-		player.setSubdeck(subdeck1);
+//		player.setSubdeck(subdeck1);
 
 		
-		
-		ArrayList <Card> fakeHand = new ArrayList<Card>();
-		ArrayList <Card> emptyHand = new ArrayList<Card>();
-
-		
-		fakeHand.add(player.getSubdeck().get(0));
-		fakeHand.add(player.getSubdeck().get(1));
-		fakeHand.add(player.getSubdeck().get(2));
-		fakeHand.add(player.getSubdeck().get(3));
-		fakeHand.add(player.getSubdeck().get(4));
-		emptyHand.add(player.getSubdeck().get(5));
+//		
+//		ArrayList <Card> fakeHand = new ArrayList<Card>();
+//		ArrayList <Card> emptyHand = new ArrayList<Card>();
+//
+//		
+//		fakeHand.add(player.getSubdeck().get(0));
+//		fakeHand.add(player.getSubdeck().get(1));
+//		fakeHand.add(player.getSubdeck().get(2));
+//		fakeHand.add(player.getSubdeck().get(3));
+//		fakeHand.add(player.getSubdeck().get(4));
+//		emptyHand.add(player.getSubdeck().get(5));
 
 	
 		
@@ -99,8 +102,6 @@ public class controlView extends JPanel implements ActionListener {
         deckPanel.setLocation(64*15/2,0);
         controlPanel.setLocation(64*15/2+(64*15)/6,0);
         
-        player.setRobot(playerRobot);
-
         
         
         readyButton = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
@@ -118,21 +119,21 @@ public class controlView extends JPanel implements ActionListener {
         livesLabel = new JLabel();
         livesLabel.setSize(64,20);
         livesLabel.setLocation(5,20);
-        if (player.getLife() == 3) {
+        if (Player.players.get(0).getLife() == 3) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
         }
-        else if (player.getLife() == 2) {
+        else if (Player.players.get(0).getLife() == 2) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/twolives.png")));
 
         }
-        else if (player.getLife() == 1) {
+        else if (Player.players.get(0).getLife() == 1) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/onelife.png")));
 
         }
         controlPanel.add(livesLabel);
         
         robotImage = new JLabel();
-        robotImage.setIcon(new ImageIcon(player.getRobot().getImage()));
+        robotImage.setIcon(new ImageIcon(Player.players.get(0).getRobot().getImage()));
         robotImage.setSize(40,40);
         robotImage.setLocation(270,10);
         controlPanel.add(robotImage);
@@ -151,7 +152,7 @@ public class controlView extends JPanel implements ActionListener {
 //    		}
     		
 
-    		handCard[i] = new Button(player.getHand().get(i).getCardImage());
+    		handCard[i] = new Button(Player.players.get(0).getHand().get(i).getCardImage());
         	handCard[i].addActionListener(this);
             handPanel.add(handCard[i]);
     		}
@@ -162,7 +163,7 @@ public class controlView extends JPanel implements ActionListener {
         	
           
     	for (int i =0; i<(1*9); i++){
-    		subCard[i] = new Button(player.getSubdeck().get(i).getCardImagePick());
+    		subCard[i] = new Button(Player.players.get(0).getSubdeck().get(i).getCardImagePick());
         	subCard[i].addActionListener(this);
             deckPanel.add(subCard[i]);
     	}
@@ -187,8 +188,8 @@ public class controlView extends JPanel implements ActionListener {
 			if (e.getSource() == subCard[i]) {
 				
 				try {
-					player.fiveToHand(player.getSubdeck().get(i));
-					GUI.showGame(Player.players, board);
+					Player.players.get(0).fiveToHand(Player.players.get(0).getSubdeck().get(i));
+					GUI.showGame();
 
 				} catch (IllegalActionException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -206,7 +207,7 @@ public class controlView extends JPanel implements ActionListener {
 			if (e.getSource() == handCard[i]) {
 				
 				try {
-					player.replayCard(player.getHand().get(i));
+					Player.players.get(0).replayCard(Player.players.get(0).getHand().get(i));
 					GUI.showGame(Player.players, board);
 
 				} catch (IOException e1) {
@@ -220,15 +221,15 @@ public class controlView extends JPanel implements ActionListener {
 			playerRobot.setSpawnPosition(new Position(1,4));
 
 
-			for (int i = 0; i < player.getHand().size();i++) {
-				Card cardMovement = player.getHand().get(i);
+			for (int i = 0; i < Player.players.get(0).getHand().size();i++) {
+				Card cardMovement = Player.players.get(0).getHand().get(i);
 				
 				
 				
 				cardMovement.setAction(playerRobot);
-				Board.doObstacleAction(playerRobot, player);
+				Board.doObstacleAction(playerRobot, Player.players.get(0));
 				try {
-					GUI.showGame(Player.players, board);
+					GUI.showGame();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -246,14 +247,14 @@ public class controlView extends JPanel implements ActionListener {
 
 
 	public void updateStatusView() {
-		if (player.getLife() == 3) {
+		if (Player.players.get(0).getLife() == 3) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
         }
-        else if (player.getLife() == 2) {
+        else if (Player.players.get(0).getLife() == 2) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/twolives.png")));
 
         }
-        else if (player.getLife() == 1) {
+        else if (Player.players.get(0).getLife() == 1) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/onelife.png")));
 
         }

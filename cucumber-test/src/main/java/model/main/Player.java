@@ -26,7 +26,7 @@ public class Player {
 	private static int countPlayerId = 1;
 	private Robot robot;
 	boolean handFull;
-	private int handSize = 5;
+	private static int handSize = 5;
 
 	
 	 
@@ -44,7 +44,7 @@ public class Player {
 		players.add(this);
 	} 
 	
-	public ArrayList<Card> generateEmptyHand(){
+	public static ArrayList<Card> generateEmptyHand(){
 		ArrayList<Card> emptyHand = new ArrayList<Card>();
 		/*
 		emptyHand.add(new EmptyCard(0));
