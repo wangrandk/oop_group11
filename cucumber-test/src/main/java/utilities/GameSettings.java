@@ -17,7 +17,8 @@ public class GameSettings {
 		ALIVE,
 		DEAD,
 		WON,
-		POWERDOWN
+		POWERDOWN,
+		KAPUT
 	}
 }
 

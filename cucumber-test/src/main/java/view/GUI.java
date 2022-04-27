@@ -17,7 +17,7 @@ import utilities.IEventHandler;
 import utilities.Position;
 import view.SelectPlayersPanel;
 
-public class GUI implements IEventHandler{
+public class GUI{
 	private static JFrame mainframe;
 	private static startpanel startPanel;
     private static SelectPlayersPanel selectPlayersPanel;
@@ -29,6 +29,7 @@ public class GUI implements IEventHandler{
     private final static ArrayList<gamePanel> gamePanels = new ArrayList<>();
     private final static JTabbedPane tabbedPane = new JTabbedPane();
 	private Game model;
+
     
 //    static Player p1 = new Player();
 //    static Player p2 = new Player();
@@ -80,38 +81,40 @@ public class GUI implements IEventHandler{
 //		}
 //	}
 	
-	public static void showGame(ArrayList<Player> players,Board board) throws IOException {
+	public static void showGame(Player player,Board board) throws IOException {
 //		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 //		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
 //		mainframe.setPreferredSize(new Dimension(1000,1000));
-		mainframe.setLayout(null);
+//		mainframe.setLayout(null);
 		mainframe.setLayout(new BorderLayout());
-		JTabbedPane tabbedPane = new JTabbedPane();
+
 		
-		for (Player player : players) {
-			gamePanels.add(new gamePanel(player,board));
-		}
-		
-		for (gamePanel panel : gamePanels) {
-			tabbedPane.add(panel.getPlayer().getRobot().getName(),panel);
-		}
+//		for (Player player : players) {
+//			gamePanels.add(new gamePanel(player,board));
+//		}
+//		
+//		for (gamePanel panel : gamePanels) {
+//			tabbedPane.add(panel.getPlayer().getRobot().getName(),panel);
+//		}
 
 		if (isChooseMap == true) {
 			mainframe.remove(chooseMap);
 			isChooseMap = false;
+			mainframe.setPreferredSize(new Dimension(1000,1000));
 
 			
 		}
 		else {
-			mainframe.remove(tabbedPane);
+			mainframe.remove(gamePanel);
 		}
-		
+		gamePanel = new gamePanel(player,board);
+
 
 
 //		tabbedPane.add("GamePanel",gamePanel);
 //		tabbedPane.add("GamePanel",chooseMap);
 
-		mainframe.add(tabbedPane);
+		mainframe.add(gamePanel,BorderLayout.CENTER);
 		mainframe.pack();
 		mainframe.revalidate();
 
@@ -120,101 +123,102 @@ public class GUI implements IEventHandler{
 
 
 	}
+}
 	         /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////	
-	@Override
-    public void onEvent(EventList.Event evt, Object o, Object o2) {
-        switch (evt) {
-
-            case SHOW_GAMEPANEL:
-			try {
-				createGamePanels();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-                createTabbedPane();
-                showGamePanels();
-                break;
-            case NEW_ROUND:
-                setGamePanelsForNewRound();
-                break;
-            case PICK_CARDS:
-                newCardsForPlayer((Player) o);
-                break;
-            case NEW_TURN:
-                setGamePanelsForNewTurn((int) o);
-                break;
-            case UPDATE_BOARD:
-                for(gamePanel panel : gamePanels)
-                    panel.getBoardView().update();
-                break;
-            case UPDATE_STATUS:
-                for(gamePanel panel : gamePanels)
-                    panel.getControlView().updateStatusView();
-                break;
-        }
-    }
-
-	private void setGamePanelsForNewTurn(int turnIndex) {
-		for (gamePanel panel : gamePanels) {
-            panel.getControlView().setTurnIndicator(turnIndex);
-            panel.getControlView().setRegisterCardIconsNotChangeable();
-            panel.getControlView().resetNewCardButtons();
-            panel.getControlView().setDoneButtonEnabled(false);
-            panel.getControlView().setNextTurnButtonEnabled(true);
-            panel.getControlView().setPowerDownButtonEnabled(true);
-        }
-		
-	}
-
-	private void newCardsForPlayer(Player player) {
-		for (gamePanel panel : gamePanels) {
-            if (panel.getPlayer().getPlayerID() == player.getPlayerID()) {
-                panel.getControlView().newCardsToPick();
-                panel.getControlView().setRegisterCardIconsChangeable();
-                panel.getControlView().setDoneButtonEnabled(true);
-            }
-        }
-		
-	}
-
-	private void setGamePanelsForNewRound() {
-		for (gamePanel panel : gamePanels) {
-            panel.getControlView().setTurnIndicator(0);
-            panel.getControlView().setRegisterCardIconsChangeable();
-            panel.getControlView().resetRegisterCards();
-            panel.getControlView().resetNewCardButtons();
-            panel.getControlView().setNextTurnButtonEnabled(false);
-            panel.getControlView().setPowerDownButtonEnabled(false);
-        }
-		
-	}
-
-	private void showGamePanels() {
-		 mainframe.remove(chooseMap);   //is it taken from 'selectMapPanel'
-	        mainframe.add(tabbedPane, BorderLayout.CENTER);
-	        mainframe.revalidate();
-	        mainframe.repaint();
-		
-	}
-
-	private void createTabbedPane() {
-		for (gamePanel panel : gamePanels) {
-            tabbedPane.addTab(panel.getPlayer().getRobot().getName(),panel);
-        }
-		
-	}
-
-	private void createGamePanels() throws IOException {
-		for (Player player : model.getPlayers()) {
-            gamePanels.add(new gamePanel(player, model.getBoard()));
-        }
-		
-	}
-	
-	
-}
+//	@Override
+//    public void onEvent(EventList.Event evt, Object o, Object o2) {
+//        switch (evt) {
+//
+//            case SHOW_GAMEPANEL:
+//			try {
+//				createGamePanels();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//                createTabbedPane();
+//                showGamePanels();
+//                break;
+//            case NEW_ROUND:
+//                setGamePanelsForNewRound();
+//                break;
+//            case PICK_CARDS:
+//                newCardsForPlayer((Player) o);
+//                break;
+//            case NEW_TURN:
+//                setGamePanelsForNewTurn((int) o);
+//                break;
+//            case UPDATE_BOARD:
+//                for(gamePanel panel : gamePanels)
+//                    panel.getBoardView().update();
+//                break;
+//            case UPDATE_STATUS:
+//                for(gamePanel panel : gamePanels)
+//                    panel.getControlView().updateStatusView();
+//                break;
+//        }
+//    }
+//
+//	private void setGamePanelsForNewTurn(int turnIndex) {
+//		for (gamePanel panel : gamePanels) {
+//            panel.getControlView().setTurnIndicator(turnIndex);
+//            panel.getControlView().setRegisterCardIconsNotChangeable();
+//            panel.getControlView().resetNewCardButtons();
+//            panel.getControlView().setDoneButtonEnabled(false);
+//            panel.getControlView().setNextTurnButtonEnabled(true);
+//            panel.getControlView().setPowerDownButtonEnabled(true);
+//        }
+//		
+//	}
+//
+//	private void newCardsForPlayer(Player player) {
+//		for (gamePanel panel : gamePanels) {
+//            if (panel.getPlayer().getPlayerID() == player.getPlayerID()) {
+//                panel.getControlView().newCardsToPick();
+//                panel.getControlView().setRegisterCardIconsChangeable();
+//                panel.getControlView().setDoneButtonEnabled(true);
+//            }
+//        }
+//		
+//	}
+//
+//	private void setGamePanelsForNewRound() {
+//		for (gamePanel panel : gamePanels) {
+//            panel.getControlView().setTurnIndicator(0);
+//            panel.getControlView().setRegisterCardIconsChangeable();
+//            panel.getControlView().resetRegisterCards();
+//            panel.getControlView().resetNewCardButtons();
+//            panel.getControlView().setNextTurnButtonEnabled(false);
+//            panel.getControlView().setPowerDownButtonEnabled(false);
+//        }
+//		
+//	}
+//
+//	private void showGamePanels() {
+//		 mainframe.remove(chooseMap);   //is it taken from 'selectMapPanel'
+//	        mainframe.add(tabbedPane, BorderLayout.CENTER);
+//	        mainframe.revalidate();
+//	        mainframe.repaint();
+//		
+//	}
+//
+//	private void createTabbedPane() {
+//		for (gamePanel panel : gamePanels) {
+//            tabbedPane.addTab(panel.getPlayer().getRobot().getName(),panel);
+//        }
+//		
+//	}
+//
+//	private void createGamePanels() throws IOException {
+//		for (Player player : model.getPlayers()) {
+//            gamePanels.add(new gamePanel(player, model.getBoard()));
+//        }
+//		
+//	}
+//	
+//	
+//}
 		
 	
 

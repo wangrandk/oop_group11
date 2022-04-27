@@ -186,9 +186,11 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && easy == true) {
 			try {
-				GUI.showGame(Player.players,new model.board.BlankBoard());
-				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
-				p1.setRobot((Robot) Board.getTile(new Position(1,6)));
+//				GUI.showGame(Player.players,new model.board.BlankBoard());
+				GUI.showGame(new Player(),new model.board.BlankBoard());
+
+//				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
+//				p1.setRobot((Robot) Board.getTile(new Position(1,6)));
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -200,7 +202,9 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && medium == true) {
 			try {
-				GUI.showGame(Player.players,new model.board.MediumBoard());
+//				GUI.showGame(Player.players,new model.board.MediumBoard());
+				GUI.showGame(new Player(),new model.board.MediumBoard());
+
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -211,7 +215,9 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else {
 			try {
-				GUI.showGame(Player.players,new model.board.FinalBoard());
+//				GUI.showGame(Player.players,new model.board.FinalBoard());
+				GUI.showGame(new Player(),new model.board.FinalBoard());
+
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

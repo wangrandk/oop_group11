@@ -139,18 +139,6 @@ public class controlView extends JPanel implements ActionListener {
 
  
     	for (int i = 0; i<handCard.length; i++){
-//    		if (player.getHand().size() == 0) {
-//    			handCard[i] = new Button("hidden.png");
-//	            handPanel.add(handCard[i]);
-//    		}
-    		
-    		
-//    		if (player.getHand().size() == 1) {
-//    			handCard[i] = new Button(player.getHand().get(i).getCardImage());
-//	            handPanel.add(handCard[i]);
-//    		}
-    		
-
     		handCard[i] = new Button(player.getHand().get(i).getCardImage());
         	handCard[i].addActionListener(this);
             handPanel.add(handCard[i]);
@@ -161,7 +149,7 @@ public class controlView extends JPanel implements ActionListener {
         	
         	
           
-    	for (int i =0; i<(1*9); i++){
+    	for (int i =0; i<subCard.length; i++){
     		subCard[i] = new Button(player.getSubdeck().get(i).getCardImagePick());
         	subCard[i].addActionListener(this);
             deckPanel.add(subCard[i]);
@@ -179,6 +167,24 @@ public class controlView extends JPanel implements ActionListener {
 	}
 	
 	
+  @Override
+  protected void paintComponent(Graphics g) {
+      super.paintComponent(g);
+      for (int i = 0; i < subCard.length;i++) {
+    	  if (player.getSubdeck().get(i) instanceof EmptyCard) {
+    	  }
+    	  else {
+              g.setColor(Color.WHITE);
+              g.setFont(new Font("Impact", Font.PLAIN, 20));
+              g.drawString(Integer.toString(player.getSubdeck().get(i).getpoints()), 34, 27);
+      }
+      
+      
+}
+}
+
+	
+	
 
 
 	@Override
@@ -188,7 +194,9 @@ public class controlView extends JPanel implements ActionListener {
 				
 				try {
 					player.fiveToHand(player.getSubdeck().get(i));
-					GUI.showGame(Player.players, board);
+//					GUI.showGame(Player.players, board);
+					GUI.showGame(player, board);
+
 
 				} catch (IllegalActionException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -207,7 +215,9 @@ public class controlView extends JPanel implements ActionListener {
 				
 				try {
 					player.replayCard(player.getHand().get(i));
-					GUI.showGame(Player.players, board);
+//					GUI.showGame(Player.players, board);
+					GUI.showGame(player, board);
+
 
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -228,7 +238,9 @@ public class controlView extends JPanel implements ActionListener {
 				cardMovement.setAction(playerRobot);
 				Board.doObstacleAction(playerRobot, player);
 				try {
-					GUI.showGame(Player.players, board);
+//					GUI.showGame(Player.players, board);
+					GUI.showGame(player, board);
+
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
