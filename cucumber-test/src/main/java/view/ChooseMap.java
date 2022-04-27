@@ -30,6 +30,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private boolean medium;
 	private boolean hard;
 	private JLabel title;
+	static Player p1 = new Player();
 
 
 	
@@ -38,7 +39,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 	
 	public ChooseMap() {
 		
-		
+		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 		
         setLayout(null);
 		mapPanel = new StyledJPanel(new BorderLayout());
@@ -50,8 +51,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 			e.printStackTrace();
 		}
         start = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
-        addListeners(start,this);
-        
+        start.addActionListener(this);
         
         arrowRight = new Button("menu_buttons/arrowRight.png");
         arrowRight.addActionListener(this);
@@ -89,9 +89,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		
 	}
-	public void addListeners(JButton b,ActionListener listener) {
-		b.addActionListener(listener);
-	}
+	
 	
 	
 	
@@ -161,7 +159,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		else if (e.getSource() == start && easy == true) {
 			try {
 //				GUI.showGame(Player.players,new model.board.BlankBoard());
-				GUI.showGame(roboController.p1,roboController.BlankBoard);
+				GUI.showGame(p1,new model.board.BlankBoard());
 
 //				p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 //				p1.setRobot((Robot) Board.getTile(new Position(1,6)));
@@ -177,7 +175,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		else if (e.getSource() == start && medium == true) {
 			try {
 //				GUI.showGame(Player.players,new model.board.MediumBoard());
-				GUI.showGame(new Player(),new model.board.MediumBoard());
+				GUI.showGame(roboController.p1,roboController.boards.get(1));
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -190,7 +188,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		else {
 			try {
 //				GUI.showGame(Player.players,new model.board.FinalBoard());
-				GUI.showGame(new Player(),new model.board.FinalBoard());
+				GUI.showGame(roboController.p1,roboController.boards.get(2));
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block

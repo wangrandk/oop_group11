@@ -28,10 +28,10 @@ public class boardView extends JPanel {
 	
 	public boardView(Board board) throws IOException {
 		setLayout(null);
-		setSize(64*numCols,66*numRows);
+		setSize(GameSettings.TILE_SIZE*numCols,GameSettings.TILE_SIZE*numRows);
 		setLocation(5,5);
 	    grid = new StyledJPanel(new GridLayout(numRows,numCols));
-        grid.setSize(64*numCols,66*numRows);
+        grid.setSize(GameSettings.TILE_SIZE*numCols,GameSettings.TILE_SIZE*numRows);
         for (int i =0; i<(numRows); i++){
             for (int j =0; j<numCols;j++) {
             	final JLabel label = new JLabel();

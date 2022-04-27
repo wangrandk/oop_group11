@@ -2,6 +2,7 @@ package model.main;
  
 import java.util.ArrayList;
 
+import model.board.Board;
 import model.card.*;
 import model.tile.Robot;
 import utilities.GameSettings;

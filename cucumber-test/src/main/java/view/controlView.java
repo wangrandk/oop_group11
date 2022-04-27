@@ -30,11 +30,11 @@ public class controlView extends JPanel implements ActionListener {
 	private JPanel controlPanel;
 	private JPanel handPanel;
 	private JPanel deckPanel;
-	public static Player player;
+	public Player player;
 	private static ArrayList<Card> deck = Deck.getInstance().getDeck();;
     Button[] handCard = new Button[5];
     Button[] subCard = new Button[9];
-    public static Board board;
+    public Board board;
     private Button readyButton;
     private JLabel livesLabel;
     private JLabel playerNameLabel;
@@ -42,9 +42,9 @@ public class controlView extends JPanel implements ActionListener {
     private JLabel robotImage;
  
 
-    public static ArrayList<Card> subdeck1 = new SubDeck(deck).getSubdeck();
-    
-    public static Robot playerRobot = (Robot) Board.getTile(new Position(1,4));
+//    public static ArrayList<Card> subdeck1 = new SubDeck(deck).getSubdeck();
+//    
+//    public static Robot playerRobot = (Robot) Board.getTile(new Position(1,4));
 	
 
 	
@@ -53,22 +53,11 @@ public class controlView extends JPanel implements ActionListener {
 		this.player = player;
 		setLayout(null);
 		
-		setLocation(0,66*12+5);
+		setLocation(0,GameSettings.TILE_SIZE*GameSettings.NUM_ROWS+5);
 		
-		ArrayList <Card> fakeSubdeck = new ArrayList<Card>();
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-		fakeSubdeck.add(new EmptyCard(0));
-
 
 		
-		player.setSubdeck(subdeck1);
+//		player.setSubdeck(subdeck1);
 
 		
 		
@@ -91,16 +80,13 @@ public class controlView extends JPanel implements ActionListener {
 	    controlPanel = new StyledJPanel(null);
 	    handPanel = new StyledJPanel(new GridLayout(1,5));
 	    deckPanel = new StyledJPanel(new GridLayout(9,1));
-	    handPanel.setSize(64*15/2,175);
-        controlPanel.setSize((64*15)/6*2,175);
-        deckPanel.setSize((64*15)/6,175);
+	    handPanel.setSize(GameSettings.TILE_SIZE*GameSettings.NUM_COLS/2,175);
+        controlPanel.setSize((GameSettings.TILE_SIZE*GameSettings.NUM_COLS)/6*2,175);
+        deckPanel.setSize((GameSettings.TILE_SIZE*GameSettings.NUM_COLS)/6,175);
         
         handPanel.setLocation(5,0);
-        deckPanel.setLocation(64*15/2,0);
-        controlPanel.setLocation(64*15/2+(64*15)/6,0);
-        
-        player.setRobot(playerRobot);
-
+        deckPanel.setLocation(GameSettings.TILE_SIZE*GameSettings.NUM_COLS/2,0);
+        controlPanel.setLocation(GameSettings.TILE_SIZE*GameSettings.NUM_COLS/2+(GameSettings.TILE_SIZE*GameSettings.NUM_COLS)/6,0);
         
         
         readyButton = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
@@ -184,9 +170,7 @@ public class controlView extends JPanel implements ActionListener {
 }
 
 	
-	public void addListeners(ActionListener listener) {
-		addActionListener(listener);
-	}
+	
 
 
 	@Override
@@ -228,9 +212,7 @@ public class controlView extends JPanel implements ActionListener {
 			}
 		}
 		if (e.getSource() == nextTurnButton) {
-			playerRobot.setPosition(new Position(1,4));
-			playerRobot.setSpawnPosition(new Position(1,4));
-
+			player.setRobot((Robot) Board.getTile(new Position(1,4)));
 
 			roboController.moveRobot(player);
 			try {
@@ -253,21 +235,10 @@ public class controlView extends JPanel implements ActionListener {
 
 
 	public void updateStatusView() {
-		if (player.getLife() == 3) {
-        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
-        }
-        else if (player.getLife() == 2) {
-        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/twolives.png")));
-
-        }
-        else if (player.getLife() == 1) {
-        	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/onelife.png")));
-
-        }
-        controlPanel.add(livesLabel);
+		
 		
 		/*lifeTokensPanel.setLifeTokens(player.getLifeTokens());*/
-       // robotStatusLabel.setText("<html><FONT COLOR=WHITE>Status: </FONT>" + player.getStatus());
+       // robotStatusLabel.setText("Dimly<FONT COLOR=WHITE>Status: </FONT>" + player.getStatus());
         switch (player.getPlayerStatus()) {
             case ALIVE:
                 //robotStatusLabel.setForeground(Color.GREEN);
