@@ -73,7 +73,7 @@ public abstract class Board {
 	// Updates the Position property of the robot.
 	public static void moveRobot(Robot robot) {
 		// Store the initial position of the robot, before the movement.
-		robot.setInitialPosition(robot.getPosition());
+//		robot.setInitialPosition(robot.getPosition());
 		
 		// Updates the current position of the robot.
 		if (robot.getOrientation() == GameSettings.Orientation.NORTH) {
