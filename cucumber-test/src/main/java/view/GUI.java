@@ -67,7 +67,7 @@ public class GUI implements IEventHandler{
 		isChooseMap = true;
 		
 	}
-	
+//dddggd	
 //	public void addGamePanels(Board board) throws IOException {
 //		for (Player player : Player.players) {
 //			gamePanels.add(new gamePanel(player,board));
