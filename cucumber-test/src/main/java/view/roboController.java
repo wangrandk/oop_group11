@@ -83,6 +83,8 @@ public class roboController {
 		
 	}
 	
+	
+	
 	public static void setRobots() {
 		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 		p2.setRobot((Robot) Board.getTile(new Position(1,6)));

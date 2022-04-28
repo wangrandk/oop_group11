@@ -14,6 +14,7 @@ import model.board.EasyBoard;
 import model.main.Player;
 import model.tile.Robot;
 import utilities.EventList;
+import utilities.GameSettings;
 import utilities.IEventHandler;
 import utilities.Position;
 import view.SelectPlayersPanel;
@@ -71,11 +72,7 @@ public class GUI {
 		}
 	}
 	
-	public static void showGame(Player player) throws IOException {
-
-		mainframe.setPreferredSize(new Dimension(1000,1000));
-		mainframe.setLayout(new BorderLayout());
-		
+	public static void showGame(Player player) throws IOException {	
 //		addGamePanels();
 //		createTabs();
 		
@@ -83,6 +80,10 @@ public class GUI {
 		
 
 		if (isChooseMap == true) {
+			int tileSize = GameSettings.TILE_SIZE;
+			int numCols = GameSettings.NUM_COLS;
+			mainframe.setPreferredSize(new Dimension(tileSize*numCols+30,1000));
+			mainframe.setLayout(new BorderLayout());
 			roboController.setRobots();
 
 			mainframe.remove(chooseMap);
