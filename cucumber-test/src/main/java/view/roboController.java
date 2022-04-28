@@ -28,6 +28,7 @@ public class roboController {
 	
 	public static void main(String[] args) throws IOException {
 		p1 = new Player();
+		p1.setLife(1);
 		p2 = new Player();
 		
 		deck = Deck.getInstance().getDeck();
@@ -101,16 +102,20 @@ public class roboController {
 						
 						// Once card is played, we can discard the card from the hand.
 						p1.getHand().set(turnNbr, new EmptyCard(0));
+						if (p1.isWinner()) {
+							GUI.showGameOverPanel(p1);
+						}
 					}
 					GUI.showGame(player);
 					turnNbr++;
 				}
 				else {
-					player.isPlayerAlone();
 					newRound();
 					GUI.showGame(player);
 					
 				}
+
+
 			}
 		
 		

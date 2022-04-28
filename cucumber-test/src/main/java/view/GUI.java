@@ -30,7 +30,9 @@ public class GUI {
     private static Boolean isChooseMap;
     private final static ArrayList<gamePanel> gamePanels = new ArrayList<>();
     private static JTabbedPane tabbedPane;
-	private Game model;
+	private static JPanel gameOverPanel;
+	private static int tileSize = GameSettings.TILE_SIZE;
+	private static int numCols = GameSettings.NUM_COLS;
   
     
 
@@ -80,8 +82,7 @@ public class GUI {
 		
 
 		if (isChooseMap == true) {
-			int tileSize = GameSettings.TILE_SIZE;
-			int numCols = GameSettings.NUM_COLS;
+			
 			mainframe.setPreferredSize(new Dimension(tileSize*numCols+30,1000));
 			mainframe.setLayout(new BorderLayout());
 			roboController.setRobots();
@@ -118,16 +119,24 @@ public class GUI {
 
 		}
 		
+		
+		
 
 
 //		tabbedPane.add("GamePanel",gamePanel);
 //		tabbedPane.add("GamePanel",chooseMap);
 		mainframe.add(tabbedPane);
 		mainframe.revalidate();
-		mainframe.repaint();
 
 
 
+	}
+	
+	public static void showGameOverPanel(Player player) throws IOException {
+		mainframe.setPreferredSize(new Dimension(tileSize*numCols+30,1000));
+		gameOverPanel = new gameOverPanel(player);
+		mainframe.add(gameOverPanel);
+		mainframe.revalidate();
 	}
 	
 	
