@@ -19,7 +19,7 @@ public class UTurn extends Card {
 	public UTurn(int points) {
 		super("UTurn",points);
 	}
-	
+	 
 
 	@Override
 	public void setAction(Robot robot) {

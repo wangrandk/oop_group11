@@ -29,4 +29,17 @@ Feature: Robot can move to left, right and Uturn
 		    |         "NORTH"     |	      "WEST"     |
 		    |         "WEST"      |	      "SOUTH"    |
 		    |         "SOUTH"     |	      "EAST"     |
+		
+		    
+  Scenario Outline: U-Turn
+    Given robot start direcation is <start_direction>
+    When uTurn card is applied to the robot
+    Then Roboto finish direction is <finish_direction>
+   
+	Examples:
+		    | start_direction     | finish_direction |
+		    |         "EAST"      |	      "WEST"    |
+		    |         "NORTH"     |	      "SOUTH"     |
+		    |         "WEST"      |	      "EAST"    |
+		    |         "SOUTH"     |	      "NORTH"     |
 
