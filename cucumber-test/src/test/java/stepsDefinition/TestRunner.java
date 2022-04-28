@@ -7,7 +7,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/FeatureFiles/Cards",
+@CucumberOptions(features = "src/test/resources/FeatureFiles/Player",
 				publish = true,
 				glue = {"stepsDefinition"},
 				plugin = {"pretty"}
