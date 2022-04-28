@@ -35,4 +35,5 @@ public class MoveTwo extends Card {
 		Board.moveRobot(robot);
 		
 	}
+	
 }

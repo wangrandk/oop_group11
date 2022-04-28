@@ -1,11 +1,15 @@
 package model.tile;
 
+import java.net.URL;
 import java.util.Collections;
 
 import model.board.Board;
 import model.main.Player;
 
 public class Beer extends Tile {
+	
+	private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/beer.png");
+
 	
 	@Override
 	public void doAction(Robot robot, Player player) {
@@ -21,6 +25,11 @@ public class Beer extends Tile {
 		// Update the board with the Blank Tile for the robot's intial position
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
 		
+	}
+	
+	@Override
+	public URL getImage() {
+		return tileImage;
 	}
 
 }

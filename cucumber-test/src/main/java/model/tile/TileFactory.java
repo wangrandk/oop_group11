@@ -43,12 +43,12 @@ public class TileFactory {
         	case 4:
         		tile = new Robot();
         		break;
-//        	case 5:
-//        		tile = new Heal();
-//        		break;
-//        	case 6:
-//        		tile = new ConveyorBelt();
-//        		break;
+        	case 5:
+        		tile = new Heal();
+        		break;
+        	case 6:
+        		tile = new ConveyorBelt();
+        		break;
         	// Pit
         	case 11:
         		tile = new Pit();
@@ -56,9 +56,9 @@ public class TileFactory {
         	case 12:
         		tile = new Wall();
         		break;
-//        	case 13:
-//        		tile = new Beer();
-//        		break;
+        	case 13:
+        		tile = new Beer();
+        		break;
         	default:
         		tile = new BlankTile();
         		break;

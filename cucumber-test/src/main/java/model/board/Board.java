@@ -36,6 +36,8 @@ public abstract class Board {
 	public static void setTile(Tile tile, Position position) {
 		// Check the new Position
 		board[position.getX()][position.getY()] = tile;
+		
+		// Set the tile to the old position.
 		tile.setPosition(position);
 	}
 	
@@ -72,8 +74,10 @@ public abstract class Board {
 	 
 	// Updates the Position property of the robot.
 	public static void moveRobot(Robot robot) {
-		// Store the initial position of the robot, before the movement.
-//		robot.setInitialPosition(robot.getPosition());
+		
+		// Store the initial position of the robot, before the movement
+		// So we can use it later to update the previous tile.
+		robot.setInitialPosition(robot.getPosition());
 		
 		// Updates the current position of the robot.
 		if (robot.getOrientation() == GameSettings.Orientation.NORTH) {
