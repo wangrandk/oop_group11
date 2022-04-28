@@ -44,12 +44,9 @@ public class roboController {
 		
 		//Board (Static Accessible)
 		
-		// Set Players Robot
-//		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
-//		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
 		
 
-		// Creates the Deck (Statc Accessible)
+		// Creates the Deck (Static Accessible)
 		 
 
 		
@@ -63,14 +60,10 @@ public class roboController {
 				
 
 		// GAME LOOP - IT ENDS WHEN ONE OF THE PLAYERS WONS.
-//		while(true){
 //			
 //			
 		}
 	
-	public static Board getBoard() {
-		return board;
-	}
 	
 	public static void setBoard(int i) {
 		if (i == 1) {
@@ -143,30 +136,14 @@ public class roboController {
 			// Stores robots initial positions
 
 			
-			// Set the players hand to EMPTY CARDS
-//			player.setHand(Player.generateEmptyHand());
 			
 			// Start selection of the cards. (WAIT FOR AN EVENT IN THE GUI.)
 		}
 		
 	}
 	
-	public static void pickCards(Player player) {
-		
-	}
 	
-	public static void moveRobot(Player player) {
-		Robot playerRobot = player.getRobot();
-		for (int i = 0; i < player.getHand().size();i++) {
-			Card cardMovement = player.getHand().get(i);
-			
-			
-			
-			cardMovement.setAction(playerRobot);
-			Board.doObstacleAction(playerRobot, player);
-			
-		}
-	}
+	
 	
 	
 }

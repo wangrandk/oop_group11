@@ -11,6 +11,8 @@ public class RotateRight extends Card {
 
 	private String cardImage = "rotate_right.png";
 	private String cardImagePick = "rotate_right_pick.png";
+	private String cardImagePickRollover = "rotate_right_pick_rollover.png";
+
 	
 	private final String cardRotation = "Right";
 	String cardmessage = "Rotated Right";
@@ -39,6 +41,11 @@ public class RotateRight extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 	
 }

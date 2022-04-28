@@ -9,6 +9,8 @@ public class MoveOne extends Card {
 
 	private String cardImage = "move1.png";
 	private String cardImagePick = "move1_pick.png";
+	private String cardImagePickRollover = "move1_pick_rollover.png";
+
 	
 	
 	
@@ -37,6 +39,11 @@ public class MoveOne extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 	
 }

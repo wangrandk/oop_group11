@@ -9,6 +9,8 @@ public class MoveTwo extends Card {
 	
 	private String cardImage = "move2.png";
 	private String cardImagePick = "move2_pick.png";
+	private String cardImagePickRollover = "move2_pick_rollover.png";
+
 	
 	public MoveTwo(int points) {
 		super("Move2",points);
@@ -34,6 +36,10 @@ public class MoveTwo extends Card {
 		robot.setmovAmount(2);
 		Board.moveRobot(robot);
 		
+	}
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 	
 }

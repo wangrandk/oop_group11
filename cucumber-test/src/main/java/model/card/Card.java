@@ -45,4 +45,9 @@ public abstract class Card {
 		return null;
 	}
 	
+	public String getCardImagePickRollover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

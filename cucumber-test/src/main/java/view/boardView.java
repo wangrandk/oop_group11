@@ -37,7 +37,7 @@ public class boardView extends JPanel {
             for (int j =0; j<numCols;j++) {
             	final JLabel label = new JLabel();
                 label.setIcon(new ImageIcon(Board.getTile(new Position(j,i)).getImage()));
-                label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//                label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 grid.add(label);
             }
         }

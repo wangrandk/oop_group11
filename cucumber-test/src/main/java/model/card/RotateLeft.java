@@ -9,6 +9,8 @@ public class RotateLeft extends Card {
 	
 	private String cardImage = "rotate_left.png";
 	private String cardImagePick = "rotate_left_pick.png";
+	private String cardImagePickRollover = "rotate_left_pick_rollover.png";
+
 	
 	private final String cardRotation = "Left";
 
@@ -33,6 +35,11 @@ public class RotateLeft extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 	
 	
