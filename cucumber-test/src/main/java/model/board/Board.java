@@ -121,6 +121,7 @@ public abstract class Board {
 			default:
 				System.out.println("~ Don't know robot now orientation ~");
 			}
+
 		}
 		
 		if(robot.getCardRotation() == "Right") {
@@ -169,6 +170,8 @@ public abstract class Board {
 					default:
 						System.out.println("~ Don't know robot now orientation ~");
 			}   	
-		}	
+		}
+		robot.setImage(robot.getOrientation());
+
 	}	
 }

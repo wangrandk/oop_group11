@@ -78,6 +78,13 @@ public class roboController {
 		
 	}
 	
+//	public void didSomeoneWin(Player player) {
+//		if (player.isPlayerAlone()) {
+//			
+//		}
+//		
+//	}
+	
 	
 	public static void newTurn(Player player) throws IOException {
 			if (Player.isAllPlayersReady()) {
@@ -97,8 +104,8 @@ public class roboController {
 					turnNbr++;
 				}
 				else {
+					player.isPlayerAlone();
 					newRound();
-
 					GUI.showGame(player);
 					
 				}
@@ -130,6 +137,7 @@ public class roboController {
 			// deal Subdeck for each player
 			player.setSubdeck(new SubDeck(deck).getSubdeck());
 			player.setCardsChangeable(true);
+			player.setReady(false);
 			
 			
 			

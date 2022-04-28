@@ -115,6 +115,7 @@ public class GUI {
 				tabbedPane.add(panel.getPlayer().getRobot().getName(),panel);
 			}
 			tabbedPane.setSelectedIndex(Player.players.indexOf(player));
+
 		}
 		
 

@@ -31,17 +31,38 @@ public class Robot extends Tile {
 	public Robot() {
 		
 		if (robotId == 1) {
-			this.name = "Hank";
+			this.name = "Andro";
 			this.spawnPosition = new Position(1,4);
-			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/hank.png");
+			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_right.png");
 		}
 		if (robotId == 2) {
-			this.name = "twitch";
+			this.name = "Sharif";
 			this.spawnPosition = new Position(1,6);
-			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/twitch.png");
+			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_right.png");
 		}
 		robotId = robotId + 1;
 	}
+	
+	public void setImage(GameSettings.Orientation orientation) {
+	
+		switch(orientation) {
+			case EAST:
+				this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_right.png");
+				break;
+			case WEST:
+				this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_left.png");
+				break;
+			case NORTH:
+				this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_up.png");
+				break;
+			case SOUTH:
+				this.tileImage = this.getClass().getClassLoader().getResource("view/robots/" + this.getName() + "/" + this.getName() + "_down.png");
+				break;
+				
+		
+		}
+	}
+
  
 	
 	// movAmount changes according to the card.
