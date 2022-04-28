@@ -136,6 +136,7 @@ public class roboController {
 			
 			// deal Subdeck for each player
 			player.setSubdeck(new SubDeck(deck).getSubdeck());
+			player.setCardsChangeable(true);
 			
 			
 			

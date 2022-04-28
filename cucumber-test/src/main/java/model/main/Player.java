@@ -16,6 +16,7 @@ import utilities.IllegalActionException;
 //
 public class Player {
 	private boolean isReady = false;
+	private boolean isCardsChangeable;
 	private boolean isYourTurn = false;
 	Player player;
 
@@ -293,7 +294,13 @@ public class Player {
 	}
 
 	public void setReady(boolean isReady) {
-		this.isReady = isReady;
+		this.checkFullHand();
+		if (this.isHandFull()) {
+			this.isCardsChangeable = false;
+			
+			this.isReady = isReady;
+		}
+		
 	}
 
     public static boolean isAllPlayersReady() {
@@ -308,4 +315,12 @@ public class Player {
     		return true;
     	}return false;
     }
+
+	public boolean isCardsChangeable() {
+		return this.isCardsChangeable;
+	}
+
+	public void setCardsChangeable(boolean isCardsChangeable) {
+		this.isCardsChangeable = isCardsChangeable;
+	}
 }

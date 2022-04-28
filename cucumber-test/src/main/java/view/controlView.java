@@ -245,39 +245,45 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 
 
 	@Override
+	
+	
 	public void actionPerformed(ActionEvent e) {
-		for (int i=0;i<subCard.length;i++) {
-			if (e.getSource() == subCard[i]) {
-				
-				try {
-					player.fiveToHand(player.getSubdeck().get(i));
-					GUI.showGame(player);
+		if (player.isCardsChangeable()) {
+			for (int i=0;i<subCard.length;i++) {
+				if (e.getSource() == subCard[i]) {
+					
+					try {
+						player.fiveToHand(player.getSubdeck().get(i));
+						GUI.showGame(player);
 
-				} catch (IllegalActionException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					} catch (IllegalActionException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					
+					
+
 				}
-
 				
 				
+			}
+			for (int i=0;i<handCard.length;i++) {
+				if (e.getSource() == handCard[i]) {
+					
+					try {
+						player.replayCard(player.getHand().get(i));
+						GUI.showGame(player);
 
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
 			}
 			
-			
 		}
-		for (int i=0;i<handCard.length;i++) {
-			if (e.getSource() == handCard[i]) {
-				
-				try {
-					player.replayCard(player.getHand().get(i));
-					GUI.showGame(player);
-
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
+		
 		
 		
 		if (e.getSource() == nextTurnButton) {
@@ -291,6 +297,12 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 			}
 		else if (e.getSource() == readyButton) {
 			player.setReady(true);
+			try {
+				GUI.showGame(player);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 			
 			
@@ -364,6 +376,8 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 		} 
         	}
 	}
+	
+	
 
 	
 	
@@ -380,6 +394,15 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 	
 	
 	
+
+
+
+
+	
+
+
+
+
 
 
 
