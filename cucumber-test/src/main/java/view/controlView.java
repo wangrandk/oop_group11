@@ -117,8 +117,8 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         
         robotImage = new JLabel();
         robotImage.setIcon(new ImageIcon(player.getRobot().getImage()));
-        robotImage.setSize(40,40);
-        robotImage.setLocation((tileSize*numCols)/6*2-60,10);
+        robotImage.setSize(tileSize,tileSize);
+        robotImage.setLocation((tileSize*numCols)/6*2-tileSize-10,10);
         controlPanel.add(robotImage);
 
  
