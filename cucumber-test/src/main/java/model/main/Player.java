@@ -15,7 +15,8 @@ import utilities.IllegalActionException;
 */
 //
 public class Player {
-	
+	private boolean isReady = false;
+	private boolean isCardsChangeable;
 	private boolean isYourTurn = false;
 	Player player;
 
@@ -288,5 +289,38 @@ public class Player {
 		
 	}
 
-    
+	public boolean isReady() {
+		return this.isReady;
+	}
+
+	public void setReady(boolean isReady) {
+		this.checkFullHand();
+		if (this.isHandFull()) {
+			this.isCardsChangeable = false;
+			
+			this.isReady = isReady;
+		}
+		
+	}
+
+    public static boolean isAllPlayersReady() {
+    	int countNumReadyPlayers = 0;
+    	for (Player player : Player.players) {
+    		if (player.isReady) {
+    			countNumReadyPlayers++;
+    		}
+    		
+    	}
+    	if (countNumReadyPlayers == Player.players.size()) {
+    		return true;
+    	}return false;
+    }
+
+	public boolean isCardsChangeable() {
+		return this.isCardsChangeable;
+	}
+
+	public void setCardsChangeable(boolean isCardsChangeable) {
+		this.isCardsChangeable = isCardsChangeable;
+	}
 }

@@ -12,6 +12,7 @@ import model.board.BlankBoard;
 import model.board.Board;
 import model.main.Player;
 import model.tile.Robot;
+import utilities.GameSettings;
 import utilities.Position;
 
 public class ChooseMap extends JPanel implements ActionListener {
@@ -31,6 +32,8 @@ public class ChooseMap extends JPanel implements ActionListener {
 	private boolean medium;
 	private boolean hard;
 	private JLabel title;
+	String bg = GameSettings.BACKGROUND;
+
 
 
 	
@@ -46,7 +49,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		mapPanel = new StyledJPanel(new BorderLayout());
         mapPanel.setSize(800,500);
         try {
-			imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
+			imageBG = ImageIO.read(this.getClass().getClassLoader().getResource(bg));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
