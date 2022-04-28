@@ -37,9 +37,9 @@ public class TileFactory {
         	case 0:
         		tile = new BlankTile();
         		break;
-//        	case 3:
-//        		tile = new Finish();
-//        		break;
+        	case 3:
+        		tile = new Finish();
+        		break;
         	case 4:
         		tile = new Robot();
         		break;
