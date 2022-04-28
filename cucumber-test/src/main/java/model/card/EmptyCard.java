@@ -11,6 +11,8 @@ public class EmptyCard extends Card {
 
 	private String cardImage = "hidden.png";
 	private String cardImagePick = "empty_pick.png";
+	private String cardImagePickRollover = "empty_pick.png";
+
 	
 	
 	public EmptyCard(int points) {
@@ -38,6 +40,12 @@ public class EmptyCard extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+
+
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 	
 }

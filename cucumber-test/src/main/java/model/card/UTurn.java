@@ -9,6 +9,8 @@ public class UTurn extends Card {
 	
 	private String cardImage = "u_turn.png";
 	private String cardImagePick = "u_turn_pick.png";
+	private String cardImagePickRollover = "u_turn_pick_rollover.png";
+
 	
 	private final String cardRotation = "UTurn";
 	String cardmessage = "U Turned";
@@ -34,5 +36,10 @@ public class UTurn extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 }

@@ -59,7 +59,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 		this.player = player;
 		setLayout(null);
 		
-		setLocation(5,tileSize*numRows+20);
+		setLocation(5,tileSize*numRows+15);
 		
 		
 	    controlPanel = new StyledJPanel(null);
@@ -71,7 +71,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         
         handPanel.setLocation(0,0);
         deckPanel.setLocation(tileSize*numCols/2,0);
-        controlPanel.setLocation(tileSize*numCols/2+(tileSize*numCols)/6,0);
+        controlPanel.setLocation(2*tileSize*numCols/3,0);
         
 
         
@@ -90,7 +90,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         
         livesLabel = new JLabel();
         livesLabel.setSize(64,20);
-        livesLabel.setLocation(20,20);
+        livesLabel.setLocation(20,30);
         if (player.getLife() == 3) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
         }
@@ -103,6 +103,17 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 
         }
         controlPanel.add(livesLabel);
+        
+        
+        playerNameLabel = new JLabel();
+        playerNameLabel.setSize(120,20);
+        playerNameLabel.setLocation(20,5);
+        playerNameLabel.setForeground(Color.WHITE);
+        playerNameLabel.setFont(new Font("Impact", Font.PLAIN, 18));
+        playerNameLabel.setText("Player: " + player.getRobot().getName());
+        controlPanel.add(playerNameLabel);
+        
+        
         
         robotImage = new JLabel();
         robotImage.setIcon(new ImageIcon(player.getRobot().getImage()));
@@ -154,13 +165,12 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         	this.normal = normal;
             this.setIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal.getCardImagePick())));
             styleButton();
+            this.setRolloverIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal.getCardImagePickRollover())));
+
         }
 
         
-        public subCardButton (Card normal, Card hover){
-            this(normal);
-            this.setRolloverIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + hover)));
-        }
+        
 
         
         private ImageIcon createIcon(URL url){

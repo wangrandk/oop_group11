@@ -10,6 +10,8 @@ public class MoveThree extends Card {
 
 	private String cardImage = "move3.png";
 	private String cardImagePick = "move3_pick.png";
+	private String cardImagePickRollover = "move3_pick_rollover.png";
+
 			
 	public MoveThree(int points) {
 		super("Move3",points);
@@ -33,5 +35,9 @@ public class MoveThree extends Card {
 	@Override
 	public String getCardImagePick() {
 		return cardImagePick;
+	}
+	@Override
+	public String getCardImagePickRollover() {
+		return cardImagePickRollover;
 	}
 }
