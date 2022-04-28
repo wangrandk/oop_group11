@@ -22,8 +22,8 @@ public class RotateRight extends Card {
 	public RotateRight(int points) {
 		super("RotateRight",points);
 	}
-	
-	
+	 
+	 
 	@Override
 	public void setAction(Robot robot) {
 		robot.setmovAmount(0);

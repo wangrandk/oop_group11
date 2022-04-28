@@ -99,7 +99,7 @@ public abstract class Board {
 	 */
 	public static void UpdateOrientation(Robot robot) {
 		
-		if(robot.getCardRotation() == "Left") {
+		if(robot.getCardRotation().equals("Right") ) {
 			switch(robot.getOrientation()) {
 			
 			case NORTH:
@@ -123,7 +123,7 @@ public abstract class Board {
 			}
 		}
 		
-		if(robot.getCardRotation() == "Right") {
+		if(robot.getCardRotation().equals("Left") ) {
 							
 				switch(robot.getOrientation()) {
 				
@@ -148,7 +148,7 @@ public abstract class Board {
 				}	
 			}
 		
-		if(robot.getCardRotation() == "UTurn") {
+		if(robot.getCardRotation().equals("UTurn")) {
 
 			switch(robot.getOrientation()) {
 					case NORTH:

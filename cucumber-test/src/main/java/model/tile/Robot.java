@@ -120,7 +120,7 @@ public class Robot extends Tile {
 	public void setCardRotation(String cardRotation) {
 		this.cardRotation  = cardRotation;
 	}
-	
+	 
 	public String getCardRotation() {
 		return this.cardRotation;
 	}
