@@ -12,17 +12,16 @@ import model.board.Board;
 import model.card.Card;
 import model.card.Deck;
 import model.card.MoveThree;
-import model.card.MoveTwo;
 import model.card.SubDeck;
 import model.main.Player;
 import model.tile.BlankTile;
-import model.tile.ConveyorBelt;
 import model.tile.Finish;
 import model.tile.Robot;
 import utilities.GameSettings;
 import utilities.Position;
 
-public class FinishSteps {
+public class FinishLineStepsDef {
+
 	
 	Board board = new BlankBoard();
 	Deck deck = Deck.getInstance();
@@ -38,7 +37,7 @@ public class FinishSteps {
 	public void a_player_has_a_robot() {
 		player.setRobot(robot);
 
-	}
+	} 
 
 	@Given("robot is on the board in x {int} and y {int}")
 	public void robot_is_on_the_board_in_x_and_y(Integer x, Integer y) {
@@ -89,7 +88,8 @@ public class FinishSteps {
 	}
 	@Then("players status should be set to won")
 	public void players_status_should_be_set_to_won() {
-		assertEquals(GameSettings.PlayerStatus.WON, player.getPlayerStatus() );
+		assertEquals(GameSettings.PlayerStatus.WON, player.getPlayerStatus());
 	}
+
 
 }

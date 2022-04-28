@@ -29,6 +29,7 @@ public class Player {
 	private Robot robot;
 	boolean handFull;
 	private int handSize = 5;
+
 	private boolean isWinner = false;
 
 	
@@ -216,8 +217,39 @@ public class Player {
     public boolean isHandFull() {
 		return this.handFull;
 	}
-
+    
+    
+    // Counts the number of empty cards in a player's hand.
+	public int getHandNumNonEmptyCards() {
+		int nonEmptyCards = 0;
+		
+		for (Card card : this.hand) {
+			if(card instanceof EmptyCard) {
+				
+			}
+			else {
+				nonEmptyCards ++;
+			}
+			
+		}
+		
+		return nonEmptyCards;
+	}
 	
+	public int getSubDeckNumNonEmptyCards() {
+		int nonEmptyCards = 0;
+		
+		for (Card card : this.subdeck) {
+			if(card instanceof EmptyCard) {
+			}
+			else {
+				nonEmptyCards ++;
+			}
+			
+		}
+		
+		return nonEmptyCards;
+	}
 	
 	
 	
