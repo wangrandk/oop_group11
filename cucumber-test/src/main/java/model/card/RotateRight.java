@@ -24,6 +24,8 @@ public class RotateRight extends Card {
 	
 	@Override
 	public void setAction(Robot robot) {
+		robot.setmovAmount(0);
+		Board.moveRobot(robot);
 		robot.setCardRotation(cardRotation);
 		Board.UpdateOrientation(robot);
 

@@ -72,7 +72,7 @@ public class roboController {
 	
 	public static void setBoard(int i) {
 		if (i == 1) {
-			board = new EasyBoard();
+			board = new BlankBoard();
 		}
 		else if (i == 2) {
 			board = new MediumBoard();
@@ -89,8 +89,8 @@ public class roboController {
 		
 		p1.getRobot().setPosition(new Position(1,4));
 		p2.getRobot().setPosition(new Position(1,6));
-		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
-		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
+//		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
+//		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
 	}
 		
 		 		 

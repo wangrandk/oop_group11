@@ -47,17 +47,17 @@ public class Player {
 	
 	public ArrayList<Card> generateEmptyHand(){
 		ArrayList<Card> emptyHand = new ArrayList<Card>();
-		/*
-		emptyHand.add(new EmptyCard(0));
-		emptyHand.add(new EmptyCard(0));
-		emptyHand.add(new EmptyCard(0));
-		emptyHand.add(new EmptyCard(0));
-		emptyHand.add(new EmptyCard(0));
-		*/
 		for (int i = 0; i < handSize; i++) {            	
         	emptyHand.add(new EmptyCard(0));
         }
 		return emptyHand;	
+	}
+	public ArrayList<Card> generateEmptySubDeck(){
+		ArrayList<Card> emptySubDeck = new ArrayList<Card>();
+		for (int i = 0; i < 9; i++) {            	
+			emptySubDeck.add(new EmptyCard(0));
+        }
+		return emptySubDeck;	
 	}
 	
 	

@@ -26,6 +26,8 @@ public class EmptyCard extends Card {
 	
 	@Override
 	public void setAction(Robot robot) {
+		robot.setmovAmount(0);
+		Board.moveRobot(robot);
 	}
 	
 	@Override

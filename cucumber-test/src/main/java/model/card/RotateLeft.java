@@ -11,7 +11,6 @@ public class RotateLeft extends Card {
 	private String cardImagePick = "rotate_left_pick.png";
 	
 	private final String cardRotation = "Left";
-	String cardmessage = "Rotated Left";
 
 	public RotateLeft(int points) {
 		super("RotateLeft",points);
@@ -19,6 +18,8 @@ public class RotateLeft extends Card {
 	
 	@Override
 	public void setAction(Robot robot) {
+		robot.setmovAmount(0);
+		Board.moveRobot(robot);
 		robot.setCardRotation(cardRotation);
 		Board.UpdateOrientation(robot);
 

@@ -24,6 +24,9 @@ public class Pit extends Tile{
 		
 		// Update the board with the 
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
+		
+		// End turn of the playe (he cannot play anymore)
+		player.setHand(player.generateEmptyHand());
 	}
 
 

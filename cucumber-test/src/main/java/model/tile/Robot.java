@@ -32,10 +32,12 @@ public class Robot extends Tile {
 		
 		if (robotId == 1) {
 			this.name = "Hank";
+			this.spawnPosition = new Position(1,4);
 			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/hank.png");
 		}
 		if (robotId == 2) {
 			this.name = "twitch";
+			this.spawnPosition = new Position(1,6);
 			this.tileImage = this.getClass().getClassLoader().getResource("view/robots/twitch.png");
 		}
 		robotId = robotId + 1;
@@ -62,7 +64,7 @@ public class Robot extends Tile {
 	}
 
 	public Position getInitialPosition() {
-		return initialPosition;
+		return this.initialPosition;
 	}
 
 	public void setInitialPosition(Position initialPosition) {

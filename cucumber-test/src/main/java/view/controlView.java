@@ -190,14 +190,16 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 				for (int i = 0; i < player.getHand().size();i++) {
 					Card cardMovement = player.getHand().get(i);
 					
-					
-					
+					// Card acts on the Robot and PlAYER
 					cardMovement.setAction(player.getRobot());
 					Board.doObstacleAction(player.getRobot(), player);
+					
+					// Once card is played, we can discard the card from the hand.
+					player.getHand().set(i, new EmptyCard(0));
+					
 					try {
 						GUI.showGame(player);
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
