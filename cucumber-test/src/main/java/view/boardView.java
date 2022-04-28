@@ -22,16 +22,17 @@ public class boardView extends JPanel {
 	private JPanel grid;
 	int numCols = GameSettings.NUM_COLS;
 	int numRows = GameSettings.NUM_ROWS;
+	int tileSize = GameSettings.TILE_SIZE;
 	
 	
 
 	
 	public boardView() throws IOException {
 		setLayout(null);
-		setSize(64*numCols,66*numRows);
+		setSize(tileSize*numCols,tileSize*numRows);
 		setLocation(5,5);
 	    grid = new StyledJPanel(new GridLayout(numRows,numCols));
-        grid.setSize(64*numCols,66*numRows);
+        grid.setSize(tileSize*numCols,tileSize*numRows);
         for (int i =0; i<(numRows); i++){
             for (int j =0; j<numCols;j++) {
             	final JLabel label = new JLabel();

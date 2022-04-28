@@ -3,7 +3,9 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.rmi.AccessException;
 import java.util.ArrayList;
 
@@ -25,6 +27,8 @@ import utilities.Position;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 
 
 
@@ -37,8 +41,8 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 	private JPanel handPanel;
 	private JPanel deckPanel;
 	public Player player;
-    Button[] handCard = new Button[5];
-    Button[] subCard = new Button[9];
+    handCardButton[] handCard = new handCardButton[5];
+    subCardButton[] subCard = new subCardButton[9];
     private Button readyButton;
     private JLabel livesLabel;
     private JLabel playerNameLabel;
@@ -55,19 +59,19 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 		this.player = player;
 		setLayout(null);
 		
-		setLocation(0,66*12+5-50);
+		setLocation(5,tileSize*numRows+20);
 		
 		
 	    controlPanel = new StyledJPanel(null);
 	    handPanel = new StyledJPanel(new GridLayout(1,5));
 	    deckPanel = new StyledJPanel(new GridLayout(9,1));
-	    handPanel.setSize(64*15/2,175);
-        controlPanel.setSize((64*15)/6*2,175);
-        deckPanel.setSize((64*15)/6,175);
+	    handPanel.setSize(tileSize*numCols/2,175);
+        controlPanel.setSize((tileSize*numCols)/6*2,175);
+        deckPanel.setSize((tileSize*numCols)/6,175);
         
-        handPanel.setLocation(5,0);
-        deckPanel.setLocation(64*15/2+5,0);
-        controlPanel.setLocation(64*15/2+(64*15)/6+5,0);
+        handPanel.setLocation(0,0);
+        deckPanel.setLocation(tileSize*numCols/2,0);
+        controlPanel.setLocation(tileSize*numCols/2+(tileSize*numCols)/6,0);
         
 
         
@@ -86,7 +90,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         
         livesLabel = new JLabel();
         livesLabel.setSize(64,20);
-        livesLabel.setLocation(5,20);
+        livesLabel.setLocation(20,20);
         if (player.getLife() == 3) {
         	livesLabel.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("view/threelives.png")));
         }
@@ -103,24 +107,14 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         robotImage = new JLabel();
         robotImage.setIcon(new ImageIcon(player.getRobot().getImage()));
         robotImage.setSize(40,40);
-        robotImage.setLocation(270,10);
+        robotImage.setLocation((tileSize*numCols)/6*2-60,10);
         controlPanel.add(robotImage);
 
  
     	for (int i = 0; i<handCard.length; i++){
-//    		if (player.getHand().size() == 0) {
-//    			handCard[i] = new Button("hidden.png");
-//	            handPanel.add(handCard[i]);
-//    		}
-    		
-    		
-//    		if (player.getHand().size() == 1) {
-//    			handCard[i] = new Button(player.getHand().get(i).getCardImage());
-//	            handPanel.add(handCard[i]);
-//    		}
     		
 
-    		handCard[i] = new Button(player.getHand().get(i).getCardImage());
+    		handCard[i] = new handCardButton(player.getHand().get(i));
         	handCard[i].addActionListener(this);
             handPanel.add(handCard[i]);
     		}
@@ -131,12 +125,12 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         	
           
     	for (int i =0; i<(1*9); i++){
-    		subCard[i] = new Button(player.getSubdeck().get(i).getCardImagePick());
+    		subCard[i] = new subCardButton(player.getSubdeck().get(i));
         	subCard[i].addActionListener(this);
             deckPanel.add(subCard[i]);
     	}
         
-        setSize(1000,250);
+        setSize(tileSize*numCols,175);
         add(handPanel);
         add(deckPanel);
         add(controlPanel);
@@ -147,7 +141,107 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 		
 	}
 	
+//     for (Card card : player.getSubdeck()) {
+//     }
+     
 	
+	private class subCardButton extends JButton {
+
+
+        private Card normal;
+
+		public subCardButton (Card normal){
+        	this.normal = normal;
+            this.setIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal.getCardImagePick())));
+            styleButton();
+        }
+
+        
+        public subCardButton (Card normal, Card hover){
+            this(normal);
+            this.setRolloverIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + hover)));
+        }
+
+        
+        private ImageIcon createIcon(URL url){
+            BufferedImage bi;
+            try {
+                bi = ImageIO.read(url);
+                return new ImageIcon(bi);
+            } catch(java.io.IOException e){
+                System.out.println("Image could not be read");
+            }
+            return null;
+        }
+
+        private void styleButton(){
+            this.setBorderPainted(false);
+            this.setFocusPainted(false);
+            this.setContentAreaFilled(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (normal instanceof EmptyCard) {
+                
+            }
+            else {
+            	g.setColor(Color.WHITE);
+                g.setFont(new Font("Impact", Font.PLAIN, 14));
+                g.drawString(Integer.toString(normal.getpoints()), 112, 15);
+            }
+        }
+    }
+	
+	private class handCardButton extends JButton {
+
+
+        private Card normal;
+
+		public handCardButton (Card normal){
+        	this.normal = normal;
+            this.setIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal.getCardImage())));
+            styleButton();
+        }
+
+        
+        public handCardButton (Card normal, Card hover){
+            this(normal);
+            this.setRolloverIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + hover)));
+        }
+
+        
+        private ImageIcon createIcon(URL url){
+            BufferedImage bi;
+            try {
+                bi = ImageIO.read(url);
+                return new ImageIcon(bi);
+            } catch(java.io.IOException e){
+                System.out.println("Image could not be read");
+            }
+            return null;
+        }
+
+        private void styleButton(){
+            this.setBorderPainted(false);
+            this.setFocusPainted(false);
+            this.setContentAreaFilled(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (normal instanceof EmptyCard) {
+                
+            }
+            else {
+            	g.setColor(Color.WHITE);
+                g.setFont(new Font("Impact", Font.PLAIN, 20));
+                g.drawString(Integer.toString(normal.getpoints()), 30, 40);
+            }
+        }
+    }
 
 
 	@Override
