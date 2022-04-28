@@ -15,6 +15,7 @@ import model.card.EmptyCard;
 import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Robot;
+import utilities.GameSettings;
 import utilities.Position;
 
 public class roboController {
@@ -80,15 +81,16 @@ public class roboController {
 	
 	
 	public static void newTurn(Player player) throws IOException {
+			
 			if (Player.isAllPlayersReady()) {
 				if (turnNbr < 5) {
 					for (Player p1 : Player.players) {
-						
 						Card cardMovement = p1.getHand().get(turnNbr);
 						
 						// Card acts on the Robot and PlAYER
 						cardMovement.setAction(p1.getRobot());
 						Board.doObstacleAction(p1.getRobot(), p1);
+						
 						
 						// Once card is played, we can discard the card from the hand.
 						p1.getHand().set(turnNbr, new EmptyCard(0));
@@ -118,6 +120,12 @@ public class roboController {
 //		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
 //		p1.getRobot().setInitialPosition(p1.getRobot().getPosition());
 	}
+	
+	
+	
+	
+	
+	
 		
 		 		 
 	

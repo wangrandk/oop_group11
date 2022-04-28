@@ -17,11 +17,25 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Card distribution
-  
+Feature: Rotation of a robot
+
   @tag1
-  Scenario: User receives cards on a subdeck
-	  Given an empty subdeck 
-    When 9 cards are randomly assigned from deck to a subdeck
-    Then subdeck receives 9 cards
-    And deck is reduced
+  Scenario: Rotation to the left
+    Given robot orientation is "E"
+    And card with "RotateLeft"
+    When robot is rotated
+    Then round is over 
+
+  @tag2
+  Scenario: Rotation to the right
+    Given robot orientation is "E"
+    And card with "RotateRight"
+    When robot is rotated
+    Then round is over
+
+  @tag3
+  Scenario: Rotation UTurn
+    Given robot orientation is "E"
+    And card with "UTurn"
+    When robot is rotated
+    Then round is over
