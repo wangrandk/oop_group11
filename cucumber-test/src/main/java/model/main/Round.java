@@ -21,7 +21,7 @@ import model.tile.Robot;
  * This part of the model represents and runs a round.
  * It does all the things that need to be done with the game logic for a round to work correctly.
  */
-public class Round implements IEventHandler {
+public class Round {
 
     private final int SUBDECK_AMOUNT = 9;
     private final Game model;

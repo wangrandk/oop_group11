@@ -29,7 +29,9 @@ public class Player {
 	private Robot robot;
 	boolean handFull;
 	private int handSize = 5;
- 
+
+	private boolean isWinner = false;
+
 	
 	 
 	private ArrayList<Card> subdeck = new ArrayList<Card>(); //  Each round
@@ -70,7 +72,8 @@ public class Player {
         this.life --;
         if (this.life <= 0) {
         	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
-        	Player.players.remove(this.player);
+        	Player.players.remove(this);
+        	
         }
     }
     
@@ -371,9 +374,19 @@ public class Player {
 //				}
 //			}
 //		}
-		if (Player.players.size() == 1) {
-			this.player.setPlayerStatus(GameSettings.PlayerStatus.WON);
+		if (Player.players.size() == 1 && Player.players.contains(this)) {
+			this.setPlayerStatus(GameSettings.PlayerStatus.WON);
 	
 }
+	}
+
+	public boolean isWinner() {
+		this.isPlayerAlone();
+		if(this.getPlayerStatus() == GameSettings.PlayerStatus.WON) {
+			return true;
+			
+		}return false;
+		
+		
 	}
 }
