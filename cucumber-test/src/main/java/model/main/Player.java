@@ -70,7 +70,7 @@ public class Player {
         this.life --;
         if (this.life <= 0) {
         	setPlayerStatus(GameSettings.PlayerStatus.DEAD);
-            System.out.println(this.robot.getName() + " is now Kaput and lost");
+        	Player.players.remove(this.player);
         }
     }
     
@@ -298,8 +298,9 @@ public class Player {
 		if (this.isHandFull()) {
 			this.isCardsChangeable = false;
 			
-			this.isReady = isReady;
 		}
+		this.isReady = isReady;
+
 		
 	}
 
@@ -322,5 +323,26 @@ public class Player {
 
 	public void setCardsChangeable(boolean isCardsChangeable) {
 		this.isCardsChangeable = isCardsChangeable;
+	}
+
+	public void isPlayerAlone() {
+//		int playersAlive = 0;
+//		for (Player player : Player.players) {
+//			if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
+//				playersAlive++;
+//			}
+//			
+//		}
+//		if (playersAlive == 1) {
+//			for (Player player : Player.players) {
+//				if (player.getPlayerStatus() == GameSettings.PlayerStatus.ALIVE) {
+//					player.setPlayerStatus(GameSettings.PlayerStatus.WON);
+//				}
+//			}
+//		}
+		if (Player.players.size() == 1) {
+			this.player.setPlayerStatus(GameSettings.PlayerStatus.WON);
+	
+}
 	}
 }
