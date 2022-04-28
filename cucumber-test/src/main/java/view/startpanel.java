@@ -10,6 +10,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import utilities.GameSettings;
+
 
 
 public class startpanel extends JPanel implements ActionListener {
@@ -17,6 +19,8 @@ public class startpanel extends JPanel implements ActionListener {
 	private JButton exitGame;
 	private Image imageBG;
 	private JPanel buttonPanel;
+	String bg = GameSettings.BACKGROUND;
+
 	
 
 	
@@ -24,7 +28,7 @@ public class startpanel extends JPanel implements ActionListener {
 	    buttonPanel = new StyledJPanel(new GridLayout(2,1));
         buttonPanel.setSize(150,100);
         setLayout(null);
-        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
+        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource(bg));
         newGame = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
         newGame.addActionListener(this);
         exitGame = new Button("menu_buttons/exit_btn.png","menu_buttons/exit_btn_hover.png");

@@ -43,10 +43,10 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 	public Player player;
     handCardButton[] handCard = new handCardButton[5];
     subCardButton[] subCard = new subCardButton[9];
-    private Button readyButton;
+    private JButton readyButton;
     private JLabel livesLabel;
     private JLabel playerNameLabel;
-    private Button nextTurnButton;
+    private JButton nextTurnButton;
     private JLabel robotImage;
     private int a;
  
@@ -76,15 +76,15 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 
         
         
-        readyButton = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
+        readyButton = new JButton("Ready!!");
         readyButton.addActionListener(this);
-        readyButton.setSize(50,30);
+        readyButton.setSize(70,30);
         readyButton.setLocation(35,135);
         controlPanel.add(readyButton);
         
-        nextTurnButton = new Button("menu_buttons/start_btn.png","menu_buttons/start_btn_hover.png");
+        nextTurnButton = new JButton("Next Turn!!");
         nextTurnButton.addActionListener(this);
-        nextTurnButton.setSize(50,30);
+        nextTurnButton.setSize(70,30);
         nextTurnButton.setLocation(110,135);
         controlPanel.add(nextTurnButton);
         
@@ -278,34 +278,28 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 				}
 			}
 		}
+		
+		
 		if (e.getSource() == nextTurnButton) {
 			
-			for (Player player : Player.players) {
-				for (int i = 0; i < player.getHand().size();i++) {
-					Card cardMovement = player.getHand().get(i);
-					
-					// Card acts on the Robot and PlAYER
-					cardMovement.setAction(player.getRobot());
-					Board.doObstacleAction(player.getRobot(), player);
-					
-					// Once card is played, we can discard the card from the hand.
-					player.getHand().set(i, new EmptyCard(0));
-					
-					try {
-						GUI.showGame(player);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
+			try {
+				roboController.newTurn(player);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			}
+		else if (e.getSource() == readyButton) {
+			player.setReady(true);
+		}
 			
 			
 
-		}
+	}
 		
 		
 			
-	}
+	
 
 
 

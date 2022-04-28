@@ -19,10 +19,12 @@ public class gamePanel extends JPanel {
 	private Player player;
 	int tileSize = GameSettings.TILE_SIZE;
 	int numCols = GameSettings.NUM_COLS;
+	String bg = GameSettings.BACKGROUND;
+
 
 	
 	public gamePanel(Player player) throws IOException {
-        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource("view/roborally_start.jpg"));
+        imageBG = ImageIO.read(this.getClass().getClassLoader().getResource(bg));
 
 		this.player = player;
 		setLayout(null);

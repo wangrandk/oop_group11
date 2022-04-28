@@ -15,7 +15,7 @@ import utilities.IllegalActionException;
 */
 //
 public class Player {
-	
+	private boolean isReady = false;
 	private boolean isYourTurn = false;
 	Player player;
 
@@ -288,5 +288,24 @@ public class Player {
 		
 	}
 
-    
+	public boolean isReady() {
+		return this.isReady;
+	}
+
+	public void setReady(boolean isReady) {
+		this.isReady = isReady;
+	}
+
+    public static boolean isAllPlayersReady() {
+    	int countNumReadyPlayers = 0;
+    	for (Player player : Player.players) {
+    		if (player.isReady) {
+    			countNumReadyPlayers++;
+    		}
+    		
+    	}
+    	if (countNumReadyPlayers == Player.players.size()) {
+    		return true;
+    	}return false;
+    }
 }
