@@ -79,7 +79,7 @@ public class GUI {
 			
 			mainframe.setPreferredSize(new Dimension(tileSize*numCols+30,1000));
 			mainframe.setLayout(new BorderLayout());
-			roboController.setRobots();
+			GameLaunch.setRobots();
 
 			mainframe.remove(chooseMap);
 			isChooseMap = false;

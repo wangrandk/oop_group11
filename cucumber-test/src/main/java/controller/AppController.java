@@ -1,21 +1,13 @@
 package controller;
 
-import model.Game;
+import java.io.IOException;
+import view.GUI;
+import view.GameLaunch;
 
 public class AppController {
 	//AppController class will initialize whole application;
-		private GameController gameController;
-
-		public AppController() {
-	        initGameController();
-		}
-
-	    private void initGameController() {
-	        if (gameController == null) {
-	            gameController = new GameController();
-	        } else {
-	            System.out.println("Game is already running");
-	        }
-	    }
-		
-	}
+	public static void main(String[] args) throws IOException {
+		new GameLaunch();
+	    new GUI();	
+	}			
+}

@@ -275,7 +275,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 		if (e.getSource() == nextTurnButton) {
 			
 			try {
-				roboController.newTurn(player);
+				GameLaunch.newTurn(player);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
