@@ -188,7 +188,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && easy == true) {
 			try {
-				roboController.setBoard(1);
+				GameLaunch.setBoard(1);
 				GUI.showGame(null);
 
 			} catch (IOException e1) {
@@ -201,7 +201,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else if (e.getSource() == start && medium == true) {
 			try {
-				roboController.setBoard(2);
+				GameLaunch.setBoard(2);
 
 				GUI.showGame(null);
 			} catch (IOException e1) {
@@ -214,7 +214,7 @@ public class ChooseMap extends JPanel implements ActionListener {
 		
 		else {
 			try {
-				roboController.setBoard(3);
+				GameLaunch.setBoard(3);
 
 				GUI.showGame(null);
 			} catch (IOException e1) {

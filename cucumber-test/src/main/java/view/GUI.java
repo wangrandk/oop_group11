@@ -17,9 +17,10 @@ import utilities.EventList;
 import utilities.GameSettings;
 import utilities.IEventHandler;
 import utilities.Position;
+import utilities.EventList.Event;
 import view.SelectPlayersPanel;
 
-public class GUI {
+public class GUI implements IEventHandler {
 	private static JFrame mainframe;
 	private static startpanel startPanel;
     private static SelectPlayersPanel selectPlayersPanel;
@@ -33,15 +34,14 @@ public class GUI {
 	private static JPanel gameOverPanel;
 	private static int tileSize = GameSettings.TILE_SIZE;
 	private static int numCols = GameSettings.NUM_COLS;
-  
-    
 
 //	
 	public GUI() throws IOException {
 		
-
+		EventList.getInstance().register(this);
 		mainframe = new mainframe();
-		showStartPanel();
+		//showStartPanel();
+		EventList.getInstance().publish(EventList.Event.SHOW_GAMEPANEL, null, null);	
 		}
 	
 	public void showStartPanel() throws IOException {
@@ -50,9 +50,7 @@ public class GUI {
 		mainframe.revalidate();
 		mainframe.repaint();
 	}
-	
-	
-	
+		
 	public static void showChooseMap() {
 		chooseMap = new ChooseMap();
 		mainframe.remove(startPanel);
@@ -78,14 +76,12 @@ public class GUI {
 //		addGamePanels();
 //		createTabs();
 		
-		
-		
 
 		if (isChooseMap == true) {
 			
 			mainframe.setPreferredSize(new Dimension(tileSize*numCols+30,1000));
 			mainframe.setLayout(new BorderLayout());
-			roboController.setRobots();
+			GameLaunch.setRobots();
 
 			mainframe.remove(chooseMap);
 			isChooseMap = false;
@@ -118,17 +114,11 @@ public class GUI {
 			tabbedPane.setSelectedIndex(Player.players.indexOf(player));
 
 		}
-		
-		
-		
-
 
 //		tabbedPane.add("GamePanel",gamePanel);
 //		tabbedPane.add("GamePanel",chooseMap);
 		mainframe.add(tabbedPane);
 		mainframe.revalidate();
-
-
 
 	}
 	
@@ -143,19 +133,20 @@ public class GUI {
 	         /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////	
 //	@Override
-//    public void onEvent(EventList.Event evt, Object o, Object o2) {
-//        switch (evt) {
-//
-//            case SHOW_GAMEPANEL:
-//			try {
-//				createGamePanels();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//                createTabbedPane();
-//                showGamePanels();
-//                break;
+    public void onEvent(EventList.Event evt, Object o, Object o2) {
+//    		  if (EventList.Event.MAP_SELECTED == evt) {
+//    			  showChooseMap();
+//    		  }	
+        switch (evt) {
+
+            case SHOW_GAMEPANEL:
+			try {
+				showStartPanel();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+                break;
 //            case NEW_ROUND:
 //                setGamePanelsForNewRound();
 //                break;
@@ -173,8 +164,8 @@ public class GUI {
 //                for(gamePanel panel : gamePanels)
 //                    panel.getControlView().updateStatusView();
 //                break;
-//        }
-//    }
+        }
+    }
 //	
 //
 //	private void setGamePanelsForNewTurn(int turnIndex) {

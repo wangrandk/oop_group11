@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import utilities.EventList;
+import utilities.EventList.Event;
 import utilities.GameSettings;
+import utilities.IEventHandler;
 
 
 
-public class startpanel extends JPanel implements ActionListener {
+public class startpanel extends JPanel implements ActionListener,IEventHandler  {
 	private JButton newGame;
 	private JButton exitGame;
 	private Image imageBG;
@@ -25,6 +27,7 @@ public class startpanel extends JPanel implements ActionListener {
 
 	
 	public startpanel() throws IOException {
+		EventList.getInstance().register(this);
 	    buttonPanel = new StyledJPanel(new GridLayout(2,1));
         buttonPanel.setSize(150,100);
         setLayout(null);
@@ -51,12 +54,19 @@ public class startpanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {
-			GUI.showChooseMap();
+			EventList.getInstance().publish(EventList.Event.MAP_SELECTED, null, null);	
+			//GUI.showChooseMap();
 			}
 		else if (e.getSource() == exitGame) {
 			System.exit(1);
 		}
 		}
+	@Override
+	public void onEvent(Event evt, Object o1, Object o2) {
+		  if (EventList.Event.MAP_SELECTED == evt) {
+			  GUI.showChooseMap();
+		  }	
+	}
 }
 	
 	
