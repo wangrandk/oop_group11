@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import model.board.BlankBoard;
 import model.board.Board;
 import model.board.FinalBoard;
@@ -13,9 +14,12 @@ import model.card.EmptyCard;
 import model.card.SubDeck;
 import model.main.Player;
 import model.tile.Robot;
+import utilities.EventList;
+import utilities.EventList.Event;
+import utilities.IEventHandler;
 import utilities.Position;
 
-public class GameLaunch {
+public class GameLaunch implements IEventHandler {
 	public static Player p1;
 	public static Player p2;
 	public static Board board;
@@ -23,28 +27,28 @@ public class GameLaunch {
 	static int turnNbr;
 	
 	public GameLaunch () throws IOException {
+		EventList.getInstance().register(this);
 		p1 = new Player();
 		p1.setLife(1);
 		p2 = new Player();		
 		deck = Deck.getInstance().getDeck();
 		newRound();
-		//new GUI();
+		//EventList.getInstance().publish(EventList.Event.NEW_ROUND, deck, null);		
 	}
-
 
 	public static void newTurn(Player player) throws IOException {
 			
 			if (Player.isAllPlayersReady()) {
 				if (turnNbr < 5) {
-					for (Player p1 : Player.players) {
-						Card cardMovement = p1.getHand().get(turnNbr);						
+					for (Player p : Player.players) {
+						Card cardMovement = p.getHand().get(turnNbr);						
 						// Card acts on the Robot and PlAYER
-						cardMovement.setAction(p1.getRobot());
-						Board.doObstacleAction(p1.getRobot(), p1);
+						cardMovement.setAction(p.getRobot());
+						Board.doObstacleAction(p.getRobot(), p);
 						// Once card is played, we can discard the card from the hand.
-						p1.getHand().set(turnNbr, new EmptyCard(0));
-						if (p1.isWinner()) {
-							GUI.showGameOverPanel(p1);
+						p.getHand().set(turnNbr, new EmptyCard(0));
+						if (p.isWinner()) {
+							GUI.showGameOverPanel(p);
 						}
 					}
 					GUI.showGame(player);
@@ -56,8 +60,7 @@ public class GameLaunch {
 				}
 			}				
 	}
-	
-		
+			
 	public static void setRobots() {
 		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
@@ -92,5 +95,44 @@ public class GameLaunch {
 		else if (i == 3) {
 			board = new FinalBoard();
 		}	
-	}	
+	}
+
+
+	 public void onEvent(EventList.Event evt, Object o, Object o2) {
+//	        switch (evt) {
+//	            case SELECT_PLAYERS:
+//	                selectPlayers();
+//	                break;
+//	            case PLAYERS_SELECTED:
+//	                chooseMap(MapFactory.getInstance().getMaps());
+//	                break;
+//	            case MODEL_CREATED:
+//	                this.model = (RoboRally) o;
+//	                showSummary();
+//	                break;
+//	            case SHOW_GAMEPANEL:
+//	                createGamePanels();
+//	                createTabbedPane();
+//	                showGamePanels();
+//	                break;
+//	            case NEW_ROUND:
+//	            	this.deck = (ArrayList<Card>) o;
+//	            	newRound();
+//	                break;
+//	            case PICK_CARDS:
+//	                newCardsForPlayer((Player) o);
+//	                break;
+//	            case NEW_TURN:
+//	                setGamePanelsForNewTurn((int) o);
+//	                break;
+//	            case UPDATE_BOARD:
+//	                for(GamePanel panel : gamePanels)
+//	                    panel.getBoardView().update();
+//	                break;
+//	            case UPDATE_STATUS:
+//	                for(GamePanel panel : gamePanels)
+//	                    panel.getControlView().updateStatusView();
+//	                break;
+//	        }
+	    }	
 }

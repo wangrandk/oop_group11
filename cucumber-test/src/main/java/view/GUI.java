@@ -17,9 +17,10 @@ import utilities.EventList;
 import utilities.GameSettings;
 import utilities.IEventHandler;
 import utilities.Position;
+import utilities.EventList.Event;
 import view.SelectPlayersPanel;
 
-public class GUI {
+public class GUI implements IEventHandler {
 	private static JFrame mainframe;
 	private static startpanel startPanel;
     private static SelectPlayersPanel selectPlayersPanel;
@@ -37,7 +38,7 @@ public class GUI {
 //	
 	public GUI() throws IOException {
 		
-
+		EventList.getInstance().register(this);
 		mainframe = new mainframe();
 		showStartPanel();
 		}
@@ -131,7 +132,10 @@ public class GUI {
 	         /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////	
 //	@Override
-//    public void onEvent(EventList.Event evt, Object o, Object o2) {
+    public void onEvent(EventList.Event evt, Object o, Object o2) {
+//    		  if (EventList.Event.MAP_SELECTED == evt) {
+//    			  showChooseMap();
+//    		  }	
 //        switch (evt) {
 //
 //            case SHOW_GAMEPANEL:
@@ -162,7 +166,7 @@ public class GUI {
 //                    panel.getControlView().updateStatusView();
 //                break;
 //        }
-//    }
+    }
 //	
 //
 //	private void setGamePanelsForNewTurn(int turnIndex) {
