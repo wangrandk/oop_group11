@@ -130,10 +130,6 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
             handPanel.add(handCard[i]);
     		}
     			
-    	
-        			
-        	
-        	
           
     	for (int i =0; i<(1*9); i++){
     		subCard[i] = new subCardButton(player.getSubdeck().get(i));
@@ -144,12 +140,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
         setSize(tileSize*numCols,175);
         add(handPanel);
         add(deckPanel);
-        add(controlPanel);
-
-        
-		
-		
-		
+        add(controlPanel);		
 	}
 	
 //     for (Card card : player.getSubdeck()) {
@@ -157,8 +148,6 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
      
 	
 	private class subCardButton extends JButton {
-
-
         private Card normal;
 
 		public subCardButton (Card normal){
@@ -168,11 +157,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
             this.setRolloverIcon(createIcon(this.getClass().getClassLoader().getResource("view/" + normal.getCardImagePickRollover())));
 
         }
-
-        
-        
-
-        
+       
         private ImageIcon createIcon(URL url){
             BufferedImage bi;
             try {
@@ -205,8 +190,6 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
     }
 	
 	private class handCardButton extends JButton {
-
-
         private Card normal;
 
 		public handCardButton (Card normal){
@@ -271,12 +254,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 						e1.printStackTrace();
 					}
 
-					
-					
-
-				}
-				
-				
+				}							
 			}
 			for (int i=0;i<handCard.length;i++) {
 				if (e.getSource() == handCard[i]) {
@@ -293,9 +271,7 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 			}
 			
 		}
-		
-		
-		
+				
 		if (e.getSource() == nextTurnButton) {
 			
 			try {
@@ -313,18 +289,9 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		}
-			
-			
-
+		}			
 	}
 		
-		
-			
-	
-
-
-
 
 //	public void updateStatusView() {
 //		if (player.getLife() == 3) {
@@ -359,10 +326,6 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 	
 	@Override
     public void onEvent(EventList.Event evt, Object o, Object o2) {
-		
-		
-		
-		
         if (EventList.Event.PICK_CARDS == evt) {
         	for (int i=0;i<subCard.length;i++) {
         		a = i;
