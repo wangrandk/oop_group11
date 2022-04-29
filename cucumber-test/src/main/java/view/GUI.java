@@ -40,7 +40,8 @@ public class GUI implements IEventHandler {
 		
 		EventList.getInstance().register(this);
 		mainframe = new mainframe();
-		showStartPanel();
+		//showStartPanel();
+		EventList.getInstance().publish(EventList.Event.SHOW_GAMEPANEL, null, null);	
 		}
 	
 	public void showStartPanel() throws IOException {
@@ -136,18 +137,16 @@ public class GUI implements IEventHandler {
 //    		  if (EventList.Event.MAP_SELECTED == evt) {
 //    			  showChooseMap();
 //    		  }	
-//        switch (evt) {
-//
-//            case SHOW_GAMEPANEL:
-//			try {
-//				createGamePanels();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//                createTabbedPane();
-//                showGamePanels();
-//                break;
+        switch (evt) {
+
+            case SHOW_GAMEPANEL:
+			try {
+				showStartPanel();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+                break;
 //            case NEW_ROUND:
 //                setGamePanelsForNewRound();
 //                break;
@@ -165,7 +164,7 @@ public class GUI implements IEventHandler {
 //                for(gamePanel panel : gamePanels)
 //                    panel.getControlView().updateStatusView();
 //                break;
-//        }
+        }
     }
 //	
 //
