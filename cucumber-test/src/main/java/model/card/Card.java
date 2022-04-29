@@ -4,7 +4,7 @@ import java.net.URL;
 
 import model.tile.Robot;
 
-//main card class, which will be extended by other variants(movement, orientation)
+//main card class, which will be extended by card types(MoveOne,RotateLeft,...)
 
 public abstract class Card {
 	private String card;
@@ -26,13 +26,15 @@ public abstract class Card {
 		return points;
 	}
 	
+	//assign a name to a card(mov1, move2,...)
+	//assign points to a card
 	public Card(String name, int points) {
-		this.card= name;    //assign a name to a card(mov1, move2,...)
-		this.points=points;  //assign points to a card
+		this.card= name;   
+		this.points=points;  
 	}
 	
-	
-	public String getMessage() {     //returns card message, and tells console what to print
+	//returns card message, and tells console what to print
+	public String getMessage() {     
 		return cardmessage;
 	}
 	
@@ -41,12 +43,10 @@ public abstract class Card {
 	}
 
 	public String getCardImagePick() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	public String getCardImagePickRollover() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

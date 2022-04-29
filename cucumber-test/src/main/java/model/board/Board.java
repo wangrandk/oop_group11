@@ -94,9 +94,7 @@ public abstract class Board {
 		}
 	}
 
-	/*
-	 * Player {}
-	 */
+	//updates robot's current orientation according to a type of received card
 	public static void UpdateOrientation(Robot robot) {
 		
 		if(robot.getCardRotation().equals("Right") ) {
