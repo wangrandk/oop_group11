@@ -7,7 +7,7 @@ public class SubDeck {
 	
 	public ArrayList<Card> subdeck = new ArrayList<Card>();
 	
-
+	//Constructor
 	public SubDeck(ArrayList <Card> deck) {
 		
 		for (int i = 1; i <= 9; i++) {
@@ -19,6 +19,7 @@ public class SubDeck {
 		
 	}
 	
+	//returns array list of cards contained in a subdeck
 	public ArrayList<Card> getSubdeck() {
 		return subdeck;
 	}

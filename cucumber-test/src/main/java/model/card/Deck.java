@@ -8,6 +8,7 @@ public class Deck {
 	private static final ArrayList<Card> deck = new ArrayList<Card>();
 	private static Deck instance = null;  
 	
+	//algorithm for creating card types and their points(there will never be 2 cards with same number of points)
 	private Deck() {
 		// MOVE_ONE Cards
         int point = 490;
@@ -48,12 +49,12 @@ public class Deck {
 		
 	}
 	
-	
+	//returns ArrayList of cards in a deck
 	public static ArrayList<Card> getDeck() {
 		return deck;
 	}
 	
-	
+	//singleton initialized in a way that instance will never be null
 	public static Deck getInstance() {  
 		if (instance == null){  
 			instance = new Deck();  
