@@ -13,9 +13,8 @@ public class UTurn extends Card {
 
 	
 	private final String cardRotation = "UTurn";
-	String cardmessage = "U Turned";
-
 	
+	//Constructor
 	public UTurn(int points) {
 		super("UTurn",points);
 	}

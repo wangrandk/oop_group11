@@ -12,19 +12,17 @@ public class MoveThree extends Card {
 	private String cardImagePick = "move3_pick.png";
 	private String cardImagePickRollover = "move3_pick_rollover.png";
 
-			
+	//Constructor		
 	public MoveThree(int points) {
 		super("Move3",points);
 	}
 	 
 	
-	String cardmessage = "Moved 3 tiles";
-	
 	@Override
 	public void setAction(Robot robot) {
 		robot.setmovAmount(3);
 		Board.moveRobot(robot);
-		//setdirection ako je rotate
+		
 	}
 	
 	@Override

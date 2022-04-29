@@ -14,6 +14,7 @@ public class RotateLeft extends Card {
 	
 	private final String cardRotation = "Left";
 
+	//Constructor
 	public RotateLeft(int points) {
 		super("RotateLeft",points);
 	}

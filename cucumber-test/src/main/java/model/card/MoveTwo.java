@@ -11,15 +11,11 @@ public class MoveTwo extends Card {
 	private String cardImagePick = "move2_pick.png";
 	private String cardImagePickRollover = "move2_pick_rollover.png";
 
-	
+	//Constructor
 	public MoveTwo(int points) {
 		super("Move2",points);
 	}
-	
-	
-	
-	
-	String cardmessage = "Moved 2 tiles";
+
 	
 	@Override
 	public String getCardImage() {
