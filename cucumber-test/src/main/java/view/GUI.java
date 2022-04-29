@@ -33,8 +33,6 @@ public class GUI {
 	private static JPanel gameOverPanel;
 	private static int tileSize = GameSettings.TILE_SIZE;
 	private static int numCols = GameSettings.NUM_COLS;
-  
-    
 
 //	
 	public GUI() throws IOException {
@@ -50,9 +48,7 @@ public class GUI {
 		mainframe.revalidate();
 		mainframe.repaint();
 	}
-	
-	
-	
+		
 	public static void showChooseMap() {
 		chooseMap = new ChooseMap();
 		mainframe.remove(startPanel);
@@ -77,8 +73,6 @@ public class GUI {
 	public static void showGame(Player player) throws IOException {	
 //		addGamePanels();
 //		createTabs();
-		
-		
 		
 
 		if (isChooseMap == true) {
@@ -118,17 +112,11 @@ public class GUI {
 			tabbedPane.setSelectedIndex(Player.players.indexOf(player));
 
 		}
-		
-		
-		
-
 
 //		tabbedPane.add("GamePanel",gamePanel);
 //		tabbedPane.add("GamePanel",chooseMap);
 		mainframe.add(tabbedPane);
 		mainframe.revalidate();
-
-
 
 	}
 	

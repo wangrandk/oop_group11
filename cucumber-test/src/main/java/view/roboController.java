@@ -3,7 +3,6 @@ package view;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import model.board.BlankBoard;
 import model.board.Board;
 import model.board.EasyBoard;
@@ -29,41 +28,10 @@ public class roboController {
 	public static void main(String[] args) throws IOException {
 		p1 = new Player();
 		p1.setLife(1);
-		p2 = new Player();
-		
+		p2 = new Player();		
 		deck = Deck.getInstance().getDeck();
 		newRound();
-
-
-		new GUI();
-
-		
-		/*
-		 * Create all the main objects
-		 */
-		
-
-		
-		//Board (Static Accessible)
-		
-		
-
-		// Creates the Deck (Static Accessible)
-		 
-
-		
-		
-		
-		/*
-		 * Start the Game
-		 *  While the None of the Player win the game, the game should continue playing over and over again.
-
-		 */
-				
-
-		// GAME LOOP - IT ENDS WHEN ONE OF THE PLAYERS WONS.
-//			
-//			
+		new GUI();		
 		}
 	
 	
@@ -114,15 +82,10 @@ public class roboController {
 					GUI.showGame(player);
 					
 				}
-
-
-			}
-		
-		
+			}				
 	}
 	
-	
-	
+		
 	public static void setRobots() {
 		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
 		p2.setRobot((Robot) Board.getTile(new Position(1,6)));
@@ -134,37 +97,19 @@ public class roboController {
 	}
 	
 	
-	
-	
-	
-	
-		
-		 		 
-	
-	
 	// Starts a New Round
 	public static void newRound() {
 		turnNbr = 0;
-		for (Player player : Player.players ){
-			
+		for (Player player : Player.players ){			
 			// deal Subdeck for each player
 			player.setSubdeck(new SubDeck(deck).getSubdeck());
 			player.setCardsChangeable(true);
-			player.setReady(false);
-			
-			
-			
+			player.setReady(false);			
 			// Stores robots initial positions
 
-			
-			
 			// Start selection of the cards. (WAIT FOR AN EVENT IN THE GUI.)
 		}
 		
-	}
-	
-	
-	
-	
+	}	
 	
 }
