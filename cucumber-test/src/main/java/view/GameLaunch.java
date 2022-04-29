@@ -32,8 +32,8 @@ public class GameLaunch implements IEventHandler {
 		p1.setLife(1);
 		p2 = new Player();		
 		deck = Deck.getInstance().getDeck();
-		newRound();
-		//EventList.getInstance().publish(EventList.Event.NEW_ROUND, deck, null);		
+		//newRound();
+		EventList.getInstance().publish(EventList.Event.NEW_ROUND, deck, null);		
 	}
 
 	public static void newTurn(Player player) throws IOException {
@@ -99,7 +99,7 @@ public class GameLaunch implements IEventHandler {
 
 
 	 public void onEvent(EventList.Event evt, Object o, Object o2) {
-//	        switch (evt) {
+	        switch (evt) {
 //	            case SELECT_PLAYERS:
 //	                selectPlayers();
 //	                break;
@@ -115,10 +115,10 @@ public class GameLaunch implements IEventHandler {
 //	                createTabbedPane();
 //	                showGamePanels();
 //	                break;
-//	            case NEW_ROUND:
-//	            	this.deck = (ArrayList<Card>) o;
-//	            	newRound();
-//	                break;
+	            case NEW_ROUND:
+	            	this.deck = (ArrayList<Card>) o;
+	            	newRound();
+	                break;
 //	            case PICK_CARDS:
 //	                newCardsForPlayer((Player) o);
 //	                break;
@@ -133,6 +133,6 @@ public class GameLaunch implements IEventHandler {
 //	                for(GamePanel panel : gamePanels)
 //	                    panel.getControlView().updateStatusView();
 //	                break;
-//	        }
+	        }
 	    }	
 }
