@@ -3,6 +3,7 @@ package model.tile;
 import java.awt.Image;
 import java.net.URL;
 
+import model.exceptions.PositionNotValidException;
 import model.main.Player;
 import utilities.Position;
 
@@ -35,7 +36,7 @@ public abstract class Tile {
 		this.position = new Position(x, y);
 	}
 	
-	public void setPosition(Position position) {
+	public void setPosition(Position position){
 		this.position = position;
 	}
 
