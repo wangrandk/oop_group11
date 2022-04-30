@@ -1,7 +1,6 @@
 package model.board;
 
 import model.card.Card;
-import model.exceptions.PositionNotValidException;
 import model.main.Player;
 import model.tile.BlankTile;
 import model.tile.Pit;
