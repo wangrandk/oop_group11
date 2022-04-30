@@ -1,9 +1,9 @@
 package model.tile;
 
 import java.awt.Image;
+
 import java.net.URL;
 
-import model.exceptions.PositionNotValidException;
 import model.main.Player;
 import utilities.Position;
 

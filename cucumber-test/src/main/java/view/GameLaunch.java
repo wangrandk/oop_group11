@@ -29,7 +29,6 @@ public class GameLaunch implements IEventHandler {
 	public GameLaunch () throws IOException {
 		EventList.getInstance().register(this);
 		p1 = new Player();
-		p1.setLife(1);
 		p2 = new Player();		
 		deck = Deck.getInstance().getDeck();
 		//newRound();
