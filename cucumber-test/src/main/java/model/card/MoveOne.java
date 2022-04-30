@@ -3,6 +3,7 @@ package model.card;
 import java.net.URL;
 
 import model.board.Board;
+import model.exceptions.PositionNotValidException;
 import model.tile.Robot;
 
 public class MoveOne extends Card {

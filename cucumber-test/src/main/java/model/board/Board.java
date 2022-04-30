@@ -1,6 +1,7 @@
 package model.board;
 
 import model.card.Card;
+import model.exceptions.PositionNotValidException;
 import model.main.Player;
 import model.tile.BlankTile;
 import model.tile.Pit;
@@ -73,30 +74,48 @@ public abstract class Board {
 	}	
 	 
 	// Updates the Position property of the robot.
-	public static void moveRobot(Robot robot) {
+	public static void moveRobot(Robot robot){
 		
 		// Store the initial position of the robot, before the movement
 		// So we can use it later to update the previous tile.
 		robot.setInitialPosition(robot.getPosition());
-		
+		Position newPosition = new Position(0,0);
+
 		// Updates the current position of the robot.
 		if (robot.getOrientation() == GameSettings.Orientation.NORTH) {
-			robot.setPosition(new Position(robot.getX(), robot.getY() + robot.getmovAmount()));
+			newPosition = new Position(robot.getX(), robot.getY() - robot.getmovAmount());
 		}
-		if (robot.getOrientation() == GameSettings.Orientation.WEST) {
-			robot.setPosition(new Position(robot.getX() - robot.getmovAmount(), robot.getY()));
+			
+		else if (robot.getOrientation() == GameSettings.Orientation.WEST) {
+			newPosition =  new Position(robot.getX() - robot.getmovAmount(), robot.getY());
 		}
-		if (robot.getOrientation() == GameSettings.Orientation.SOUTH) {
-			robot.setPosition(new Position(robot.getX(), robot.getY() - robot.getmovAmount()));
+		else if (robot.getOrientation() == GameSettings.Orientation.SOUTH) {
+			newPosition = new Position(robot.getX(), robot.getY() + robot.getmovAmount());
+			
 		}
-		if (robot.getOrientation() == GameSettings.Orientation.EAST) {
-			robot.setPosition(new Position(robot.getX() + robot.getmovAmount(), robot.getY()));
+		else if (robot.getOrientation() == GameSettings.Orientation.EAST) {
+			newPosition = new Position(robot.getX() + robot.getmovAmount(), robot.getY());
 		}
+		
+		// If the new position is out of bounds, set the position to the initial position
+		if (newPosition.getY() >= GameSettings.NUM_ROWS || 
+			newPosition.getY() < 0 ||
+			newPosition.getX() >= GameSettings.NUM_COLS ||
+			newPosition.getX() < 0) {
+			robot.setPosition(robot.getInitialPosition());
+		}
+		else {
+			robot.setPosition(newPosition);
+		}
+		
+			
+		
 	}
 
 	//updates robot's current orientation according to a type of received card
 	public static void UpdateOrientation(Robot robot) {
 		
+		// IF robot has to rotate Right, get its orientation, and set a new orientation.
 		if(robot.getCardRotation().equals("Right") ) {
 			switch(robot.getOrientation()) {
 			
@@ -115,14 +134,11 @@ public abstract class Board {
 			case EAST:
 				robot.setOrientation(GameSettings.Orientation.SOUTH);
 				break;
-				
-			default:
-				System.out.println("~ Don't know robot now orientation ~");
 			}
 
 		}
 		
-		if(robot.getCardRotation().equals("Left") ) {
+		else if(robot.getCardRotation().equals("Left") ) {
 							
 				switch(robot.getOrientation()) {
 				
@@ -141,13 +157,10 @@ public abstract class Board {
 				case EAST:
 					robot.setOrientation(GameSettings.Orientation.NORTH);
 					break;
-					
-				default:
-					System.out.println("~ Don't know robot now orientation ~");
 				}	
 			}
 		
-		if(robot.getCardRotation().equals("UTurn")) {
+		else if(robot.getCardRotation().equals("UTurn")) {
 
 			switch(robot.getOrientation()) {
 					case NORTH:
@@ -165,10 +178,9 @@ public abstract class Board {
 					case EAST:
 						robot.setOrientation(GameSettings.Orientation.WEST);
 						break;
-					default:
-						System.out.println("~ Don't know robot now orientation ~");
 			}   	
 		}
+		// Set image of the Robot for the new orientation.
 		robot.setImage(robot.getOrientation());
 
 	}	

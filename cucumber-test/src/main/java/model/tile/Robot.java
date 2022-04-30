@@ -21,13 +21,17 @@ public class Robot extends Tile {
 	private Player player;
 	private GameSettings.Orientation orientation = GameSettings.Orientation.EAST;
 	private Position spawnPosition;
+	// movAmount changes according to the card.
+	private int movAmount = 0;
+
+	private String cardRotation = null;  
 	
 	private URL tileImage;
 	
-	// TODO
 	private URL orientationImage;
 
 	
+	// Robot Constructor
 	public Robot() {
 		
 		if (robotId == 1) {
@@ -43,6 +47,7 @@ public class Robot extends Tile {
 		robotId = robotId + 1;
 	}
 	
+	// Set Image of the Robot based on the orientation.
 	public void setImage(GameSettings.Orientation orientation) {
 	
 		switch(orientation) {
@@ -63,13 +68,6 @@ public class Robot extends Tile {
 		}
 	}
 
- 
-	
-	// movAmount changes according to the card.
-	private int movAmount = 0;
-
-	
-	private String cardRotation = null;  
 	
 	public URL getImage() {
 		return this.tileImage;
@@ -154,7 +152,6 @@ public class Robot extends Tile {
 		robot.setPosition(robot.getInitialPosition());
 		
 		// Nothing Changes on the board
-		
 		
 	}
 
