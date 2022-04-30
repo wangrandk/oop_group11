@@ -1,8 +1,10 @@
 package model.tile;
 
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 import model.board.Board;
 import model.card.Card;
@@ -17,47 +19,38 @@ public class Beer extends Tile {
 	@Override
 	public void doAction(Robot robot, Player player) {
 		// player's life stays the same
-		
-		/**
-		 * Loop through the players hand
-		 * while 
-		 */
-		
-		
-		
+	
+		// Creates a copy of the hand
 		ArrayList <Card> playerHandNoEmptyCards = (ArrayList<Card>) player.getHand().clone();
 		
-		playerHandNoEmptyCards.removeIf(i -> i instanceof EmptyCard);
-	
+		// removes the empty cards from the hand 
+		Iterator<Card> itr = playerHandNoEmptyCards.iterator();
+		while(itr.hasNext()) {
+			Card card = itr.next();
+			if (card instanceof EmptyCard) {
+		        itr.remove();
+		      }
+		}
 		
+		// Shuffles the NON played cards
+		Collections.shuffle(playerHandNoEmptyCards);
+		
+		// Set the new cards to the players hand.
 		int j =0;
 		for (int i = 0; i < player.getHand().size(); i++) {
 			if (player.getHand().get(i) instanceof EmptyCard) {
-				j++;
 			}
 			
 			else {
-				player.getHand().set(i, playerHandNoEmptyCards.get(i-j));
+				player.getHand().set(i, playerHandNoEmptyCards.get(j));
+				j++;
 			}
+
 		}
-		
 	
 			
 			
-			// Now cards are not Empty.
-//			else if {
-//				for (int i = 0; i < playerHandNoEmptyCards.size(); i++) {
-//					player.getHand().set(indexOf(cardHand), playerHandNoEmptyCards.get(i));
-//
-//				}
-//				break;
-//			}
-//		}
-		
-		
-//		
-//		// Shuffle the cards of the players hand.
-//		Collections.shuffle(player.getHand());
+
 //	
 		
 		// Move the robot on the board with to the new Position.
@@ -66,7 +59,7 @@ public class Beer extends Tile {
 		// Update the board with the Blank Tile for the robot's intial position
 		Board.setTile(new BlankTile(), robot.getInitialPosition());
 		
-	}
+}
 	
 	private int indexOf(Card cardHand) {
 		// TODO Auto-generated method stub

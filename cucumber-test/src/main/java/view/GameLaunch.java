@@ -43,9 +43,10 @@ public class GameLaunch implements IEventHandler {
 						Card cardMovement = p.getHand().get(turnNbr);						
 						// Card acts on the Robot and PlAYER
 						cardMovement.setAction(p.getRobot());
-						Board.doObstacleAction(p.getRobot(), p);
 						// Once card is played, we can discard the card from the hand.
 						p.getHand().set(turnNbr, new EmptyCard(0));
+						Board.doObstacleAction(p.getRobot(), p);
+						
 						if (p.isWinner()) {
 							GUI.showGameOverPanel(p);
 						}
