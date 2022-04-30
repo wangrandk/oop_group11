@@ -49,6 +49,12 @@ public class TileFactory {
         	case 6:
         		tile = new ConveyorBelt();
         		break;
+        	case 7:
+        		tile = new Teleporter();
+        		break;
+        	case 8:
+        		tile = new TeleporterSpot();
+        		break;
         	// Pit
         	case 11:
         		tile = new Pit();
