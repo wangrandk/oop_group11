@@ -19,12 +19,10 @@ import utilities.GameSettings;
 import utilities.IEventHandler;
 import utilities.Position;
 import utilities.EventList.Event;
-import view.SelectPlayersPanel;
 
 public class GUI implements IEventHandler {
 	private static JFrame mainframe;
 	private static startpanel startPanel;
-    private static SelectPlayersPanel selectPlayersPanel;
     private static ChooseMap chooseMap;
     private static gamePanel gamePanel;
     private static controlView controlView;
@@ -61,21 +59,9 @@ public class GUI implements IEventHandler {
 		isChooseMap = true;
 		
 	}
-	public static void addGamePanels() throws IOException {
-		for (Player player : Player.players) {
-			gamePanels.add(new gamePanel(player));
-		}
-	}
 	
-	public static void createTabs() {
-		for (gamePanel panel : gamePanels) {
-			tabbedPane.add(panel.getPlayer().getRobot().getName(),panel);
-		}
-	}
 	
 	public static void showGame(Player player) throws IOException {	
-//		addGamePanels();
-//		createTabs();
 		
 
 		if (isChooseMap == true) {
@@ -148,86 +134,8 @@ public class GUI implements IEventHandler {
 				e.printStackTrace();
 			}
                 break;
-//            case NEW_ROUND:
-//                setGamePanelsForNewRound();
-//                break;
-//            case PICK_CARDS:
-//                newCardsForPlayer((Player) o);
-//                break;
-//            case NEW_TURN:
-//                setGamePanelsForNewTurn((int) o);
-//                break;
-//            case UPDATE_BOARD:
-//                for(gamePanel panel : gamePanels)
-//                    panel.getBoardView().update();
-//                break;
-//            case UPDATE_STATUS:
-//                for(gamePanel panel : gamePanels)
-//                    panel.getControlView().updateStatusView();
-//                break;
         }
     }
-//	
-//
-//	private void setGamePanelsForNewTurn(int turnIndex) {
-//		for (gamePanel panel : gamePanels) {
-//            panel.getControlView().setTurnIndicator(turnIndex);
-//            panel.getControlView().setRegisterCardIconsNotChangeable();
-//            panel.getControlView().resetNewCardButtons();
-//            panel.getControlView().setDoneButtonEnabled(false);
-//            panel.getControlView().setNextTurnButtonEnabled(true);
-//            panel.getControlView().setPowerDownButtonEnabled(true);
-//        }
-//		
-//	}
-//
-//	private void newCardsForPlayer(Player player) {
-//		for (gamePanel panel : gamePanels) {
-//            if (panel.getPlayer().getPlayerID() == player.getPlayerID()) {
-//                panel.getControlView().newCardsToPick();
-//                panel.getControlView().setRegisterCardIconsChangeable();
-//                panel.getControlView().setDoneButtonEnabled(true);
-//            }
-//        }
-//		
-//	}
-//
-//	private void setGamePanelsForNewRound() {
-//		for (gamePanel panel : gamePanels) {
-//            panel.getControlView().setTurnIndicator(0);
-//            panel.getControlView().setRegisterCardIconsChangeable();
-//            panel.getControlView().resetRegisterCards();
-//            panel.getControlView().resetNewCardButtons();
-//            panel.getControlView().setNextTurnButtonEnabled(false);
-//            panel.getControlView().setPowerDownButtonEnabled(false);
-//        }
-//		
-//	}
-//
-//	private void showGamePanels() {
-//		 mainframe.remove(chooseMap);   //is it taken from 'selectMapPanel'
-//	        mainframe.add(tabbedPane, BorderLayout.CENTER);
-//	        mainframe.revalidate();
-//	        mainframe.repaint();
-//		
-//	}
-//
-//	private void createTabbedPane() {
-//		for (gamePanel panel : gamePanels) {
-//            tabbedPane.addTab(panel.getPlayer().getRobot().getName(),panel);
-//        }
-//		
-//	}
-//
-//	private void createGamePanels() throws IOException {
-//		for (Player player : model.getPlayers()) {
-//            gamePanels.add(new gamePanel(player, model.getBoard()));
-//        }
-//		
-//	}
-	
-	
-}
-		
+}		
 	
 
