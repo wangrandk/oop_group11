@@ -8,7 +8,7 @@ import utilities.Position;
 
 public class TeleporterSpot extends Tile {
 	
-private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/conveyorbelt.png");
+private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/teleporter_out.png");
 
 	
 	@Override
