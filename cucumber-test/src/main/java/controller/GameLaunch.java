@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import model.board.BlankBoard;
 import model.board.Board;
+import model.board.EasyBoard;
 import model.board.FinalBoard;
 import model.board.MediumBoard;
 import model.card.Card;
@@ -88,7 +89,7 @@ public class GameLaunch implements IEventHandler {
 	
 	public static void setBoard(int i) {
 		if (i == 1) {
-			board = new BlankBoard();
+			board = new EasyBoard();
 		}
 		else if (i == 2) {
 			board = new MediumBoard();
