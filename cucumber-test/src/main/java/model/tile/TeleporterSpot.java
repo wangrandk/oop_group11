@@ -13,6 +13,9 @@ private URL tileImage = this.getClass().getClassLoader().getResource("view/maps/
 	
 	@Override
 	public void doAction(Robot robot, Player player) {
+		
+		// Robot return to the spawn position;
+		robot.setPosition(robot.getSpawnPosition());
 	
 		// Move the robot on the board with to the new Position.
 		Board.setTile(robot);
