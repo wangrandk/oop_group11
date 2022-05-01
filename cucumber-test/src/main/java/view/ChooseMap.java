@@ -75,7 +75,6 @@ public class ChooseMap extends JPanel implements ActionListener {
 
         
         title = new JLabel(new ImageIcon(this.getClass().getClassLoader().getResource("view/text/difficulty.png")));
-        title.setLocation(250,25);
         
        
         

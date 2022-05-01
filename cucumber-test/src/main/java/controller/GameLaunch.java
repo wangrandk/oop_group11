@@ -38,11 +38,22 @@ public class GameLaunch implements IEventHandler {
 	}
  
 	public static void newTurn(Player player) throws IOException {
+
+		
 			
-			if (Player.isAllPlayersReady()) {
 				if (turnNbr < 5) {
+					if (p1.getHand().get(turnNbr).getpoints()>p2.getHand().get(turnNbr).getpoints()) {
+						Player.players.set(0, p1);
+						Player.players.set(1, p2);
+					}
+						
+					else if (p1.getHand().get(turnNbr).getpoints()<p2.getHand().get(turnNbr).getpoints()) {
+						Player.players.set(0, p2);
+						Player.players.set(1, p1);
+					}
+
 					for (Player p : Player.players) {
-						Card cardMovement = p.getHand().get(turnNbr);						
+						Card cardMovement = p.getHand().get(turnNbr);
 						// Card acts on the Robot and PlAYER
 						cardMovement.setAction(p.getRobot());
 						// Once card is played, we can discard the card from the hand.
@@ -61,7 +72,7 @@ public class GameLaunch implements IEventHandler {
 					GUI.showGame(player);					
 				}
 			}				
-	}
+	
 			
 	public static void setRobots() {
 		p1.setRobot((Robot) Board.getTile(new Position(1,4)));
