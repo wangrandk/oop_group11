@@ -40,7 +40,7 @@ public class GameLaunch implements IEventHandler {
 	public static void newTurn(Player player) throws IOException {
 
 		
-			
+			if (Player.isAllPlayersReady())
 				if (turnNbr < 5) {
 					if (p1.getHand().get(turnNbr).getpoints()>p2.getHand().get(turnNbr).getpoints()) {
 						Player.players.set(0, p1);
