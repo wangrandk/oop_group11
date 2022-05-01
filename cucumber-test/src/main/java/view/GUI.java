@@ -7,6 +7,7 @@ import java.util.Collections;
 
 import javax.swing.*;
 
+import controller.GameLaunch;
 import view.gamePanel;
 import model.Game;
 import model.board.Board;

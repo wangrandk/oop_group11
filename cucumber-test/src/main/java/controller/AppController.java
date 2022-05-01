@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import view.GUI;
-import view.GameLaunch;
 
 // Application controller class
 public class AppController {
