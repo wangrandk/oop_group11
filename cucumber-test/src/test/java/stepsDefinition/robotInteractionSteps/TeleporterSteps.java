@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import model.board.BlankBoard;
 import model.board.Board;
+import model.card.MoveThree;
 import model.card.MoveTwo;
 import model.main.Player;
 import model.tile.BlankTile;
@@ -22,6 +23,7 @@ public class TeleporterSteps {
 	// Player initial Hand before shuffle
 	Robot robot = new Robot();
 	MoveTwo move2 = new MoveTwo(610);
+	MoveThree move3 = new MoveThree(610);
 	Player player = new Player();
 
 	Position initialPosition;
@@ -86,38 +88,41 @@ public class TeleporterSteps {
 	public void there_is_a_teleporter_on_x_and_y(Integer int1, Integer int2) {
 		teleporter = new Position(int1, int2);
 	    Board.setTile(new Teleporter(), teleporter);
-
+		initialPosition = new Position(0,0);
+		robot.setPosition(initialPosition);
+		Board.setTile(robot);
+		robot.setSpawnPosition(new Position(5,3));
 		
 	}
 
 	@Given("there is a Teleporter spot on x {int} and y {int}")
 	public void there_is_a_teleporter_spot_on_x_and_y(Integer int1, Integer int2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		teleporterSpot = new Position(int1, int2);
+	    Board.setTile(new TeleporterSpot(), teleporterSpot);
 	}
 
 	@When("a card movethree acts on the robot and board do action with the player its robot")
 	public void a_card_movethree_acts_on_the_robot_and_board_do_action_with_the_player_its_robot() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		move3.setAction(robot);
+	    Board.doObstacleAction(robot, player);
 	}
 
 	@Then("the robot should move to the position to its spawn position")
 	public void the_robot_should_move_to_the_position_to_its_spawn_position() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    assertEquals(true, Board.getTile(robot.getSpawnPosition()) instanceof Robot);
+
 	}
 
 	@Then("initial position of the robot should turn now be turned into an Blank Tile")
 	public void initial_position_of_the_robot_should_turn_now_be_turned_into_an_blank_tile() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    assertEquals(true, Board.getTile(initialPosition) instanceof BlankTile);
+
 	}
 
 	@Then("teleporter spot should continue to be a teleporter spot")
 	public void teleporter_spot_should_continue_to_be_a_teleporter_spot() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    assertEquals(true, Board.getTile(teleporterSpot) instanceof TeleporterSpot);
+
 	}
 
 }

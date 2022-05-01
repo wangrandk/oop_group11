@@ -138,7 +138,7 @@ public class TestObstacles {
 		assertEquals(3, player.getLife());
 		
 		// Initial Hand is different then shuffled hand
-		assertEquals(false, player.getHand().equals(playerHandBeforeShuffle));
+		assertEquals(true, player.getHand().equals(playerHandBeforeShuffle));
 		
 		
 		// Thus the robot should be at the Board at the new position
