@@ -1,4 +1,4 @@
-package stepsDefinition.RobotInteraction;
+package stepsDefinition.robotInteractionSteps;
 
 import static org.junit.Assert.assertEquals
 ;
@@ -29,8 +29,6 @@ import utilities.Position;
 public class ConveyorBeltSteps {
 	
 	Board board = new BlankBoard();
-	Deck deck = Deck.getInstance();
-	ArrayList<Card> subDeck = new SubDeck(deck.getDeck()).getSubdeck();
 	// Player initial Hand before shuffle
 	Robot robot = new Robot();
 	MoveTwo move2 = new MoveTwo(610);

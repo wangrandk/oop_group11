@@ -1,7 +1,6 @@
-package stepsDefinition.RobotInteraction;
+package stepsDefinition.robotInteractionSteps;
 
-import static org.junit.Assert.assertEquals
-;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
@@ -27,10 +26,11 @@ public class U2RobotInteractionSteps {
 	
 	Pit pit = new Pit();
 	Board board = new EasyBoard();
-	Deck deck = Deck.getInstance();
-	ArrayList<Card> subDeck = new SubDeck(deck.getDeck()).getSubdeck();
+	Deck deck;
+	SubDeck subDeck;
 	// Player initial Hand before shuffle
 	ArrayList<Card> playerHandBeforeShuffle = new ArrayList<Card>();
+	ArrayList<Card> subDeckCards;
 	Robot robot = new Robot();
 	MoveOne move1 = new MoveOne(610);
 	Player player = new Player();
@@ -140,24 +140,48 @@ public class U2RobotInteractionSteps {
 		// Robot on position 0,0, and beer on position 1,0.
 		Board.setTile(robot, new Position(0,0));
 		Board.setTile(new Beer(), new Position(1,0));
+		deck = Deck.getInstance();
+		ArrayList<Card> deck_cards = Deck.getDeck();
+		subDeck = new SubDeck(deck_cards);
+		subDeckCards = subDeck.getSubdeck();
 	}
 
 	@Given("player has a hand of cards")
 	public void player_has_a_hand_of_cards() {
 		player.setRobot(robot);
-		player.setSubdeck(subDeck);
+		player.setSubdeck(subDeckCards);
 		
 		// Get 5 cards
-		try {
-			player.fiveToHand(subDeck.get(0));
-			player.fiveToHand(subDeck.get(0));
-			player.fiveToHand(subDeck.get(0));
-			player.fiveToHand(subDeck.get(0));
-			player.fiveToHand(subDeck.get(0));
-		} catch (IllegalActionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				player.fiveToHand(subDeckCards.get(0));
+			} catch (IllegalActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				player.fiveToHand(subDeckCards.get(1));
+			} catch (IllegalActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				player.fiveToHand(subDeckCards.get(2));
+			} catch (IllegalActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				player.fiveToHand(subDeckCards.get(3));
+			} catch (IllegalActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				player.fiveToHand(subDeckCards.get(4));
+			} catch (IllegalActionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		
 		// Clone the initial hand.
