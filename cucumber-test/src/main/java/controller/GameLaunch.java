@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ import utilities.EventList;
 import utilities.EventList.Event;
 import utilities.IEventHandler;
 import utilities.Position;
+import view.GUI;
 
 public class GameLaunch implements IEventHandler {
 	public static Player p1;
@@ -34,7 +35,7 @@ public class GameLaunch implements IEventHandler {
 		//newRound();
 		EventList.getInstance().publish(EventList.Event.NEW_ROUND, deck, null);		
 	}
-
+ 
 	public static void newTurn(Player player) throws IOException {
 			
 			if (Player.isAllPlayersReady()) {

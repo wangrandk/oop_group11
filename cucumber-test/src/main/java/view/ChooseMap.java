@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import controller.GameLaunch;
 import model.board.BlankBoard;
 import model.board.Board;
 import model.main.Player;
