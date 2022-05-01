@@ -25,7 +25,7 @@ public class GameLaunch implements IEventHandler {
 	public static Board board;
 	public static ArrayList<Card> deck;
 	static int turnNbr;
-	
+	 
 	public GameLaunch () throws IOException {
 		EventList.getInstance().register(this);
 		p1 = new Player();

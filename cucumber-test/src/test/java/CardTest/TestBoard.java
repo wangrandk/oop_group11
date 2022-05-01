@@ -32,8 +32,8 @@ public class TestBoard {
 	@Test
 	
 	public void blankOnEasyBoardPosition10(){
-		// Should return true because it has a blankTile
-		assertEquals(true, board.getTile(new Position(1,0)) instanceof BlankTile);
+		// Should return false because it has a blankTile
+		assertEquals(false, board.getTile(new Position(1,0)) instanceof BlankTile);
 	
 		
 	}

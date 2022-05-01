@@ -14,5 +14,5 @@ public class AppController {
 	public static void main(String[] args) throws IOException {
 		new GameLaunch();
 	    new GUI();	
-	}			
+	}
 }
