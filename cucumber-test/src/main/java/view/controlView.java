@@ -76,16 +76,16 @@ public class controlView extends JPanel implements ActionListener,IEventHandler 
 
         
         
-        readyButton = new JButton("Ready!!");
+        readyButton = new Button("menu_buttons/ready_btn.png","menu_buttons/ready_btn_hover.png");
         readyButton.addActionListener(this);
-        readyButton.setSize(70,30);
-        readyButton.setLocation(35,135);
+        readyButton.setSize(64,13);
+        readyButton.setLocation(10,135);
         controlPanel.add(readyButton);
         
-        nextTurnButton = new JButton("Next Turn!!");
+        nextTurnButton = new Button("menu_buttons/next_turn_btn.png","menu_buttons/next_turn_btn_hover.png");
         nextTurnButton.addActionListener(this);
-        nextTurnButton.setSize(70,30);
-        nextTurnButton.setLocation(110,135);
+        nextTurnButton.setSize(123,13);
+        nextTurnButton.setLocation(300-123-10,135);
         controlPanel.add(nextTurnButton);
         
         livesLabel = new JLabel();
