@@ -1,2 +1,2 @@
 # oop_group11
-Run the AppController under the Controller package in order to execute the program.
+Robo-Rally project for AOOP on DTU 2022.
