@@ -76,7 +76,7 @@ public class Game implements IEventHandler{
 		public void returnCardsToDeck() {
 			 for (Player player : players) {
 				 for(int i = 0; i < 5; i++) {
-					 	Card tempCard = player.getHand().get(0);
+					 	Card tempCard = player.getHand().getFirst();
 					 	Deck.getDeck().add(tempCard);
 					 	player.getHand().remove(tempCard);
 			    	}
