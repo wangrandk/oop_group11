@@ -153,7 +153,7 @@ public class U2RobotInteractionSteps {
 		
 		// Get 5 cards
 			try {
-				player.fiveToHand(subDeckCards.get(0));
+				player.fiveToHand(subDeckCards.getFirst());
 			} catch (IllegalActionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

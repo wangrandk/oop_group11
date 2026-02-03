@@ -31,16 +31,16 @@ public class cardHandlingSteps {
 	public void player_chooses_cards(Integer num_cards) throws IllegalActionException {
 	    switch(num_cards) {
 	    case 2:
-	    	player.fiveToHand(player.getSubdeck().get(0));
+	    	player.fiveToHand(player.getSubdeck().getFirst());
 	    	player.fiveToHand(player.getSubdeck().get(1));
 	    	break;
 	    case 3:
-	    	player.fiveToHand(player.getSubdeck().get(0));
+	    	player.fiveToHand(player.getSubdeck().getFirst());
 	    	player.fiveToHand(player.getSubdeck().get(1));
 	    	player.fiveToHand(player.getSubdeck().get(2));
 	    	break;
 	    case 4:
-	    	player.fiveToHand(player.getSubdeck().get(0));
+	    	player.fiveToHand(player.getSubdeck().getFirst());
 	    	player.fiveToHand(player.getSubdeck().get(1));
 	    	player.fiveToHand(player.getSubdeck().get(2));
 	    	player.fiveToHand(player.getSubdeck().get(3));
@@ -83,7 +83,7 @@ public class cardHandlingSteps {
 	
 	@Given("a player with a complete Hand")
 	public void a_player_with_a_complete_hand() throws IllegalActionException {
-    	player.fiveToHand(player.getSubdeck().get(0));
+    	player.fiveToHand(player.getSubdeck().getFirst());
     	player.fiveToHand(player.getSubdeck().get(1));
     	player.fiveToHand(player.getSubdeck().get(2));
     	player.fiveToHand(player.getSubdeck().get(3));
@@ -95,14 +95,14 @@ public class cardHandlingSteps {
 	public void player_selects_cards_from_the_hand(Integer num_cards) throws IllegalActionException {
 		  switch(num_cards) {
 		    case 1:
-		    	player.replayCard(player.getHand().get(0));
+		    	player.replayCard(player.getHand().getFirst());
 		    	break;
 		    case 2:
-		    	player.replayCard(player.getHand().get(0));
+		    	player.replayCard(player.getHand().getFirst());
 		    	player.replayCard(player.getHand().get(1));
 		    	break;
 		    case 3:
-		    	player.replayCard(player.getHand().get(0));
+		    	player.replayCard(player.getHand().getFirst());
 		    	player.replayCard(player.getHand().get(1));
 		    	player.replayCard(player.getHand().get(3));
 		    	break;
